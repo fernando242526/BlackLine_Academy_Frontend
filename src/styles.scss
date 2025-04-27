@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+    /* Colores base del sistema */
+  --color-void-black: #0b0c10;
+  --color-neon-violet: #8f00ff;
+  --color-cyber-cyan: #00f0ff;
+  --color-ghost-gray: #e0e0e0;
+  --color-critical-red: #ff004d;
+  --color-glitch-purple: #5c2a9d;
+
+  /* Colores para toasts/notificaciones */
+  --color-glitch-green: #00ff9c;   /* Éxito / OK */
+  --color-prisma-amber: #ffc940;   /* Advertencia */
+  --color-electric-blue: #38b6ff;  /* Información */
+  --color-pulse-violet: #b266ff;   /* Carga/Espera */
+  --color-critical-red-error: #ff004d; /* Error/Falla */
+
+  /* Colores para roles */
+  --color-royal-magenta: #c600ff;  /* Administrador */
+  --color-neon-copper: #ff7b00;    /* Profesor */
+  --color-soft-cyan: #00ffe0;      /* Estudiante */
+  --color-stealth-gray: #9aa0a6;   /* Invitado/Viewer */
+
+  /* Colores funcionales adicionales */
+  --color-success-glow: #00ff88;   /* Bordes de input válidos */
+  --color-error-glow: #ff2f56;     /* Bordes de input inválidos */
+  --color-night-cyan: #00e1ff;     /* Hover especial */
+  --color-ghost-pulse: #bfbfbf;    /* Loading animations base */
+  --color-plasma-line: #292d35;    /* Separadores / líneas suaves */
+}
