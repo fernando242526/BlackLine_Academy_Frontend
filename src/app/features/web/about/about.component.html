@@ -1,0 +1,186 @@
+<div class="bg-void-black text-ghost-gray">
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 relative">
+        <!-- Fondo con grid -->
+        <div class="absolute inset-0 grid-bg"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Columna de texto -->
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        <span class="text-neon-violet glitch-text" data-text="SOBRE">SOBRE</span>
+                        <span class="block text-cyber-cyan glitch-text" data-text="BLACKLINE ACADEMY">BLACKLINE
+                            ACADEMY</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl mb-6 text-ghost-gray">
+                        Una academia digital clandestina de la nueva era, un refugio cyberpunk donde se transmite
+                        conocimiento sin censura, sin burocracia, directo al núcleo del aprendizaje.
+                    </p>
+
+                    <p class="text-lg sm:text-xl mb-8 text-plasma-line">
+                        No somos solo una plataforma: somos un movimiento, una red, un despertar.
+                    </p>
+                </div>
+
+                <!-- Columna de imagen -->
+                <div class="lg:w-1/2 relative">
+                    <div class="about-image-container">
+                        <div class="about-image"></div>
+                        <div class="glow-effect"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="py-16 relative overflow-hidden">
+        <!-- Elemento decorativo -->
+        <div class="absolute -left-16 top-10 w-32 h-64 bg-neon-violet opacity-20 blur-3xl rounded-full"></div>
+        <div class="absolute -right-16 bottom-10 w-32 h-64 bg-cyber-cyan opacity-20 blur-3xl rounded-full"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Misión -->
+                <div class="mission-card">
+                    <h2 class="text-2xl font-bold mb-4 text-cyber-cyan">NUESTRA MISIÓN</h2>
+                    <div class="h-1 w-16 bg-neon-violet mb-6"></div>
+                    <p class="text-ghost-gray mb-4">
+                        Democratizar el acceso al conocimiento tecnológico de vanguardia, eliminando las barreras
+                        tradicionales que limitan el aprendizaje significativo.
+                    </p>
+                    <p class="text-plasma-line">
+                        Formamos profesionales capaces de transformar el panorama digital mediante una educación
+                        práctica, sin censura y directamente aplicable al mundo real.
+                    </p>
+                </div>
+
+                <!-- Visión -->
+                <div class="vision-card">
+                    <h2 class="text-2xl font-bold mb-4 text-neon-violet">NUESTRA VISIÓN</h2>
+                    <div class="h-1 w-16 bg-cyber-cyan mb-6"></div>
+                    <p class="text-ghost-gray mb-4">
+                        Construir una comunidad global de expertos digitales que lideren la revolución tecnológica desde
+                        una perspectiva ética y disruptiva.
+                    </p>
+                    <p class="text-plasma-line">
+                        Aspiramos a ser el epicentro del conocimiento tecnológico donde los profesionales del mañana
+                        adquieren las habilidades que realmente importan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="py-16 bg-void-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Encabezado de sección -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="text-ghost-gray">NUESTROS </span>
+                    <span class="text-cyber-cyan">VALORES</span>
+                </h2>
+                <p class="text-plasma-line text-lg max-w-2xl mx-auto">
+                    Principios fundamentales que guían nuestra misión educativa
+                </p>
+                <div class="h-1 w-24 bg-gradient-to-r from-neon-violet to-cyber-cyan mx-auto mt-6"></div>
+            </div>
+
+            <!-- Grid de valores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div *ngFor="let value of values; let i = index" class="value-card"
+                    [style.animation-delay]="(i * 0.15) + 's'">
+                    <div class="value-icon-wrapper">
+                        <fa-icon [icon]="value.icon"></fa-icon>
+                    </div>
+                    <h3 class="text-xl font-bold text-cyber-cyan mb-2">{{ value.title }}</h3>
+                    <p class="text-plasma-line">{{ value.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="py-16 relative bg-void-black overflow-hidden">
+        <!-- Fondo con líneas -->
+        <div class="absolute inset-0 stats-bg"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div *ngFor="let stat of stats; let i = index" class="stat-item"
+                    [style.animation-delay]="(i * 0.15) + 's'">
+                    <div class="text-4xl md:text-5xl font-bold text-neon-violet mb-2">{{ stat.value }}</div>
+                    <div class="text-sm uppercase tracking-wider text-plasma-line">{{ stat.label }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="py-16 bg-void-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Encabezado de sección -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="text-ghost-gray">NUESTRO </span>
+                    <span class="text-neon-violet">EQUIPO</span>
+                </h2>
+                <p class="text-plasma-line text-lg max-w-2xl mx-auto">
+                    Profesionales con experiencia en la industria y pasión por la enseñanza
+                </p>
+                <div class="h-1 w-24 bg-gradient-to-r from-cyber-cyan to-neon-violet mx-auto mt-6"></div>
+            </div>
+
+            <!-- Grid de miembros del equipo -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div *ngFor="let member of team; let i = index" class="team-card"
+                    [style.animation-delay]="(i * 0.15) + 's'">
+                    <div class="team-image-container">
+                        <img [src]="member.image || 'assets/images/avatar-placeholder.jpg'" [alt]="member.name"
+                            class="team-image">
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-cyber-cyan mb-1">{{ member.name }}</h3>
+                        <p class="text-neon-violet text-sm mb-3">{{ member.role }}</p>
+                        <p class="text-plasma-line text-sm">{{ member.bio }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-void-black relative overflow-hidden">
+        <!-- Fondo con efecto -->
+        <div class="absolute inset-0 cta-bg-pattern opacity-5"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-void-black border border-plasma-line rounded-lg p-8 md:p-12 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-ghost-gray">
+                    ¿Listo para unirte a la
+                    <span class="text-neon-violet"> revolución</span> del conocimiento?
+                </h2>
+
+                <p class="text-plasma-line text-lg mb-8 max-w-3xl mx-auto">
+                    Descubre nuestros cursos y comienza tu viaje de aprendizaje con BlackLine Academy. El futuro de la
+                    tecnología está en tus manos.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a routerLink="/cursos" class="about-cta-btn group inline-flex items-center justify-center">
+                        <span>Explorar cursos</span>
+                        <fa-icon [icon]="faChevronRight"
+                            class="ml-2 transition-transform group-hover:translate-x-1"></fa-icon>
+                    </a>
+                    <a routerLink="/contacto" class="about-secondary-btn group inline-flex items-center justify-center">
+                        <span>Contactar con nosotros</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

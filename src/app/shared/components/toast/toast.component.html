@@ -9,11 +9,11 @@
 
         <!-- Contenido -->
         <div class="flex-1 mr-2">
-            <p class="font-semibold text-gray-800 dark:text-white">
+            <p class="font-semibold toast-message" [attr.data-text]="toast.message">
                 {{ toast.message }}
             </p>
             @if (toast.detail) {
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+            <p class="mt-1 text-sm">
                 {{ toast.detail }}
             </p>
             }
@@ -21,7 +21,7 @@
 
         <!-- Botón cerrar -->
         @if (toast.dismissible) {
-        <button (click)="dismiss(toast.id)" class="toast-close-btn text-gray-500 dark:text-gray-400"
+        <button (click)="dismiss(toast.id)" class="toast-close-btn"
             aria-label="Cerrar notificación">
             <fa-icon [icon]="closeIcon" class="text-xs"></fa-icon>
         </button>
