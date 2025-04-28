@@ -9,7 +9,14 @@ const AUTH_ROUTES: Routes = [
         redirectTo: 'login',
         pathMatch: 'full',
       },
-      
+      {
+        path: 'login',
+        loadComponent: () => import('./login/login.component')
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./register/register.component')
+      }
     ],
   },
 ];
