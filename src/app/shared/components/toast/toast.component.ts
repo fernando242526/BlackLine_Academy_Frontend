@@ -7,7 +7,8 @@ import {
   faInfoCircle, 
   faExclamationTriangle, 
   faTimesCircle, 
-  faTimes 
+  faTimes,
+  faCodeBranch
 } from '@fortawesome/free-solid-svg-icons';
 import { Toast, ToastService, ToastType } from '../../../core/services/toast.service';
 
@@ -16,6 +17,7 @@ import { Toast, ToastService, ToastType } from '../../../core/services/toast.ser
  */
 @Component({
   selector: 'app-toast',
+  standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: './toast.component.html',
   styleUrl: './toast.component.scss',
@@ -33,11 +35,11 @@ import { Toast, ToastService, ToastType } from '../../../core/services/toast.ser
       })),
       // Transición de entrada
       transition('void => visible', [
-        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)')
+        animate('400ms cubic-bezier(0.16, 1, 0.3, 1)')
       ]),
       // Transición de salida
       transition('visible => void', [
-        animate('200ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('300ms cubic-bezier(0.16, 1, 0.3, 1)', style({
           transform: 'translateX(100%)',
           opacity: 0
         }))
@@ -110,7 +112,8 @@ export class ToastComponent implements OnInit, OnDestroy {
    * Determina la clase CSS del contenedor según el tipo de toast
    */
   getContainerClass(type: ToastType): string {
-    return 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700';
+    const baseClasses = 'bg-void-black border border-plasma-line text-ghost-gray';
+    return baseClasses;
   }
   
   /**
@@ -119,15 +122,15 @@ export class ToastComponent implements OnInit, OnDestroy {
   getIconContainerClass(type: ToastType): string {
     switch (type) {
       case 'success':
-        return 'bg-green-500 dark:bg-green-600';
+        return 'bg-glitch-green';
       case 'error':
-        return 'bg-bordeaux-500 dark:bg-bordeaux-600';
+        return 'bg-critical-red';
       case 'warning':
-        return 'bg-amber-500 dark:bg-amber-600';
+        return 'bg-prisma-amber';
       case 'info':
-        return 'bg-info-500 dark:bg-info-600';
+        return 'bg-electric-blue';
       default:
-        return 'bg-slate-500 dark:bg-slate-600';
+        return 'bg-cyber-cyan';
     }
   }
   
@@ -137,15 +140,15 @@ export class ToastComponent implements OnInit, OnDestroy {
   getProgressClass(type: ToastType): string {
     switch (type) {
       case 'success':
-        return 'bg-green-500';
+        return 'bg-glitch-green';
       case 'error':
-        return 'bg-bordeaux-500';
+        return 'bg-critical-red';
       case 'warning':
-        return 'bg-amber-500';
+        return 'bg-prisma-amber';
       case 'info':
-        return 'bg-info-500';
+        return 'bg-electric-blue';
       default:
-        return 'bg-slate-500';
+        return 'bg-cyber-cyan';
     }
   }
   

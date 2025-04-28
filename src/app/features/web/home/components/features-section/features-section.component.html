@@ -1,0 +1,33 @@
+<section class="py-20 bg-void-black relative">
+    <!-- Fondo con degradado -->
+    <div class="absolute inset-0 bg-gradient-to-b from-void-black via-void-black to-void-black opacity-90"></div>
+
+    <!-- Formas decorativas -->
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                <span class="text-cyber-cyan">CARACTERÍSTICAS</span>
+                <span class="text-ghost-gray"> DE BLACKLINE</span>
+            </h2>
+            <p class="text-plasma-line text-lg max-w-2xl mx-auto">
+                Descubre por qué somos la mejor opción para tu formación tecnológica
+            </p>
+            <div class="h-1 w-24 bg-gradient-to-r from-neon-violet to-cyber-cyan mx-auto mt-6"></div>
+        </div>
+
+        <!-- Grid de características -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div *ngFor="let feature of features; let i = index" class="feature-card"
+                [style.animation-delay]="(i * 0.15) + 's'">
+                <div class="feature-icon-wrapper">
+                    <fa-icon [icon]="feature.icon" class="feature-icon"></fa-icon>
+                </div>
+                <h3 class="text-xl font-bold text-cyber-cyan mb-3">{{ feature.title }}</h3>
+                <p class="text-plasma-line">{{ feature.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>

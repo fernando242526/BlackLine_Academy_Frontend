@@ -1,0 +1,109 @@
+<section class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background con grid y partículas -->
+    <div class="absolute inset-0 grid-bg"></div>
+
+    <!-- Partículas animadas -->
+    <div class="particles-container absolute inset-0"></div>
+
+    <!-- Contenido principal -->
+    <div class="relative w-full z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div class="flex flex-col w-full lg:flex-row items-center gap-12">
+            <!-- Columna de texto -->
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    <span class="text-cyber-cyan glitch-text" data-text="BLACKLINE">BLACKLINE</span>
+                    <span class="block text-neon-violet glitch-text" data-text="ACADEMY">ACADEMY</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl mb-8 max-w-xl mx-auto lg:mx-0 text-ghost-gray">
+                    Una academia digital clandestina de la nueva era, donde el <span
+                        class="text-cyber-cyan">conocimiento</span> fluye sin censura, directo al núcleo del <span
+                        class="text-neon-violet">aprendizaje</span>.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a routerLink="/cursos" class="btn-primary group flex items-center justify-center">
+                        Explorar cursos
+                        <fa-icon [icon]="faArrowRight"
+                            class="ml-2 transition-transform group-hover:translate-x-1"></fa-icon>
+                    </a>
+
+                    <a href="#" class="btn-secondary group flex items-center justify-center">
+                        <div class="play-icon-wrapper mr-2">
+                            <fa-icon [icon]="faPlay" class=""></fa-icon>
+                        </div>
+                        Ver demostración
+                    </a>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6">
+                    <div class="stat-item">
+                        <div class="text-3xl font-bold text-cyber-cyan">+50</div>
+                        <div class="text-sm text-plasma-line">Cursos disponibles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-3xl font-bold text-cyber-cyan">+5K</div>
+                        <div class="text-sm text-plasma-line">Estudiantes activos</div>
+                    </div>
+                    <div class="stat-item hidden sm:block">
+                        <div class="text-3xl font-bold text-cyber-cyan">99%</div>
+                        <div class="text-sm text-plasma-line">Tasa de satisfacción</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna de imagen/ilustración -->
+            <div class="lg:w-1/2 relative">
+                <div class="hero-image-container">
+                    <div class="hero-image"></div>
+                    <div class="glow-effect"></div>
+                    <div class="scan-line"></div>
+                </div>
+
+                <!-- Píldoras flotantes -->
+                <div class="floating-pill floating-pill-1">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path
+                                d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3 1.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="text">Cursos estructurados</div>
+                </div>
+
+                <div class="floating-pill floating-pill-2">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path
+                                d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm9 6h1v5h-8v-5h1v-1a3 3 0 0 1 6 0v1zm-2 0v-1a1 1 0 0 0-2 0v1h2z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="text">Profesores expertos</div>
+                </div>
+
+                <div class="floating-pill floating-pill-3">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path
+                                d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="text">Certificaciones validadas</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+        <span class="text-sm text-plasma-line mb-2">Descubre más</span>
+        <div class="mouse-scroll"></div>
+    </div>
+</section>

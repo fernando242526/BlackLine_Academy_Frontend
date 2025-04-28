@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path: '',
+        loadChildren: () => import('./features/web/web.routes')
+    },
+    {
         path: 'auth',
         loadChildren: () => import('./features/auth/auth.routes')
     },
@@ -16,9 +20,5 @@ export const routes: Routes = [
     {
         path: 'student',
         loadChildren: () => import('./features/student/student.routes')
-    },
-    {
-        path: 'web',
-        loadChildren: () => import('./features/web/web.routes')
     },
 ];

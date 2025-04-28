@@ -1,0 +1,70 @@
+<footer class="bg-void-black border-t border-plasma-line pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Logo y descripción -->
+        <div class="flex flex-col md:flex-row justify-between mb-12">
+            <div class="mb-8 md:mb-0 md:w-1/3">
+                <div class="flex items-center mb-4">
+                    <span class="text-2xl font-extrabold tracking-wider">
+                        <span class="text-neon-violet">BLACK</span><span class="text-cyber-cyan">LINE</span>
+                    </span>
+                    <span class="ml-1 text-xs uppercase tracking-widest text-ghost-gray">ACADEMY</span>
+                </div>
+                <p class="text-plasma-line text-sm mb-4 max-w-md">
+                    Academia digital clandestina de la nueva era, un refugio cyberpunk donde se transmite conocimiento
+                    sin censura, directo al núcleo del aprendizaje.
+                </p>
+                <p class="text-ghost-gray text-xs font-mono">
+                    "Descifra. Aprende. Resiste."
+                </p>
+            </div>
+
+            <!-- Enlaces de navegación -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:w-2/3">
+                <ng-container *ngFor="let section of footerLinks">
+                    <div>
+                        <h3 class="text-cyber-cyan text-sm font-semibold uppercase tracking-wider mb-4">{{ section.title
+                            }}</h3>
+                        <ul class="space-y-2">
+                            <li *ngFor="let link of section.links">
+                                <a [routerLink]="link.path"
+                                    class="text-sm text-ghost-gray hover:text-neon-violet transition-colors duration-200">
+                                    {{ link.label }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- Separador -->
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-plasma-line to-transparent my-6"></div>
+
+        <!-- Redes sociales y copyright -->
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="flex space-x-4 mb-4 md:mb-0">
+                <a href="#" class="social-icon" aria-label="Twitter">
+                    <fa-icon [icon]="faTwitter"></fa-icon>
+                </a>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <fa-icon [icon]="faFacebook"></fa-icon>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <fa-icon [icon]="faInstagram"></fa-icon>
+                </a>
+                <a href="#" class="social-icon" aria-label="YouTube">
+                    <fa-icon [icon]="faYoutube"></fa-icon>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <fa-icon [icon]="faLinkedin"></fa-icon>
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitch">
+                    <fa-icon [icon]="faTwitch"></fa-icon>
+                </a>
+            </div>
+            <div class="text-plasma-line text-xs">
+                &copy; {{ currentYear }} BlackLine Academy | Todos los derechos reservados
+            </div>
+        </div>
+    </div>
+</footer>

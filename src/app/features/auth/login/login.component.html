@@ -1,0 +1,122 @@
+<div class="min-h-screen flex flex-col items-center justify-center bg-void-black text-ghost-gray p-4">
+    <!-- Fondo con partículas/grid -->
+    <div class="absolute inset-0 grid-bg"></div>
+
+    <!-- Contenedor principal -->
+    <div
+        class="relative z-10 w-full max-w-md bg-void-black border border-plasma-line rounded-lg shadow-cyber p-6 sm:p-8">
+
+        <!-- Logo y nombre -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold tracking-wider text-cyber-cyan mb-2">
+                <span class="text-neon-violet">BLACK</span>LINE
+            </h1>
+            <p class="text-ghost-gray text-sm uppercase tracking-widest">ACADEMY</p>
+            <div class="mt-2 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-cyber-cyan to-transparent"></div>
+        </div>
+
+        <!-- Formulario de login -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+
+            <!-- Campo email -->
+            <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-cyber-cyan glitch-text">
+                    <span>IDENTIDAD / EMAIL</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <fa-icon [icon]="faEnvelope" class="text-plasma-line"></fa-icon>
+                    </div>
+                    <input type="email" id="email" formControlName="email"
+                        class="block w-full pl-10 pr-3 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                        placeholder="usuario@ejemplo.com"
+                        [class.border-critical-red]="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)"
+                        [class.border-success-glow]="loginForm.get('email')?.valid && loginForm.get('email')?.touched" />
+                    <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)"
+                        class="error-box">
+                        @if (loginForm.get('email')?.errors?.['required']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Email requerido
+                        </span>
+                        }
+                        @if (loginForm.get('email')?.errors?.['email']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Formato inválido
+                        </span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campo contraseña -->
+            <div class="space-y-2">
+                <label for="password" class="text-sm font-medium text-cyber-cyan glitch-text">
+                    <span>CLAVE DE ACCESO</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <fa-icon [icon]="faLock" class="text-plasma-line"></fa-icon>
+                    </div>
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                        class="block w-full pl-10 pr-10 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                        placeholder="••••••••"
+                        [class.border-critical-red]="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)"
+                        [class.border-success-glow]="loginForm.get('password')?.valid && loginForm.get('password')?.touched" />
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                        <button type="button" class="text-plasma-line hover:text-cyber-cyan focus:outline-none"
+                            (click)="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                            <fa-icon [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)"
+                        class="error-box">
+                        @if (loginForm.get('password')?.errors?.['required']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Contraseña requerida
+                        </span>
+                        }
+                        @if (loginForm.get('password')?.errors?.['minlength']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Mínimo 8 caracteres
+                        </span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de inicio de sesión -->
+            <button type="submit"
+                class="w-full flex justify-center items-center bg-neon-violet hover:bg-royal-magenta text-ghost-gray font-bold py-2.5 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-cyber-cyan focus:ring-opacity-50 transition-all login-btn"
+                [disabled]="isLoading">
+                @if (isLoading) {
+                <fa-icon [icon]="faSyncAlt" class="mr-2"></fa-icon>
+                <span>PROCESANDO...</span>
+                } @else {
+                <fa-icon [icon]="faSignInAlt" class="mr-2"></fa-icon>
+                <span>INICIAR SESIÓN</span>
+                }
+            </button>
+
+            <!-- Enlaces adicionales -->
+            <div class="flex flex-col sm:flex-row justify-between text-sm mt-6">
+                <a routerLink="/auth/forgot-password"
+                    class="text-cyber-cyan hover:text-neon-violet transition-colors mb-2 sm:mb-0 underline-link">
+                    ¿Olvidaste tu contraseña?
+                </a>
+                <a routerLink="/auth/register"
+                    class="text-cyber-cyan hover:text-neon-violet transition-colors underline-link">
+                    Crear cuenta nueva
+                </a>
+            </div>
+        </form>
+
+        <!-- Mensaje inferior -->
+        <div class="mt-8 text-center">
+            <p class="text-xs text-plasma-line">"Descifra. Aprende. Resiste."</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,242 @@
+<div class="min-h-screen flex flex-col items-center justify-center bg-void-black text-ghost-gray p-4">
+    <!-- Fondo con partículas/grid -->
+    <div class="absolute inset-0 grid-bg"></div>
+
+    <!-- Contenedor principal -->
+    <div
+        class="relative z-10 w-full max-w-lg bg-void-black border border-plasma-line rounded-lg shadow-cyber p-6 sm:p-8">
+
+        <!-- Logo y nombre -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold tracking-wider text-cyber-cyan mb-2">
+                <span class="text-neon-violet">BLACK</span>LINE
+            </h1>
+            <p class="text-ghost-gray text-sm uppercase tracking-widest">ACADEMY</p>
+            <div class="mt-2 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-cyber-cyan to-transparent"></div>
+            <p class="mt-4 text-plasma-line text-sm">REGISTRO / NUEVO AGENTE</p>
+        </div>
+
+        <!-- Formulario de registro -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-5">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Campo nombre -->
+                <div class="space-y-1">
+                    <label for="nombre" class="text-sm font-medium text-cyber-cyan glitch-text">
+                        <span>NOMBRE</span>
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <fa-icon [icon]="faUser" class="text-plasma-line"></fa-icon>
+                        </div>
+                        <input type="text" id="nombre" formControlName="nombre"
+                            class="block w-full pl-10 pr-3 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                            placeholder="Tu nombre"
+                            [class.border-critical-red]="registerForm.get('nombre')?.invalid && (registerForm.get('nombre')?.touched || registerForm.get('nombre')?.dirty)"
+                            [class.border-success-glow]="registerForm.get('nombre')?.valid && registerForm.get('nombre')?.touched" />
+                        <div *ngIf="registerForm.get('nombre')?.invalid && (registerForm.get('nombre')?.touched || registerForm.get('nombre')?.dirty)"
+                            class="error-box">
+                            @if (registerForm.get('nombre')?.errors?.['required']) {
+                            <span class="text-xs flex items-center">
+                                <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                                Nombre requerido
+                            </span>
+                            }
+                            @if (registerForm.get('nombre')?.errors?.['minlength']) {
+                            <span class="text-xs flex items-center">
+                                <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                                Mínimo 2 caracteres
+                            </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo apellido -->
+                <div class="space-y-1">
+                    <label for="apellido" class="text-sm font-medium text-cyber-cyan glitch-text">
+                        <span>APELLIDO</span>
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <fa-icon [icon]="faUser" class="text-plasma-line"></fa-icon>
+                        </div>
+                        <input type="text" id="apellido" formControlName="apellido"
+                            class="block w-full pl-10 pr-3 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                            placeholder="Tu apellido"
+                            [class.border-critical-red]="registerForm.get('apellido')?.invalid && (registerForm.get('apellido')?.touched || registerForm.get('apellido')?.dirty)"
+                            [class.border-success-glow]="registerForm.get('apellido')?.valid && registerForm.get('apellido')?.touched" />
+                        <div *ngIf="registerForm.get('apellido')?.invalid && (registerForm.get('apellido')?.touched || registerForm.get('apellido')?.dirty)"
+                            class="error-box">
+                            @if (registerForm.get('apellido')?.errors?.['required']) {
+                            <span class="text-xs flex items-center">
+                                <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                                Apellido requerido
+                            </span>
+                            }
+                            @if (registerForm.get('apellido')?.errors?.['minlength']) {
+                            <span class="text-xs flex items-center">
+                                <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                                Mínimo 2 caracteres
+                            </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campo email -->
+            <div class="space-y-1">
+                <label for="email" class="text-sm font-medium text-cyber-cyan glitch-text">
+                    <span>EMAIL</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <fa-icon [icon]="faEnvelope" class="text-plasma-line"></fa-icon>
+                    </div>
+                    <input type="email" id="email" formControlName="email"
+                        class="block w-full pl-10 pr-3 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                        placeholder="usuario@ejemplo.com"
+                        [class.border-critical-red]="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)"
+                        [class.border-success-glow]="registerForm.get('email')?.valid && registerForm.get('email')?.touched" />
+                    <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)"
+                        class="error-box">
+                        @if (registerForm.get('email')?.errors?.['required']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Email requerido
+                        </span>
+                        }
+                        @if (registerForm.get('email')?.errors?.['email']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Formato inválido
+                        </span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campo teléfono (opcional) -->
+            <div class="space-y-1">
+                <label for="telefono" class="text-sm font-medium text-cyber-cyan glitch-text">
+                    <span>TELÉFONO (OPCIONAL)</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <fa-icon [icon]="faPhone" class="text-plasma-line"></fa-icon>
+                    </div>
+                    <input type="tel" id="telefono" formControlName="telefono"
+                        class="block w-full pl-10 pr-3 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                        placeholder="+1234567890"
+                        [class.border-critical-red]="registerForm.get('telefono')?.invalid && (registerForm.get('telefono')?.touched || registerForm.get('telefono')?.dirty)"
+                        [class.border-success-glow]="registerForm.get('telefono')?.valid && registerForm.get('telefono')?.value && registerForm.get('telefono')?.touched" />
+                    <div *ngIf="registerForm.get('telefono')?.invalid && (registerForm.get('telefono')?.touched || registerForm.get('telefono')?.dirty)"
+                        class="error-box">
+                        @if (registerForm.get('telefono')?.errors?.['pattern']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Formato inválido
+                        </span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campo contraseña -->
+            <div class="space-y-1">
+                <label for="password" class="text-sm font-medium text-cyber-cyan glitch-text">
+                    <span>CONTRASEÑA</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <fa-icon [icon]="faLock" class="text-plasma-line"></fa-icon>
+                    </div>
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                        class="block w-full pl-10 pr-10 py-2.5 bg-void-black border border-plasma-line rounded-md focus:outline-none focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan transition-colors text-ghost-gray"
+                        placeholder="••••••••"
+                        [class.border-critical-red]="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)"
+                        [class.border-success-glow]="registerForm.get('password')?.valid && registerForm.get('password')?.touched" />
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                        <button type="button" class="text-plasma-line hover:text-cyber-cyan focus:outline-none"
+                            (click)="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                            <fa-icon [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)"
+                        class="error-box">
+                        @if (registerForm.get('password')?.errors?.['required']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Contraseña requerida
+                        </span>
+                        }
+                        @if (registerForm.get('password')?.errors?.['minlength']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Mínimo 8 caracteres
+                        </span>
+                        }
+                        @if (registerForm.get('password')?.errors?.['passwordStrength']) {
+                        <span class="text-xs flex items-center">
+                            <fa-icon [icon]="faExclamationTriangle" class="mr-1 text-critical-red"></fa-icon>
+                            Incluye mayúscula, minúscula y número/símbolo
+                        </span>
+                        }
+                    </div>
+
+                    <!-- Medidor de seguridad de contraseña -->
+                    <div class="mt-2 flex space-x-1 h-1" *ngIf="registerForm.get('password')?.value">
+                        <div class="flex-1 rounded-sm" [ngClass]="{
+                  'bg-critical-red': registerForm.get('password')?.invalid,
+                  'bg-success-glow': registerForm.get('password')?.valid
+                }"></div>
+                        <div class="flex-1 rounded-sm" [ngClass]="{
+                  'bg-ghost-pulse': registerForm.get('password')?.errors?.['minlength'] || registerForm.get('password')?.errors?.['passwordStrength'],
+                  'bg-success-glow': !registerForm.get('password')?.errors?.['minlength'] && !registerForm.get('password')?.errors?.['passwordStrength']
+                }"></div>
+                        <div class="flex-1 rounded-sm" [ngClass]="{
+                  'bg-ghost-pulse': registerForm.get('password')?.errors?.['passwordStrength'],
+                  'bg-success-glow': !registerForm.get('password')?.errors?.['passwordStrength']
+                }"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Términos y condiciones -->
+            <div class="mt-4 text-xs text-plasma-line">
+                Al registrarte, aceptas los <a href="#"
+                    class="text-cyber-cyan hover:text-neon-violet transition-colors underline-link">Términos de
+                    Servicio</a> y la <a href="#"
+                    class="text-cyber-cyan hover:text-neon-violet transition-colors underline-link">Política de
+                    Privacidad</a> de BlackLine Academy.
+            </div>
+            <!-- Botón de registro -->
+            <button type="submit"
+                class="w-full flex justify-center items-center bg-neon-violet hover:bg-royal-magenta text-ghost-gray font-bold py-2.5 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-cyber-cyan focus:ring-opacity-50 transition-all register-btn"
+                [disabled]="isLoading">
+                @if (isLoading) {
+                <fa-icon [icon]="faSyncAlt" class="mr-2"></fa-icon>
+                <span>PROCESANDO...</span>
+                } @else {
+                <fa-icon [icon]="faUserPlus" class="mr-2"></fa-icon>
+                <span>REGISTRARME</span>
+                }
+            </button>
+
+            <!-- Enlace para volver al login -->
+            <div class="flex justify-center mt-6">
+                <a routerLink="/auth/login"
+                    class="flex items-center text-cyber-cyan hover:text-neon-violet transition-colors underline-link">
+                    <fa-icon [icon]="faArrowLeft" class="mr-2"></fa-icon>
+                    Volver al inicio de sesión
+                </a>
+            </div>
+        </form>
+
+        <!-- Mensaje inferior -->
+        <div class="mt-8 text-center">
+            <p class="text-xs text-plasma-line">"Conecta. Hackea. Evoluciona."</p>
+        </div>
+    </div>
+</div>
