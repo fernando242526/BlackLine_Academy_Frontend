@@ -1,0 +1,317 @@
+<div class="bg-void-black text-ghost-gray">
+    <!-- Hero Section -->
+    <section class="relative pt-16 pb-24 overflow-hidden">
+        <!-- Fondo con efecto de partículas -->
+        <div class="absolute inset-0 z-0">
+            <app-particle-background></app-particle-background>
+            <div class="absolute inset-0 bg-gradient-to-b from-void-black via-void-black/70 to-void-black"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h1 class="font-orbitron text-4xl md:text-5xl font-bold tracking-wider text-ghost-gray mb-6 glitch-slice"
+                    data-text="NOSOTROS">
+                    <span>SOBRE </span><span class="text-cyber-cyan">BLACKLINE</span>
+                </h1>
+
+                <p class="text-lg md:text-xl mb-8 font-inter">
+                    <span class="text-neon-violet font-mono">Una academia digital clandestina</span> de la nueva era, un
+                    refugio cyberpunk donde se transmite conocimiento sin censura.
+                </p>
+            </div>
+
+            <!-- Video o imagen de fondo -->
+            <div
+                class="relative rounded-lg overflow-hidden border border-plasma-line mb-8 max-w-5xl mx-auto aspect-video bg-void-black/40 backdrop-blur-sm group">
+                <!-- Aquí iría un video real. Por ahora usamos un placeholder con efectos -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <div class="text-cyber-cyan text-9xl opacity-5 font-orbitron font-bold">BLACKLINE</div>
+                    <div class="text-neon-violet text-6xl opacity-5 font-orbitron font-bold mt-4">ACADEMY</div>
+
+                    <!-- Botón de play -->
+                    <button
+                        class="absolute inset-0 m-auto w-20 h-20 flex items-center justify-center rounded-full bg-void-black/70 border border-cyber-cyan group-hover:border-neon-violet transition-colors duration-300">
+                        <fa-icon [icon]="faPlay"
+                            class="text-cyber-cyan text-2xl group-hover:text-neon-violet transition-colors duration-300"></fa-icon>
+
+                        <!-- Círculos de resplandor -->
+                        <span
+                            class="absolute inset-0 rounded-full border border-cyber-cyan/50 animate-ping-slow"></span>
+                        <span class="absolute inset-0 rounded-full border-2 border-cyber-cyan/30 animate-pulse"></span>
+                    </button>
+                </div>
+
+                <!-- Efecto de ruido -->
+                <div class="absolute inset-0 pointer-events-none tv-static opacity-10"></div>
+
+                <!-- Líneas de escaneo -->
+                <div class="absolute inset-0 pointer-events-none scanlines"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Misión -->
+    <section class="py-20 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="hidden md:block absolute top-0 right-0 w-1/3 h-full">
+            <div class="absolute top-12 -right-24 w-96 h-96 rounded-full bg-neon-violet/5 blur-3xl"></div>
+            <div class="absolute bottom-24 -right-12 w-72 h-72 rounded-full bg-cyber-cyan/5 blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Imagen/Decoración -->
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <div class="relative p-1 border border-plasma-line rounded-lg overflow-hidden">
+                        <!-- Marco decorativo con puntitos en las esquinas -->
+                        <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-cyber-cyan -mt-px -ml-px">
+                        </div>
+                        <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyber-cyan -mt-px -mr-px">
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyber-cyan -mb-px -ml-px">
+                        </div>
+                        <div
+                            class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-cyber-cyan -mb-px -mr-px">
+                        </div>
+
+                        <div
+                            class="aspect-square bg-void-black/60 flex items-center justify-center relative overflow-hidden">
+                            <!-- Imagen o gráfico cyberpunk -->
+                            <div class="hexagon-container">
+                                @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9]; track i) {
+                                <div class="hexagon" [style.animation-delay]="i * 0.2 + 's'"></div>
+                                }
+                            </div>
+
+                            <!-- Texto central -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
+                                <div class="text-center">
+                                    <div class="font-orbitron text-2xl font-bold text-cyber-cyan">MISIÓN</div>
+                                    <div class="font-jetbrains text-xs text-ghost-gray mt-2 typing-effect">
+                                        decrypt.execute.evolve()</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Texto de misión -->
+                <div class="lg:w-1/2 order-1 lg:order-2">
+                    <h2 class="font-orbitron text-3xl font-bold mb-6 text-ghost-gray">
+                        <span class="text-neon-violet">#</span> Nuestra Misión
+                    </h2>
+
+                    <div class="space-y-6 text-ghost-gray">
+                        <p class="leading-relaxed">
+                            En BlackLine Academy creemos que el conocimiento digital debe fluir sin restricciones
+                            corporativas ni institucionales. Nuestra misión es proporcionar educación tecnológica de
+                            élite, sin censura, directa y efectiva.
+                        </p>
+
+                        <p class="leading-relaxed">
+                            No somos una simple plataforma educativa; somos un movimiento que busca democratizar el
+                            acceso a habilidades digitales avanzadas, formando a la próxima generación de profesionales
+                            que desafiarán los límites establecidos.
+                        </p>
+
+                        <div class="flex items-center space-x-4 mt-8">
+                            <div
+                                class="w-12 h-12 flex items-center justify-center border border-plasma-line rounded-full">
+                                <fa-icon [icon]="faShieldAlt" class="text-cyber-cyan"></fa-icon>
+                            </div>
+                            <p class="text-lg font-orbitron">
+                                <span class="text-cyber-cyan">Descifra. Aprende. Resiste.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Historia -->
+    <section class="py-20 bg-void-black relative">
+        <!-- Líneas diagonales decorativas -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="w-full h-full">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="diagonalLines" width="40" height="40" patternUnits="userSpaceOnUse"
+                            patternTransform="rotate(45)">
+                            <line x1="0" y1="0" x2="0" y2="40" stroke="rgba(143, 0, 255, 0.5)" stroke-width="1" />
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#diagonalLines)" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="font-orbitron text-3xl font-bold mb-12 text-ghost-gray text-center">
+                    <span class="text-cyber-cyan">//</span> Nuestra Historia
+                </h2>
+
+                <!-- Línea de tiempo -->
+                <app-timeline [items]="timelineItems"></app-timeline>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Equipo -->
+    <section class="py-20 bg-void-black relative overflow-hidden">
+        <!-- Fondo decorativo -->
+        <div class="absolute inset-0 z-0 matrix-code opacity-5"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="font-orbitron text-3xl font-bold mb-16 text-ghost-gray text-center">
+                <span class="text-neon-violet">&lt;</span> Nuestro Equipo <span class="text-neon-violet">/&gt;</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                @for (member of teamMembers; track member.id) {
+                <div class="team-card border border-plasma-line rounded-lg overflow-hidden bg-void-black/60 backdrop-blur-md transition-all duration-300 group"
+                    [ngClass]="'hover:border-' + member.accentColor">
+                    <!-- Imagen de perfil -->
+                    <div class="relative aspect-square overflow-hidden">
+                        <div class="absolute inset-0 z-0"
+                            [ngClass]="'bg-gradient-to-br from-' + member.accentColor + '/20 to-void-black'"></div>
+
+                        <!-- Círculo central con iniciales -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-24 h-24 rounded-full flex items-center justify-center bg-void-black overflow-hidden relative"
+                                [ngClass]="'border-2 border-' + member.accentColor + '/50'">
+                                <span class="text-2xl font-orbitron" [ngClass]="'text-' + member.accentColor">
+                                    {{ member.name.charAt(0) }}{{ member.lastName.charAt(0) }}
+                                </span>
+
+                                <!-- Efecto de escáner -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-transparent transform -translate-y-full animate-scanner opacity-0 group-hover:opacity-100"
+                                    [ngClass]="'via-' + member.accentColor + '/20'"></div>
+                            </div>
+                        </div>
+
+                        <!-- Info de hackeo decorativa -->
+                        <div class="absolute bottom-0 left-0 right-0 p-3">
+                            <div class="text-xs font-jetbrains opacity-70"
+                                [ngClass]="'text-' + member.accentColor + '/70'">
+                                <div class="truncate">function decode() &#123; return access_code; &#125; </div>
+                                <div class="truncate">// SECURITY_LEVEL: ALPHA</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información del miembro -->
+                    <div class="p-6">
+                        <h3 class="font-orbitron text-lg font-semibold mb-1 text-ghost-gray transition-colors duration-300"
+                            [ngClass]="'group-hover:text-' + member.accentColor">
+                            {{ member.name }} {{ member.lastName }}
+                        </h3>
+
+                        <p class="text-sm mb-3 font-jetbrains" [ngClass]="'text-' + member.accentColor">
+                            {{ member.role }}
+                        </p>
+
+                        <p class="text-ghost-gray/70 text-sm mb-4">{{ member.bio }}</p>
+
+                        <!-- Redes sociales -->
+                        <div class="flex space-x-3">
+                            @for (social of member.socialLinks; track social.platform) {
+                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                                class="w-8 h-8 rounded-full flex items-center justify-center border border-plasma-line text-plasma-line transition-colors duration-300"
+                                [ngClass]="[
+                         'hover:text-' + member.accentColor,
+                         'hover:border-' + member.accentColor
+                       ]">
+                                <fa-icon [icon]="getSocialIcon(social.platform)"></fa-icon>
+                            </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="py-20 bg-void-black relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="font-orbitron text-3xl font-bold mb-16 text-ghost-gray text-center">
+                <span class="text-cyber-cyan">*</span> Nuestros Valores <span class="text-cyber-cyan">*</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @for (value of values; track value.id) {
+                <div class="border border-plasma-line rounded-lg p-6 bg-void-black/60 transition-all duration-300 group relative overflow-hidden"
+                    [ngClass]="'hover:border-' + value.color">
+                    <!-- Hexágono decorativo en el fondo -->
+                    <div class="absolute -right-8 -bottom-8 w-40 h-40 opacity-10 hexagon-bg"
+                        [ngClass]="'text-' + value.color"></div>
+
+                    <!-- Icono circular -->
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center bg-void-black/80 mb-4 relative"
+                        [ngClass]="'border border-' + value.color + '/30'">
+                        <fa-icon [icon]="value.icon" class="text-xl" [ngClass]="'text-' + value.color"></fa-icon>
+
+                        <!-- Resplandor en hover -->
+                        <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            [ngClass]="'bg-' + value.color + '/10'"></div>
+                    </div>
+
+                    <h3 class="font-orbitron text-xl font-semibold mb-3 text-ghost-gray transition-colors duration-300"
+                        [ngClass]="'group-hover:text-' + value.color">
+                        {{ value.title }}
+                    </h3>
+
+                    <p class="text-ghost-gray/80 text-sm relative z-10">
+                        {{ value.description }}
+                    </p>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-void-black relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div
+                class="max-w-3xl mx-auto text-center bg-void-black/80 border border-plasma-line rounded-lg p-8 relative overflow-hidden">
+                <!-- Efecto de resplandor -->
+                <div class="absolute inset-0 bg-gradient-to-br from-neon-violet/5 via-cyber-cyan/5 to-neon-violet/5">
+                </div>
+
+                <!-- Esquinas decorativas -->
+                <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-neon-violet -mt-px -ml-px"></div>
+                <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyber-cyan -mt-px -mr-px"></div>
+                <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyber-cyan -mb-px -ml-px"></div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-neon-violet -mb-px -mr-px"></div>
+
+                <h2 class="font-orbitron text-3xl font-bold mb-4 text-ghost-gray relative z-10">
+                    Únete a la Revolución Digital
+                </h2>
+
+                <p class="text-ghost-gray mb-8 max-w-xl mx-auto relative z-10">
+                    Sé parte de BlackLine Academy y conviértete en un agente del cambio en la era digital. Donde el
+                    conocimiento no tiene barreras.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                    <a routerLink="/cursos" class="btn-secondary group">
+                        <span class="flex items-center justify-center">
+                            <fa-icon [icon]="faRocket" class="mr-2 group-hover:animate-pulse"></fa-icon>
+                            Explorar Cursos
+                        </span>
+                    </a>
+                    <a routerLink="/auth/register" class="btn-primary group">
+                        <span class="flex items-center justify-center">
+                            <fa-icon [icon]="faUserPlus" class="mr-2 group-hover:animate-pulse"></fa-icon>
+                            Unirse Ahora
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,278 @@
+<div class="min-h-screen flex items-center justify-center p-4 bg-void-black relative overflow-hidden">
+    <!-- Partículas de fondo -->
+    <div class="absolute inset-0 z-0">
+        <app-particle-background></app-particle-background>
+    </div>
+
+    <!-- Card de Registro -->
+    <div class="card card-cyber w-full max-w-xl z-10 relative my-2">
+        <!-- Efecto de scanner en la card -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyber-cyan/5 to-transparent animate-scanner">
+        </div>
+
+        <div class="card-body">
+            <!-- Logo y título -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center items-center mb-4">
+                    <h1 class="text-3xl font-extrabold tracking-wider inline-flex">
+                        <span class="text-neon-violet">BLACK</span><span class="text-cyber-cyan">LINE</span>
+                    </h1>
+                    <span class="ml-1 text-xs uppercase tracking-widest text-ghost-gray">ACADEMY</span>
+                </div>
+                <p class="text-sm text-ghost-gray mb-2">Registro de nuevo agente</p>
+                <div class="text-xs font-mono text-plasma-line">&lt;conecta.hackea.evoluciona/&gt;</div>
+            </div>
+
+            <!-- Formulario -->
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-2">
+                <!-- Nombres y Apellidos (en dos columnas) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Nombre -->
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <div class="relative">
+                            <input type="text" id="nombre" formControlName="nombre" class="form-input pl-10!" [ngClass]="{
+                                'form-input-error': nombre?.invalid && (nombre?.dirty || nombre?.touched),
+                                'form-input-valid': nombre?.valid && (nombre?.dirty || nombre?.touched)
+                            }" placeholder="Nombre" required>
+                            <fa-icon [icon]="faUser"
+                                class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+                        </div>
+
+                        @if (nombre?.invalid && (nombre?.dirty || nombre?.touched)) {
+                        <div class="form-error-msg animate-pulse">
+                            @if (nombre?.errors?.['required']) {
+                            <span>El nombre es requerido</span>
+                            }
+                        </div>
+                        }
+                    </div>
+
+                    <!-- Apellido -->
+                    <div class="form-group">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <div class="relative">
+                            <input type="text" id="apellido" formControlName="apellido" class="form-input pl-10!"
+                                [ngClass]="{
+                                    'form-input-error': apellido?.invalid && (apellido?.dirty || apellido?.touched),
+                                    'form-input-valid': apellido?.valid && (apellido?.dirty || apellido?.touched)
+                                }" placeholder="Apellido" required>
+                            <fa-icon [icon]="faUser"
+                                class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+                        </div>
+
+                        @if (apellido?.invalid && (apellido?.dirty || apellido?.touched)) {
+                        <div class="form-error-msg animate-pulse">
+                            @if (apellido?.errors?.['required']) {
+                            <span>El apellido es requerido</span>
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="relative">
+                        <input type="email" id="email" formControlName="email" class="form-input pl-10!" 
+                            [ngClass]="{
+                                'form-input-error': email?.invalid && (email?.dirty || email?.touched),
+                                'form-input-valid': email?.valid && (email?.dirty || email?.touched)
+                            }" placeholder="usuario@blackline.academia" required autocomplete="email">
+                        <fa-icon [icon]="faEnvelope"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+                    </div>
+
+                    @if (email?.invalid && (email?.dirty || email?.touched)) {
+                    <div class="form-error-msg animate-pulse">
+                        @if (email?.errors?.['required']) {
+                        <span>El email es requerido</span>
+                        } @else if (email?.errors?.['email']) {
+                        <span>Formato de email inválido</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Teléfono (opcional) -->
+                <div class="form-group">
+                    <label for="telefono" class="form-label">Teléfono (opcional)</label>
+                    <div class="relative">
+                        <input type="tel" id="telefono" formControlName="telefono" class="form-input pl-10!" 
+                            [ngClass]="{
+                                'form-input-error': telefono?.invalid && (telefono?.dirty || telefono?.touched),
+                                'form-input-valid': telefono?.valid && (telefono?.dirty || telefono?.touched)
+                            }" placeholder="+1 234 567 890">
+                        <fa-icon [icon]="faPhone"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+                    </div>
+
+                    @if (telefono?.invalid && (telefono?.dirty || telefono?.touched)) {
+                    <div class="form-error-msg animate-pulse">
+                        @if (telefono?.errors?.['pattern']) {
+                        <span>Formato de teléfono inválido</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <!-- Contraseña y confirmación (en dos columnas en pantallas medianas o más grandes) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Contraseña -->
+                        <div class="form-group">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="relative">
+                                <input [type]="showPassword ? 'text' : 'password'" id="password"
+                                    formControlName="password" class="form-input pl-10!" 
+                                    [ngClass]="{
+                                        'form-input-error': password?.invalid && (password?.dirty || password?.touched),
+                                        'form-input-valid': password?.valid && (password?.dirty || password?.touched)
+                                    }" placeholder="••••••••" required autocomplete="new-password">
+                                <fa-icon [icon]="faLock"
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+
+                                <!-- Botón para mostrar/ocultar contraseña -->
+                                <button type="button"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-plasma-line hover:text-cyber-cyan transition-colors"
+                                    (click)="togglePasswordVisibility()">
+                                    <fa-icon [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+                                </button>
+                            </div>
+
+                            @if (password?.invalid && (password?.dirty || password?.touched)) {
+                            <div class="form-error-msg animate-pulse">
+                                @if (password?.errors?.['required']) {
+                                <span>La contraseña es requerida</span>
+                                } @else if (password?.errors?.['minlength']) {
+                                <span>Mínimo 8 caracteres</span>
+                                } @else if (password?.errors?.['pattern']) {
+                                <span>La contraseña no cumple con los requisitos</span>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        <!-- Confirmar Contraseña -->
+                        <div class="form-group">
+                            <label for="passwordConfirm" class="form-label">Confirmar Contraseña</label>
+                            <div class="relative">
+                                <input [type]="showPassword ? 'text' : 'password'" id="passwordConfirm"
+                                    formControlName="passwordConfirm" class="form-input pl-10!" 
+                                    [ngClass]="{
+                                        'form-input-error': (passwordConfirm?.invalid || registerForm.errors?.['passwordMismatch']) && (passwordConfirm?.dirty || passwordConfirm?.touched),
+                                        'form-input-valid': passwordConfirm?.valid && !registerForm.errors?.['passwordMismatch'] && (passwordConfirm?.dirty || passwordConfirm?.touched)
+                                    }" placeholder="••••••••" required autocomplete="new-password">
+                                <fa-icon [icon]="faLock"
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+                            </div>
+
+                            @if ((passwordConfirm?.invalid || registerForm.errors?.['passwordMismatch']) &&
+                            (passwordConfirm?.dirty || passwordConfirm?.touched)) {
+                            <div class="form-error-msg animate-pulse">
+                                @if (passwordConfirm?.errors?.['required']) {
+                                <span>Confirma tu contraseña</span>
+                                } @else if (registerForm.errors?.['passwordMismatch']) {
+                                <span>Las contraseñas no coinciden</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Requisitos de contraseña -->
+                    <div class="bg-void-black/50 border border-plasma-line rounded-md p-4">
+                        <h3 class="text-sm font-orbitron text-ghost-gray mb-2">La contraseña debe contener:</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <div class="flex items-center">
+                                <fa-icon [icon]="passwordLength ? faCheckCircle : faTimesCircle"
+                                    [ngClass]="passwordLength ? 'text-glitch-green' : 'text-critical-red'"
+                                    class="mr-2"></fa-icon>
+                                <span class="text-xs text-ghost-gray">Mínimo 8 caracteres</span>
+                            </div>
+                            <div class="flex items-center">
+                                <fa-icon [icon]="passwordUppercase ? faCheckCircle : faTimesCircle"
+                                    [ngClass]="passwordUppercase ? 'text-glitch-green' : 'text-critical-red'"
+                                    class="mr-2"></fa-icon>
+                                <span class="text-xs text-ghost-gray">Una letra mayúscula</span>
+                            </div>
+                            <div class="flex items-center">
+                                <fa-icon [icon]="passwordLowercase ? faCheckCircle : faTimesCircle"
+                                    [ngClass]="passwordLowercase ? 'text-glitch-green' : 'text-critical-red'"
+                                    class="mr-2"></fa-icon>
+                                <span class="text-xs text-ghost-gray">Una letra minúscula</span>
+                            </div>
+                            <div class="flex items-center">
+                                <fa-icon [icon]="passwordNumber ? faCheckCircle : faTimesCircle"
+                                    [ngClass]="passwordNumber ? 'text-glitch-green' : 'text-critical-red'"
+                                    class="mr-2"></fa-icon>
+                                <span class="text-xs text-ghost-gray">Un número</span>
+                            </div>
+                            <div class="flex items-center">
+                                <fa-icon [icon]="passwordSpecial ? faCheckCircle : faTimesCircle"
+                                    [ngClass]="passwordSpecial ? 'text-glitch-green' : 'text-critical-red'"
+                                    class="mr-2"></fa-icon>
+                                <span class="text-xs text-ghost-gray">Un símbolo</span>
+                            </div>
+                            <div class="flex items-center">
+                                <fa-icon [icon]="passwordsMatch ? faCheckCircle : faTimesCircle"
+                                    [ngClass]="passwordsMatch ? 'text-glitch-green' : 'text-critical-red'"
+                                    class="mr-2"></fa-icon>
+                                <span class="text-xs text-ghost-gray">Contraseñas coinciden</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Términos y condiciones -->
+                <div class="flex items-start my-5">
+                    <div class="flex items-center h-5">
+                        <input id="terms" formControlName="terms" type="checkbox"
+                            class="form-checkbox cursor-pointer" required>
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="terms" class="text-ghost-gray cursor-pointer">
+                            Acepto los <a routerLink="/terminos"
+                                class="text-cyber-cyan hover:text-neon-violet">Términos de Servicio</a>
+                            y la <a routerLink="/privacidad" class="text-cyber-cyan hover:text-neon-violet">Política
+                                de Privacidad</a>
+                        </label>
+                        @if (terms?.invalid && (terms?.dirty || terms?.touched)) {
+                        <div class="form-error-msg animate-pulse">
+                            <span>Debes aceptar los términos y condiciones</span>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Botón de registro -->
+                <button type="submit" class="btn-primary w-full" [disabled]="registerForm.invalid || isLoading">
+                    @if(isLoading) {
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faSpinner" class="mr-2"></fa-icon>
+                        Procesando...
+                    </span>
+                    } @else {
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faUserPlus" class="mr-2"></fa-icon>
+                        Crear cuenta
+                    </span>
+                    }
+                </button>
+
+                <!-- Link para iniciar sesión -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-ghost-gray">
+                        ¿Ya tienes una cuenta?
+                        <a routerLink="/auth/login"
+                            class="text-cyber-cyan hover:text-neon-violet transition-colors">
+                            Inicia sesión
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

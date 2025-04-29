@@ -1,0 +1,123 @@
+<div class="min-h-screen flex items-center justify-center p-4 bg-void-black relative overflow-hidden">
+    <!-- Partículas de fondo -->
+    <div class="absolute inset-0 z-0">
+        <app-particle-background></app-particle-background>
+    </div>
+
+    <!-- Card de Login -->
+    <div class="card card-cyber w-full max-w-md z-10 relative">
+        <!-- Efecto de scanner en la card -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyber-cyan/5 to-transparent animate-scanner">
+        </div>
+
+        <div class="card-body">
+            <!-- Logo y título -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center items-center mb-4">
+                    <h1 class="text-3xl font-extrabold tracking-wider inline-flex">
+                        <span class="text-neon-violet">BLACK</span><span class="text-cyber-cyan">LINE</span>
+                    </h1>
+                    <span class="ml-1 text-xs uppercase tracking-widest text-ghost-gray">ACADEMY</span>
+                </div>
+                <p class="text-sm text-ghost-gray mb-2">Iniciar sesión en el sistema</p>
+                <div class="text-xs font-mono text-plasma-line">&lt;descifra.aprende.resiste/&gt;</div>
+            </div>
+
+            <!-- Formulario -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+                <!-- Campo de Email -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="relative">
+                        <input type="email" id="email" formControlName="email" class="form-input pl-10!" [ngClass]="{
+                  'form-input-error': email?.invalid && (email?.dirty || email?.touched),
+                  'form-input-valid': email?.valid && (email?.dirty || email?.touched)
+                }" placeholder="usuario@blackline.academia" required autocomplete="email">
+                        <fa-icon [icon]="faEnvelope"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+                    </div>
+
+                    @if (email?.invalid && (email?.dirty || email?.touched)) {
+                    <div class="form-error-msg animate-pulse">
+                        @if (email?.errors?.['required']) {
+                        <span>El email es requerido</span>
+                        } @else if (email?.errors?.['email']) {
+                        <span>Formato de email inválido</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Campo de Contraseña -->
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="relative">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                            class="form-input pl-10!" [ngClass]="{
+                  'form-input-error': password?.invalid && (password?.dirty || password?.touched),
+                  'form-input-valid': password?.valid && (password?.dirty || password?.touched)
+                }" placeholder="••••••••" required autocomplete="current-password">
+                        <fa-icon [icon]="faLock"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-plasma-line"></fa-icon>
+
+                        <!-- Botón para mostrar/ocultar contraseña -->
+                        <button type="button"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-plasma-line hover:text-cyber-cyan transition-colors"
+                            (click)="togglePasswordVisibility()">
+                            <fa-icon [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+                        </button>
+                    </div>
+
+                    @if (password?.invalid && (password?.dirty || password?.touched)) {
+                    <div class="form-error-msg animate-pulse">
+                        @if (password?.errors?.['required']) {
+                        <span>La contraseña es requerida</span>
+                        } @else if (password?.errors?.['minlength']) {
+                        <span>La contraseña debe tener al menos 8 caracteres</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Recordar credenciales y link de olvidé mi contraseña -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" formControlName="remember"
+                            class="form-checkbox cursor-pointer">
+                        <label for="remember" class="text-sm text-ghost-gray cursor-pointer">Recordarme</label>
+                    </div>
+
+                    <a routerLink="/auth/recuperar"
+                        class="text-sm text-cyber-cyan hover:text-neon-violet transition-colors">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <!-- Botón de ingreso -->
+                <button type="submit" class="btn-primary w-full" [disabled]="loginForm.invalid || isLoading">
+                    @if(isLoading) {
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faSpinner" class="mr-2"></fa-icon>
+                        Iniciando...
+                    </span>
+                    } @else {
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faSignIn" class="mr-2"></fa-icon>
+                        Iniciar sesión
+                    </span>
+                    }
+                </button>
+
+                <!-- Link para registrarse -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-ghost-gray">
+                        ¿No tienes una cuenta?
+                        <a routerLink="/auth/register" class="text-cyber-cyan hover:text-neon-violet transition-colors">
+                            Regístrate ahora
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

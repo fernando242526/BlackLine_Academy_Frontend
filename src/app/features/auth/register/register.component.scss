@@ -1,0 +1,8 @@
+/* Efecto de pulsaciones para los indicadores de requisitos de contraseña */
+:host ::ng-deep .fa-check-circle {
+  filter: drop-shadow(0 0 3px rgba(0, 255, 156, 0.7));
+}
+
+:host ::ng-deep .fa-times-circle {
+  filter: drop-shadow(0 0 3px rgba(255, 0, 77, 0.7));
+}

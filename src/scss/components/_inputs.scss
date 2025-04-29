@@ -1,1 +1,39 @@
 @reference "./../styles.scss";
+
+/* Estilos base para inputs */
+.form-input {
+  @apply font-inter w-full px-4 py-3 bg-void-black border border-plasma-line text-ghost-gray rounded-md 
+  focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] 
+  transition-all duration-300;
+}
+
+/* Input con validación correcta */
+.form-input-valid {
+  @apply border-success-glow focus:border-success-glow focus:shadow-[0_0_10px_rgba(0,255,136,0.3)];
+}
+
+/* Input con error */
+.form-input-error {
+  @apply border-error-glow focus:border-error-glow focus:shadow-[0_0_10px_rgba(255,47,86,0.3)];
+}
+
+/* Mensaje de error */
+.form-error-msg {
+  @apply mt-1 text-xs text-critical-red;
+}
+
+/* Mensaje de éxito/válido */
+.form-valid-msg {
+  @apply mt-1 text-xs text-glitch-green;
+}
+
+/* Grupo de formulario */
+.form-group {
+  @apply mb-6;
+}
+
+/* Checkbox personalizado */
+.form-checkbox {
+  @apply appearance-none w-5 h-5 border border-plasma-line bg-void-black rounded-sm mr-2 checked:bg-neon-violet checked:border-neon-violet 
+  focus:outline-none focus:ring-2 focus:ring-neon-violet;
+}

@@ -1,0 +1,122 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Líneas de fondo decorativas -->
+    <div class="absolute inset-0 flex flex-col justify-between opacity-10">
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-cyber-cyan to-transparent"></div>
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-neon-violet to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span class="text-glitch-green"> &#123; </span> Cursos Destacados <span class="text-glitch-green"> &#125; </span>
+            </h2>
+            <p class="text-base text-ghost-gray max-w-3xl mx-auto">
+                Formaciones de vanguardia diseñadas para hacerte destacar en un mundo digital en constante evolución
+            </p>
+        </div>
+
+        <!-- Filtro de categorías -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button *ngFor="let category of categories" 
+                    (click)="filterByCategory(category.id)"
+                    class="px-4 py-2 text-sm font-orbitron tracking-wide border-b-2 transition-colors duration-300"
+                    [ngClass]="selectedCategory === category.id ? 
+                    'border-cyber-cyan-filtro text-cyber-cyan' : 
+                    'border-transparent text-ghost-gray hover:text-cyber-cyan hover:border-cyber-cyan/50'">
+                {{ category.name }}
+            </button>
+        </div>
+
+        <!-- Grid de cursos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div *ngFor="let course of filteredCourses"
+                class="course-card bg-void-black border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 hover:border-cyber-cyan hover:shadow-glow group">
+
+                <!-- Imagen del curso -->
+                <div class="relative h-48 overflow-hidden">
+                    <!-- Overlay de categoría -->
+                    <div class="absolute top-3 right-3 bg-void-black/80 px-3 py-1 text-xs font-orbitron tracking-wider rounded"
+                        [ngClass]="[
+                          'border-' + course.categoryColor,
+                          'text-' + course.categoryColor
+                        ]">
+                        {{ course.category }}
+                    </div>
+
+                    <!-- Imagen principal con gradiente -->
+                    <div class="absolute inset-0" 
+                        [ngClass]="'bg-gradient-to-br from-' + course.categoryColor + '/20 to-void-black'">
+                    </div>
+
+                    <!-- Información que aparece al hacer hover -->
+                    <div class="absolute inset-0 bg-void-black/80 flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span [ngClass]="'text-' + course.categoryColor" class="font-orbitron text-sm mb-2">
+                          {{ course.level }}
+                        </span>
+                        <div class="flex items-center gap-2 mb-2">
+                            <fa-icon [icon]="faClock" class="text-plasma-line"></fa-icon>
+                            <span class="text-ghost-gray text-xs">{{ course.duration }}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <fa-icon [icon]="faCode" class="text-plasma-line"></fa-icon>
+                            <span class="text-ghost-gray text-xs">{{ course.modules }} módulos</span>
+                        </div>
+                    </div>
+
+                    <!-- Patrón de código decorativo -->
+                    <div class="absolute inset-0 flex items-end overflow-hidden opacity-30">
+                        <div class="text-plasma-line font-mono text-[8px] leading-tight p-2">
+                            {{ course.codeSample }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido del curso -->
+                <div class="p-5">
+                    <h3 class="font-orbitron text-xl font-bold mb-2 text-ghost-gray group-hover:text-cyber-cyan transition-colors duration-300">
+                        {{ course.title }}
+                    </h3>
+
+                    <p class="text-ghost-gray/80 text-sm mb-4 line-clamp-2">
+                        {{ course.description }}
+                    </p>
+
+                    <!-- Profesor -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-plasma-line/30 overflow-hidden flex items-center justify-center">
+                            <fa-icon [icon]="faUser" class="text-ghost-gray"></fa-icon>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-plasma-line">Instructor</span>
+                            <span class="block text-sm text-ghost-gray">{{ course.instructor }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer con precio y botón -->
+                    <div class="flex items-center justify-between border-t border-plasma-line pt-4">
+                        <div>
+                            <span class="block text-xs text-plasma-line">Precio</span>
+                            <span class="block text-lg font-orbitron font-bold" 
+                                  [ngClass]="'text-' + course.categoryColor">
+                                {{ course.price }}
+                            </span>
+                        </div>
+
+                        <a [routerLink]="['/cursos', course.id]" class="btn-sm btn-primary">
+                            Ver Detalles
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón de ver todos los cursos -->
+        <div class="text-center mt-12">
+            <a routerLink="/cursos" class="btn-secondary inline-flex items-center">
+                Ver todos los cursos
+                <fa-icon [icon]="faArrowRight" class="ml-2"></fa-icon>
+            </a>
+        </div>
+    </div>
+</section>

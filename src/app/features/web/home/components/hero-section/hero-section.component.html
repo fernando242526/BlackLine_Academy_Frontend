@@ -1,0 +1,110 @@
+<section class="relative overflow-hidden min-h-screen flex items-center w-full">
+    <!-- Fondo con efecto de partículas -->
+    <div class="absolute inset-0 bg-void-black z-0 overflow-hidden">
+        <app-particle-background></app-particle-background>
+        <div class="absolute inset-0 bg-gradient-to-b from-void-black/0 via-void-black/50 to-void-black"></div>
+    </div>
+
+    <!-- Contenido del hero -->
+    <div class="container mx-auto px-4 py-8! md:py-24 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Logo y título principal con efecto glitch -->
+            <h1 class="relative mb-6 inline-block">
+                <span class="font-orbitron text-5xl md:text-7xl font-bold tracking-wider text-ghost-gray glitch-slice"
+                    data-text="BLACKLINE">
+                    <span class="text-neon-violet">BLACK</span><span class="text-cyber-cyan">LINE</span>
+                </span>
+                <span
+                    class="block font-orbitron text-xl md:text-3xl tracking-widest text-ghost-gray mt-2">ACADEMY</span>
+            </h1>
+
+            <!-- Lema -->
+            <p class="text-xl md:text-2xl mb-8 text-ghost-gray font-inter relative">
+                <span class="font-jetbrains text-cyber-cyan inline-block relative">
+                    Descifra. Aprende. Resiste.
+                    <span
+                        class="absolute -inset-1 border border-cyber-cyan/30 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-sm"></span>
+                </span>
+            </p>
+
+            <!-- Descripción principal -->
+            <p class="text-base md:text-lg mb-10 text-ghost-gray max-w-3xl mx-auto">
+                Academia digital clandestina de la nueva era, un refugio cyberpunk donde se transmite conocimiento
+                sin censura, sin burocracia, directo al núcleo del aprendizaje. No es solo una plataforma:
+                es un movimiento, una red, un despertar.
+            </p>
+
+            <!-- Botones de acción -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a routerLink="/cursos" class="btn-primary group">
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faRocket" class="mr-2 group-hover:animate-pulse"></fa-icon>
+                        Explorar Cursos
+                    </span>
+                </a>
+                <a routerLink="/auth/register" class="btn-secondary group">
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faUserPlus" class="mr-2 group-hover:animate-pulse"></fa-icon>
+                        Unirse Ahora
+                    </span>
+                </a>
+            </div>
+
+            <!-- Contador de estadísticas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 text-center">
+                <div *ngFor="let stat of statistics"
+                    class="bg-void-black p-4 rounded-lg border border-plasma-line relative overflow-hidden group">
+                    <!-- Efecto glitch en el borde al hacer hover -->
+                    <div
+                        class="absolute -inset-[1px] bg-gradient-to-r from-transparent via-{{stat.color}}/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <span class="text-{{stat.color}} text-4xl font-orbitron font-bold block animate-value"
+                        [attr.data-value]="stat.value">
+                        {{ stat.displayValue }}
+                    </span>
+                    <span class="text-ghost-gray text-sm">{{ stat.label }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Elementos decorativos adicionales -->
+    <div
+        class="absolute top-20 left-5 w-20 h-20 border border-neon-violet/30 rounded-full opacity-20 animate-pulse-slow">
+    </div>
+    <div
+        class="absolute bottom-40 right-10 w-32 h-32 border border-cyber-cyan/20 rounded-full opacity-10 animate-pulse-slow">
+    </div>
+</section>
+
+<!-- <div class="container mx-auto z-10 my-10">
+    <div class="max-w-7xl mx-auto">
+        <div class="w-full overflow-hidden z-0 opacity-30">
+            <div class="terminal-text py-4">
+                <div class="text-cyber-cyan font-jetbrains text-xs">
+                    $ sudo access --encrypted --secure-channel=true
+                </div>
+                <div class="text-glitch-green font-jetbrains text-xs">
+                    > Establishing secure connection...
+                </div>
+                <div class="text-neon-violet font-jetbrains text-xs">
+                    > Authorization protocol initialized
+                </div>
+                <div class="text-cyber-cyan font-jetbrains text-xs">
+                    $ override --matrix-protocol=true --force
+                </div>
+                <div class="text-prisma-amber font-jetbrains text-xs">
+                    > Warning: System detects unauthorized access
+                </div>
+                <div class="text-glitch-green font-jetbrains text-xs">
+                    > Bypassing security... Connection established
+                </div>
+                <div class="text-cyber-cyan font-jetbrains text-xs">
+                    $ deploy --blackline-agent=active --status=connected
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

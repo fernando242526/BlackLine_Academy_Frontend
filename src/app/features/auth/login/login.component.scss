@@ -1,0 +1,4 @@
+/* Efecto adicional para el botón cuando se hace hover */
+:host ::ng-deep .btn-primary:hover {
+    text-shadow: 0 0 8px rgba(143, 0, 255, 0.8);
+}

@@ -1,2 +1,39 @@
 @reference "./../styles.scss";
 
+/* Botón principal (CTA) */
+.btn-primary {
+  @apply font-orbitron uppercase tracking-wider px-6 py-3 bg-neon-violet text-ghost-gray border border-neon-violet rounded-md transition-all duration-300 
+  hover:bg-transparent hover:text-neon-violet hover:shadow-[0_0_15px_rgba(143,0,255,0.5)] 
+  focus:outline-none focus:ring-2 focus:ring-neon-violet;
+}
+
+/* Botón secundario */
+.btn-secondary {
+  @apply font-orbitron uppercase tracking-wider px-6 py-3 bg-transparent text-cyber-cyan border border-cyber-cyan rounded-md transition-all duration-300 
+  hover:bg-cyber-cyan/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] 
+  focus:outline-none focus:ring-2 focus:ring-cyber-cyan;
+}
+
+/* Botón de peligro/error */
+.btn-danger {
+  @apply font-orbitron uppercase tracking-wider px-6 py-3 bg-transparent text-critical-red border border-critical-red rounded-md transition-all duration-300 
+  hover:bg-critical-red/10 hover:shadow-[0_0_15px_rgba(255,0,77,0.5)] 
+  focus:outline-none focus:ring-2 focus:ring-critical-red;
+}
+
+/* Botón de acción pequeño */
+.btn-sm {
+  @apply px-4 py-2 text-sm;
+}
+
+/* Botón desactivado */
+.btn-disabled {
+  @apply opacity-50 cursor-not-allowed pointer-events-none;
+}
+
+/* Botón de icono */
+.btn-icon {
+  @apply flex items-center justify-center w-10 h-10 rounded-full bg-plasma-line text-ghost-gray 
+  hover:bg-neon-violet/20 hover:text-cyber-cyan hover:shadow-[0_0_10px_rgba(0,240,255,0.3)] 
+  transition-all duration-300;
+}
