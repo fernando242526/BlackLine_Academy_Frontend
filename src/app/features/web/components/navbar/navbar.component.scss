@@ -1,0 +1,89 @@
+/* Animación para el menú móvil */
+@keyframes slide-down {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease;
+}
+
+/* Efecto resplandor para enlaces activos */
+:host ::ng-deep .border-cyber-cyan {
+  box-shadow: 0 5px 10px -5px var(--color-cyber-cyan);
+}
+
+/* Mejora la transición de la barra de navegación */
+:host {
+  .bg-void-black\/90 {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Efecto hover para los botones principales */
+:host ::ng-deep .btn-primary:hover {
+  text-shadow: 0 0 8px var(--color-neon-violet);
+}
+
+/* Añadir un "destello" al desplegar el menú */
+.user-menu-open {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-cyber-cyan) 50%,
+      transparent 100%
+    );
+    opacity: 0.2;
+    z-index: -1;
+    animation: flash 0.5s ease-out;
+  }
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.border-cyber-cyan-filtro {
+  position: relative;
+  color: var(--color-cyber-cyan);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-cyber-cyan);
+    animation: pulse-border 2s infinite;
+  }
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}

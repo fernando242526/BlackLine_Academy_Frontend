@@ -1,0 +1,54 @@
+<div class="cyber-timeline relative z-10">
+    <ul class="timeline timeline-vertical">
+        @for (item of items; track item.year; let i = $index; let isFirst = $first; let isLast = $last) {
+        <li class="mb-8">
+            <!-- Línea conectora con el siguiente elemento -->
+            @if (!isLast) {
+            <hr
+                class="bg-gradient-to-b from-{{getItemColor(i, item)}} to-{{getItemColor(i+1, items[i+1])}} timeline-line" />
+            }
+
+            <!-- Marcador de año con icono -->
+            <div
+                class="timeline-start timeline-box border-{{getItemColor(i, item)}} bg-void-black/90 w-auto -ml-8 mb-1">
+                <span class="font-orbitron text-{{getItemColor(i, item)}} text-lg">{{ item.year }}</span>
+            </div>
+
+            <!-- Punto medio -->
+            <div class="timeline-middle">
+                <div class="timeline-dot bg-{{getItemColor(i, item)}} border-{{getItemColor(i, item)}}"></div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div
+                class="timeline-end timeline-box bg-void-black border border-plasma-line hover:border-{{getItemColor(i, item)}} transition-all duration-300 group w-full md:w-80 -mr-8">
+                <!-- Efecto de linea resplandor al hacer hover -->
+                <div
+                    class="absolute -inset-[1px] bg-{{getItemColor(i, item)}}/5 opacity-0 group-hover:opacity-100 rounded pointer-events-none transition-opacity duration-500">
+                </div>
+
+                <!-- Título -->
+                <h3
+                    class="font-orbitron text-ghost-gray group-hover:text-{{getItemColor(i, item)}} transition-colors duration-300 mb-2">
+                    {{ item.title }}
+                </h3>
+
+                <!-- Descripción -->
+                <p class="text-ghost-gray/80 text-sm">
+                    {{ item.description }}
+                </p>
+
+                <!-- Esquinas decorativas -->
+                <div class="absolute top-0 left-0 w-3 h-3 border-t border-l opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    [ngClass]="'border-' + getItemColor(i, item)"></div>
+                <div class="absolute top-0 right-0 w-3 h-3 border-t border-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    [ngClass]="'border-' + getItemColor(i, item)"></div>
+                <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    [ngClass]="'border-' + getItemColor(i, item)"></div>
+                <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    [ngClass]="'border-' + getItemColor(i, item)"></div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>

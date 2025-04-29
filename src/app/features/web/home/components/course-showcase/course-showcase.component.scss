@@ -1,0 +1,41 @@
+/* Efecto de resplandor para las tarjetas al hacer hover */
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+/* Estilos para limitar la descripción a 2 líneas */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Animar el botón de categoría al seleccionarlo */
+.border-cyber-cyan-filtro {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--color-cyber-cyan) 50%, 
+      transparent 100%
+    );
+    animation: pulse-border 2s infinite;
+  }
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}

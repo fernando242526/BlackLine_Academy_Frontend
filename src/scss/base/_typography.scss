@@ -1,0 +1,41 @@
+@reference "./../styles.scss";
+
+/* Tipografía base para el texto normal */
+.text-base {
+  @apply font-inter text-base text-ghost-gray;
+}
+
+/* Títulos principales con tipografía Orbitron */
+.heading-primary {
+  @apply font-orbitron font-bold text-3xl md:text-4xl tracking-wider text-ghost-gray;
+}
+
+/* Títulos secundarios */
+.heading-secondary {
+  @apply font-orbitron font-semibold text-2xl tracking-wide text-ghost-gray;
+}
+
+/* Subtítulos */
+.heading-tertiary {
+  @apply font-orbitron font-medium text-xl tracking-wide text-ghost-gray;
+}
+
+/* Texto para consola/código */
+.text-code {
+  @apply font-jetbrains text-sm leading-relaxed text-ghost-gray;
+}
+
+/* Etiquetas de formulario */
+.form-label {
+  @apply font-inter text-sm uppercase tracking-wider text-ghost-gray mb-2 block;
+}
+
+/* Texto destacado con color neón */
+.text-neon {
+  @apply text-cyber-cyan;
+}
+
+/* Texto con énfasis */
+.text-emphasis {
+  @apply text-neon-violet;
+}

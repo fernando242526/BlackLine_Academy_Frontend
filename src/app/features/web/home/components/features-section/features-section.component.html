@@ -1,0 +1,58 @@
+<section class="py-24 bg-void-black relative overflow-hidden">
+    <!-- Fondo con efecto de líneas de código -->
+    <div class="absolute inset-0 overflow-hidden opacity-5">
+        <div class="matrix-code">
+            <!-- Esta matriz de código se genera dinámicamente con CSS -->
+        </div>
+    </div>
+
+    <!-- Overlay gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-b from-void-black via-void-black/95 to-void-black"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span class="text-neon-violet">[</span> Por qué elegir BlackLine <span class="text-neon-violet">]</span>
+            </h2>
+            <p class="text-base text-ghost-gray max-w-3xl mx-auto">
+                Una plataforma diseñada para potenciar tu crecimiento técnico en un entorno sin restricciones,
+                con tecnología de vanguardia y conocimientos sin filtros.
+            </p>
+        </div>
+
+        <!-- Grid de características -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div *ngFor="let feature of features; let i = index"
+                class="feature-card relative border border-plasma-line rounded-lg p-6 bg-void-black/60 hover:border-{{feature.colorClass}} transition-all duration-300 group">
+
+                <!-- Número de índice en el fondo -->
+                <div class="absolute -right-2 -top-4 text-5xl font-orbitron text-{{feature.colorClass}}/10 font-bold">
+                    {{i + 1 < 10 ? '0' + (i + 1) : i + 1}} </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="w-14 h-14 rounded-lg flex items-center justify-center bg-void-black border border-{{feature.colorClass}}/30 mb-4 relative overflow-hidden">
+                            <fa-icon [icon]="feature.icon"
+                                class="text-{{feature.colorClass}} text-2xl relative z-10"></fa-icon>
+
+                            <!-- Efecto de resplandor al hacer hover -->
+                            <div
+                                class="absolute inset-0 bg-{{feature.colorClass}}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </div>
+
+                        <!-- Título -->
+                        <h3
+                            class="text-xl font-orbitron font-semibold mb-3 text-ghost-gray group-hover:text-{{feature.colorClass}} transition-colors duration-300">
+                            {{feature.title}}
+                        </h3>
+
+                        <!-- Descripción -->
+                        <p class="text-ghost-gray/80 text-sm leading-relaxed">
+                            {{feature.description}}
+                        </p>
+                </div>
+            </div>
+        </div>
+</section>

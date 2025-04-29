@@ -1,0 +1,52 @@
+// Efecto de matriz de código en el fondo
+.matrix-code {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(180deg, 
+    transparent 0%,
+    rgba(0, 240, 255, 0.05) 40%, 
+    rgba(143, 0, 255, 0.05) 70%,
+    transparent 100%
+  );
+  transform: translateY(-50%);
+  animation: matrix-fall 60s linear infinite;
+  
+  &::before {
+    content: "01010111010001010100100001000001 01000011 01001011 01001100 01001001 01001110 01000101 01000001 01000011 01000001 01000100 01000101 01001101 01011001 01010111010001010100100001000001 01000011 01001011";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    color: var(--color-cyber-cyan);
+    opacity: 0.5;
+  }
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+// Estilos para las tarjetas de características
+.feature-card {
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+}

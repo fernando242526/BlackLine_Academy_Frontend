@@ -1,0 +1,68 @@
+.cyber-timeline {
+  --timeline-width: 2px;
+  --dot-size: 14px;
+
+  // Personalización de la línea de tiempo de DaisyUI
+  :host ::ng-deep .timeline {
+    &::before {
+      width: var(--timeline-width);
+      background-color: var(--color-plasma-line);
+    }
+  }
+
+  // Personalización de los puntos de la línea de tiempo
+  .timeline-dot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-width: 2px;
+    transform: translateX(calc(var(--dot-size) / -2))
+      translateY(calc(var(--dot-size) / -2));
+    animation: glow-pulse 3s infinite;
+  }
+
+  // Linea personalizada entre puntos
+  .timeline-line {
+    width: var(--timeline-width);
+    opacity: 0.7;
+  }
+
+  // Estilos para las cajas de la línea de tiempo
+  .timeline-box {
+    position: relative;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-width: 1px;
+
+    &.timeline-start {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 600;
+    }
+  }
+
+  // Animación de resplandor para los puntos
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 5px currentColor;
+    }
+    50% {
+      box-shadow: 0 0 15px currentColor;
+    }
+  }
+}
+
+// Mejoras responsive
+@media (max-width: 768px) {
+  .cyber-timeline {
+    .timeline-end {
+      width: calc(100% - 2rem) !important;
+      margin-right: 0 !important;
+    }
+
+    .timeline-start {
+      margin-left: 0 !important;
+    }
+  }
+}

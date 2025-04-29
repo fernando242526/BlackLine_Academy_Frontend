@@ -1,0 +1,227 @@
+// Animación para el efecto de tipeo
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(30, end) infinite alternate;
+}
+
+// Efecto TV estática
+.tv-static {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+// Efecto de líneas de escaneo
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 1px,
+    rgba(0, 240, 255, 0.05) 1px,
+    rgba(0, 240, 255, 0.05) 2px
+  );
+}
+
+// Animación para ping lento
+@keyframes ping-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s ease-in-out infinite;
+}
+
+// Estilo para la línea de tiempo
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-plasma-line);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.timeline-content {
+  position: relative;
+  width: calc(50% - 30px);
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--color-void-black);
+  border: 1px solid var(--color-plasma-line);
+}
+
+.timeline-left .timeline-content {
+  margin-left: auto;
+}
+
+.timeline-right .timeline-content {
+  margin-right: auto;
+}
+
+.timeline-left .timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 20px;
+  height: 2px;
+  background: var(--color-plasma-line);
+}
+
+.timeline-right .timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  width: 20px;
+  height: 2px;
+  background: var(--color-plasma-line);
+}
+
+// Animación de resplandor para timeline
+@keyframes glow-cyan {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+  }
+}
+
+@keyframes glow-violet {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(143, 0, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(143, 0, 255, 0.3);
+  }
+}
+
+.animate-glow-cyan {
+  animation: glow-cyan 4s ease-in-out infinite;
+}
+
+.animate-glow-violet {
+  animation: glow-violet 4s ease-in-out infinite;
+}
+
+// Animación para escáner
+@keyframes scanner {
+  0%, 100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+
+.animate-scanner {
+  animation: scanner 6s ease-in-out infinite;
+}
+
+// Estilo para hexágonos
+.hexagon-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  transform: rotate(30deg);
+}
+
+.hexagon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-void-black);
+  border: 1px solid var(--color-plasma-line);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  animation: pulse-hex 3s ease-in-out infinite;
+}
+
+@keyframes pulse-hex {
+  0%, 100% {
+    transform: scale(1);
+    border-color: var(--color-plasma-line);
+  }
+  50% {
+    transform: scale(1.1);
+    border-color: var(--color-cyber-cyan);
+  }
+}
+
+// Fondo de código para sección de equipo
+.matrix-code {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 240, 255, 0.05) 20%,
+    rgba(143, 0, 255, 0.05) 80%,
+    transparent
+  );
+  background-size: 100% 100%;
+}
+
+// Hexágono de fondo para valores
+.hexagon-bg {
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+// Responsividad para timeline
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-dot {
+    left: 30px;
+  }
+  
+  .timeline-content {
+    width: calc(100% - 70px);
+    margin-left: 70px !important;
+  }
+  
+  .timeline-left .timeline-content::before,
+  .timeline-right .timeline-content::before {
+    left: -40px;
+    width: 40px;
+    right: auto;
+  }
+}
