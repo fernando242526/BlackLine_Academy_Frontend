@@ -17,6 +17,26 @@ const WEB_ROUTES: Routes = [
       {
         path: 'contactanos',
         loadComponent: () => import('./contact/contact.component'),
+      },
+      {
+        path: 'cursos',
+        loadComponent: () => import('./courses/courses.component'),
+      },
+      {
+        path: 'cursos/:id',
+        loadComponent: () => import('./course/course.component'),
+      },
+      {
+        path: 'metodos-enseñanza',
+        loadComponent: () => import('./method/method.component'),
+      },
+      {
+        path: 'contactanos',
+        loadComponent: () => import('./contact/contact.component'),
+      },
+      {
+        path: 'certificaciones',
+        loadComponent: () => import('./certifications/certifications.component'),
       }
     ],
   },
