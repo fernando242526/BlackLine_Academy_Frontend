@@ -20,20 +20,21 @@
 
             <!-- Enlaces de navegación -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:w-2/3">
-                <ng-container *ngFor="let section of footerLinks">
+                @for (section of footerLinks; track $index) {
                     <div>
-                        <h3 class="text-cyber-cyan text-sm font-semibold uppercase tracking-wider mb-4">{{ section.title
-                            }}</h3>
+                        <h3 class="text-cyber-cyan text-sm font-semibold uppercase tracking-wider mb-4">{{ section.title }}</h3>
                         <ul class="space-y-2">
-                            <li *ngFor="let link of section.links">
-                                <a [routerLink]="link.path"
-                                    class="text-sm text-ghost-gray hover:text-neon-violet transition-colors duration-200">
-                                    {{ link.label }}
-                                </a>
-                            </li>
+                            @for (link of section.links; track $index) {
+                                <li>
+                                    <a [routerLink]="link.path"
+                                        class="text-sm text-ghost-gray hover:text-neon-violet transition-colors duration-200">
+                                        {{ link.label }}
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </div>
-                </ng-container>
+                }
             </div>
         </div>
 
