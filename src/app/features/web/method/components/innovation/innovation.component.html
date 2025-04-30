@@ -1,0 +1,216 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo con efecto futurista -->
+    <div class="absolute inset-0 z-0 futuristic-bg opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">09.</span> Innovación y Mejora Continua
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Impulsamos constantemente la evolución de nuestra metodología educativa, incorporando 
+                nuevas tecnologías y enfoques para mantenernos a la vanguardia del aprendizaje digital.
+            </p>
+        </div>
+
+        <!-- Principios de innovación -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            @for (principle of innovationPrinciples; track principle.title) {
+                <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{accentColor}} group relative overflow-hidden">
+                    <!-- Esquina decorativa -->
+                    <div class="absolute top-0 right-0 w-12 h-12 overflow-hidden">
+                        <div class="absolute top-0 right-0 w-3 h-3 border-t border-r transition-colors duration-300"
+                            [ngClass]="'border-' + accentColor"></div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center border mr-4 relative"
+                            [ngClass]="'border-' + accentColor + '/30'">
+                            <fa-icon [icon]="principle.icon" [ngClass]="'text-' + accentColor" class="text-xl"></fa-icon>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                                {{principle.title}}
+                            </h3>
+                            
+                            <p class="text-ghost-gray/80 text-sm">
+                                {{principle.description}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Tecnologías emergentes -->
+        <div class="max-w-5xl mx-auto mb-20">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-10 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">/ /</span> Tecnologías Emergentes <span [ngClass]="'text-' + accentColor">/ /</span>
+            </h3>
+            
+            <!-- Tarjetas de tecnologías -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                @for (tech of emergingTechnologies; track tech.name) {
+                    <div class="bg-void-black border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 hover:border-{{accentColor}} group">
+                        <!-- Cabecera coloreada -->
+                        <div class="h-1" [ngClass]="'bg-' + accentColor"></div>
+                        
+                        <div class="p-5">
+                            <div class="w-14 h-14 rounded-full flex items-center justify-center border mx-auto mb-4 relative overflow-hidden"
+                                [ngClass]="'border-' + accentColor + '/50'">
+                                <fa-icon [icon]="tech.icon" [ngClass]="'text-' + accentColor" class="text-xl relative z-10"></fa-icon>
+                                
+                                <!-- Scanner effect -->
+                                <div class="absolute inset-0 scanner-effect opacity-0 group-hover:opacity-100"
+                                    [ngClass]="'bg-' + accentColor + '/10'"></div>
+                            </div>
+                            
+                            <h4 class="font-orbitron text-center text-base font-semibold mb-3 text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                                {{tech.name}}
+                            </h4>
+                            
+                            <p class="text-ghost-gray/80 text-xs text-center mb-4">
+                                {{tech.description}}
+                            </p>
+                            
+                            <!-- Nivel de madurez tecnológica -->
+                            <div class="text-center">
+                                <div class="text-xs text-ghost-gray/70 mb-2">Nivel de preparación:</div>
+                                <div class="flex justify-center">
+                                    @for (star of getReadinessArray(tech.readiness); track star) {
+                                        <fa-icon [icon]="faRocket" [ngClass]="'text-' + accentColor" class="text-xs mx-0.5"></fa-icon>
+                                    }
+                                    @for (emptyStar of getEmptyReadinessArray(tech.readiness); track emptyStar) {
+                                        <fa-icon [icon]="faRocket" class="text-plasma-line/30 text-xs mx-0.5"></fa-icon>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Ciclo de mejora continua -->
+        <div class="max-w-4xl mx-auto mb-16">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-8 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">∞</span> Ciclo de Mejora Continua <span [ngClass]="'text-' + accentColor">∞</span>
+            </h3>
+            
+            <div class="improvement-cycle relative p-1">
+                <!-- Contenedor principal -->
+                <div class="bg-void-black/40 backdrop-blur-sm border border-plasma-line rounded-lg p-6 md:p-10 relative">
+                    <!-- Esquinas decorativas -->
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t border-r" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r" [ngClass]="'border-' + accentColor"></div>
+                    
+                    <!-- Ciclo de mejora continua -->
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <!-- Visual del ciclo -->
+                        <div class="md:w-1/2 flex justify-center mb-8 md:mb-0">
+                            <div class="improvement-cycle-visual relative w-64 h-64">
+                                <!-- Círculo central -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-20 h-20 rounded-full border-2 flex items-center justify-center"
+                                        [ngClass]="'border-' + accentColor">
+                                        <div class="text-center">
+                                            <div class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">MEJORA</div>
+                                            <div class="text-xs text-ghost-gray">CONTINUA</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Círculo giratorio -->
+                                <div class="absolute inset-0 improvement-rotating-circle">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="50" cy="50" r="45" fill="none" [attr.stroke]="accentColor" stroke-width="0.5" stroke-dasharray="5,5" />
+                                        
+                                        <!-- Puntos en el ciclo -->
+                                        <circle cx="50" cy="5" r="4" [attr.fill]="accentColor" />
+                                        <circle cx="95" cy="50" r="4" [attr.fill]="accentColor" />
+                                        <circle cx="50" cy="95" r="4" [attr.fill]="accentColor" />
+                                        <circle cx="5" cy="50" r="4" [attr.fill]="accentColor" />
+                                    </svg>
+                                </div>
+                                
+                                <!-- Etiquetas de fase -->
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                                    <div class="font-orbitron text-xs" [ngClass]="'text-' + accentColor">DISEÑAR</div>
+                                </div>
+                                
+                                <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 text-center">
+                                    <div class="font-orbitron text-xs" [ngClass]="'text-' + accentColor">IMPLEMENTAR</div>
+                                </div>
+                                
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 text-center">
+                                    <div class="font-orbitron text-xs" [ngClass]="'text-' + accentColor">EVALUAR</div>
+                                </div>
+                                
+                                <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                                    <div class="font-orbitron text-xs" [ngClass]="'text-' + accentColor">ADAPTAR</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Herramientas de mejora -->
+                        <div class="md:w-1/2">
+                            <h4 class="font-orbitron text-lg font-semibold mb-6 text-ghost-gray">
+                                <span [ngClass]="'text-' + accentColor">→</span> Herramientas de Mejora
+                            </h4>
+                            
+                            <div class="space-y-4">
+                                @for (tool of improvementTools; track tool.name) {
+                                    <div class="flex items-center p-3 bg-void-black border border-plasma-line rounded-lg transition-all duration-300 hover:border-{{accentColor}} group">
+                                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4"
+                                            [ngClass]="'bg-' + accentColor + '/10'">
+                                            <fa-icon [icon]="tool.icon" [ngClass]="'text-' + accentColor" class="text-sm"></fa-icon>
+                                        </div>
+                                        
+                                        <div class="font-orbitron text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                                            {{tool.name}}
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA final -->
+        <div class="max-w-4xl mx-auto p-8 bg-void-black border border-plasma-line rounded-lg text-center relative overflow-hidden">
+            <!-- Fondo con efecto de código -->
+            <div class="absolute inset-0 code-overlay opacity-5"></div>
+            
+            <h3 class="font-orbitron text-xl font-semibold mb-4 text-ghost-gray relative z-10">
+                <span [ngClass]="'text-' + accentColor">&gt;</span> El Futuro del Aprendizaje <span [ngClass]="'text-' + accentColor">&lt;</span>
+            </h3>
+            
+            <p class="text-ghost-gray/80 mb-6 max-w-xl mx-auto relative z-10">
+                En BlackLine Academy, el futuro no es algo que esperamos: lo creamos. 
+                Nuestra metodología evoluciona constantemente, adoptando tecnologías emergentes
+                y refinando técnicas pedagógicas para proporcionar una experiencia de aprendizaje
+                sin precedentes.
+            </p>
+            
+            <div class="relative z-10">
+                <a href="#" class="btn-primary inline-flex items-center">
+                    <span class="flex items-center justify-center">
+                        <fa-icon [icon]="faRocket" class="mr-2"></fa-icon>
+                        Únete a la Revolución Educativa
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

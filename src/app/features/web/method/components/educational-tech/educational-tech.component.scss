@@ -1,0 +1,107 @@
+/* Patrón de circuitos para el fondo */
+.circuit-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 304' width='304' height='304'%3E%3Cpath fill='%23b266ff' fill-opacity='0.4' d='M44.1,224a5,5,0,1,1,5,5A5,5,0,0,1,44.1,224Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,29.1,224Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,14.1,224Zm72-15a5,5,0,1,1,5,5A5,5,0,0,1,86.1,209Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,71.1,209Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,56.1,209Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,41.1,209Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,26.1,209Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,11.1,209Zm90-15a5,5,0,1,1,5,5A5,5,0,0,1,101.1,194Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,86.1,194Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,71.1,194Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,56.1,194Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,41.1,194Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,26.1,194Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,11.1,194Zm90-15a5,5,0,1,1,5,5A5,5,0,0,1,101.1,179Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,86.1,179Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,71.1,179Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,56.1,179Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,41.1,179Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,26.1,179Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,11.1,179Zm90-15a5,5,0,1,1,5,5A5,5,0,0,1,101.1,164Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,86.1,164Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,71.1,164Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,56.1,164Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,41.1,164Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,26.1,164Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,11.1,164Zm90-15a5,5,0,1,1,5,5A5,5,0,0,1,101.1,149Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,86.1,149Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,71.1,149Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,56.1,149Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,41.1,149Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,26.1,149ZM244.1,74a5,5,0,1,1,5,5A5,5,0,0,1,244.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,229.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,214.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,199.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,184.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,169.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,154.1,74Zm-15,0a5,5,0,1,1,5,5A5,5,0,0,1,139.1,74Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Decoración de esquina para las tarjetas de tecnología */
+.tech-corner-decoration {
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+/* Efecto de línea de escaneo para íconos */
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: currentColor;
+  animation: scan 2s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% { 
+    transform: translateY(0);
+    opacity: 0;
+  }
+  25% { 
+    opacity: 1;
+  }
+  75% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Efecto de glitch para el overlay */
+.glitch-overlay {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  &::before {
+    background: currentColor;
+    opacity: 0.1;
+    animation: glitch-1 2s infinite linear alternate-reverse;
+  }
+  
+  &::after {
+    background: currentColor;
+    opacity: 0.05;
+    animation: glitch-2 3s infinite linear alternate-reverse;
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(20% 0 80% 0); }
+  25% { clip-path: inset(80% 0 20% 0); }
+  50% { clip-path: inset(40% 0 60% 0); }
+  75% { clip-path: inset(60% 0 40% 0); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(10% 0 70% 0); }
+  25% { clip-path: inset(70% 0 30% 0); }
+  50% { clip-path: inset(20% 0 80% 0); }
+  75% { clip-path: inset(30% 0 70% 0); }
+}
+
+/* Animación para las fichas de herramientas */
+.tool-chip {
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .server-animation {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Animaciones retrasadas */
+.delay-75 {
+  animation-delay: 0.75s;
+}
+
+.delay-150 {
+  animation-delay: 1.5s;
+}
+
+.delay-300 {
+  animation-delay: 3s;
+}

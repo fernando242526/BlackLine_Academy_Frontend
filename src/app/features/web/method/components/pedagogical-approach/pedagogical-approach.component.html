@@ -1,0 +1,92 @@
+<section id="pedagogical-approach" class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo con patrón de código hexadecimal -->
+    <div class="absolute inset-0 opacity-5 overflow-hidden">
+        <div class="code-pattern"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">01.</span> Enfoque Pedagógico
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Nuestro enfoque pedagógico revoluciona el aprendizaje tecnológico combinando la filosofía hacker, 
+                principios de pedagogía inmersiva y métodos experimentales adaptados al mundo digital.
+            </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <!-- Lado izquierdo: Principios -->
+            <div class="lg:w-1/2">
+                <div class="mb-10">
+                    <h3 class="font-orbitron text-2xl font-semibold mb-6 text-ghost-gray">
+                        <span [ngClass]="'text-' + accentColor">#</span> Principios Fundamentales
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        @for (principle of principles; track principle.title) {
+                            <div class="bg-void-black/40 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{accentColor}} group">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center border border-{{accentColor}}/30 mr-4">
+                                        <fa-icon [icon]="principle.icon" [ngClass]="'text-' + accentColor" class="text-lg"></fa-icon>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                                            {{principle.title}}
+                                        </h4>
+                                        
+                                        <p class="text-ghost-gray/80 text-sm">
+                                            {{principle.description}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lado derecho: Manifesto visual -->
+            <div class="lg:w-1/2">
+                <div class="relative p-1 border border-plasma-line rounded-lg overflow-hidden bg-void-black/70 backdrop-blur-sm">
+                    <!-- Esquinas decorativas -->
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t border-r" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r" [ngClass]="'border-' + accentColor"></div>
+                    
+                    <div class="p-8">
+                        <h3 class="font-orbitron text-2xl font-semibold mb-6 text-ghost-gray text-center">
+                            <span [ngClass]="'text-' + accentColor">&#123; "</span> Manifesto Educativo <span [ngClass]="'text-' + accentColor"> " &#125;</span>
+                        </h3>
+                        
+                        <ul class="space-y-4">
+                            @for (feature of keyFeatures; track feature) {
+                                <li class="flex items-start">
+                                    <fa-icon [icon]="faCheck" [ngClass]="'text-' + accentColor" class="mt-1 mr-3"></fa-icon>
+                                    <span class="text-ghost-gray/90">{{feature}}</span>
+                                </li>
+                            }
+                        </ul>
+                        
+                        <!-- Cita inspiradora -->
+                        <div class="mt-8 pl-4 border-l-2" [ngClass]="'border-' + accentColor">
+                            <p class="text-ghost-gray/80 italic">
+                                "No enseñamos tecnología; enseñamos a pensar como hackers: analizar, descomponer, 
+                                comprender y reconstruir sistemas para dominarlos completamente."
+                            </p>
+                            <p class="text-right mt-2" [ngClass]="'text-' + accentColor">— Fundadores de BlackLine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

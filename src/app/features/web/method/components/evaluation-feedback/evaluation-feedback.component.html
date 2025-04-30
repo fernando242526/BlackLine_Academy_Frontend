@@ -1,0 +1,188 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">05.</span> Evaluación y Retroalimentación
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Nuestro sistema de evaluación va más allá de los exámenes tradicionales, implementando un enfoque 
+                multidimensional con retroalimentación inmediata, continua y personalizada.
+            </p>
+        </div>
+
+        <!-- Métodos de evaluación -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-10 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">&#64;</span> Métodos de Evaluación
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @for (method of evaluationMethods; track method.name) {
+                    <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{accentColor}} hover:shadow-glow group relative">
+                        <!-- Etiqueta flotante -->
+                        <div class="absolute -top-3 right-4 px-3 py-1 rounded-full font-jetbrains text-xs"
+                            [ngClass]="'bg-' + accentColor + ' text-void-black'">
+                            {{method.label}}
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-16 h-12 p-2 rounded-lg flex items-center justify-center border mr-4 mt-1"
+                                [ngClass]="'border-' + accentColor + '/30'">
+                                <fa-icon [icon]="method.icon" [ngClass]="'text-' + accentColor" class="text-xl"></fa-icon>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                                    {{method.name}}
+                                </h4>
+                                
+                                <p class="text-ghost-gray/80 text-sm">
+                                    {{method.description}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Diagrama de ciclo de retroalimentación -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-8 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">&&</span> Ciclo de Retroalimentación
+            </h3>
+            
+            <div class="feedback-cycle relative h-64 md:h-80 mb-12">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <!-- Círculo central -->
+                    <div class="w-24 h-24 rounded-full border-2 flex items-center justify-center text-center"
+                        [ngClass]="'border-' + accentColor + ' text-' + accentColor">
+                        <div class="font-orbitron text-sm">CICLO DE FEEDBACK</div>
+                    </div>
+                    
+                    <!-- Círculos orbitantes -->
+                    <div class="absolute w-full h-full">
+                        <!-- Círculo 1: Acción -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 orbit-item">
+                            <div class="w-16 h-16 rounded-full bg-void-black border flex items-center justify-center"
+                                [ngClass]="'border-' + accentColor">
+                                <span class="text-ghost-gray text-xs font-orbitron">Acción</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Círculo 2: Evaluación -->
+                        <div class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 orbit-item">
+                            <div class="w-16 h-16 rounded-full bg-void-black border flex items-center justify-center"
+                                [ngClass]="'border-' + accentColor">
+                                <span class="text-ghost-gray text-xs font-orbitron">Evaluación</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Círculo 3: Feedback -->
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 orbit-item">
+                            <div class="w-16 h-16 rounded-full bg-void-black border flex items-center justify-center"
+                                [ngClass]="'border-' + accentColor">
+                                <span class="text-ghost-gray text-xs font-orbitron">Feedback</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Círculo 4: Ajuste -->
+                        <div class="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 orbit-item">
+                            <div class="w-16 h-16 rounded-full bg-void-black border flex items-center justify-center"
+                                [ngClass]="'border-' + accentColor">
+                                <span class="text-ghost-gray text-xs font-orbitron">Ajuste</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Líneas conectoras -->
+                    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M200,100 L200,150" [attr.stroke]="accentColor" stroke-width="2" stroke-dasharray="5,5" />
+                        <path d="M300,200 L250,200" [attr.stroke]="accentColor" stroke-width="2" stroke-dasharray="5,5" />
+                        <path d="M200,300 L200,250" [attr.stroke]="accentColor" stroke-width="2" stroke-dasharray="5,5" />
+                        <path d="M100,200 L150,200" [attr.stroke]="accentColor" stroke-width="2" stroke-dasharray="5,5" />
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Descripción del ciclo -->
+            <div class="text-center max-w-2xl mx-auto">
+                <p class="text-ghost-gray/80 text-sm">
+                    El ciclo de retroalimentación continua garantiza que cada estudiante reciba información oportuna y relevante
+                    sobre su progreso, permitiéndole ajustar su enfoque, reforzar conocimientos y corregir errores en tiempo real.
+                </p>
+            </div>
+        </div>
+
+        <!-- Tipos de retroalimentación -->
+        <div class="max-w-5xl mx-auto">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-10 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">%</span> Tipos de Retroalimentación
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                @for (feedback of feedbackTypes; track feedback.name) {
+                    <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 hover:border-{{feedback.bgColor}} group">
+                        <!-- Cabecera coloreada -->
+                        <div class="h-3" [ngClass]="'bg-' + feedback.bgColor"></div>
+                        
+                        <div class="p-5">
+                            <div class="w-12 h-12 rounded-full bg-void-black flex items-center justify-center mx-auto mb-4 border"
+                                [ngClass]="'border-' + feedback.bgColor">
+                                <fa-icon [icon]="feedback.icon" [ngClass]="'text-' + feedback.bgColor" class="text-xl"></fa-icon>
+                            </div>
+                            
+                            <h4 class="font-orbitron text-center text-lg font-semibold mb-3 text-ghost-gray group-hover:text-{{feedback.bgColor}} transition-colors duration-300">
+                                {{feedback.name}}
+                            </h4>
+                            
+                            <p class="text-ghost-gray/80 text-sm text-center">
+                                {{feedback.description}}
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Banner de herramientas de analytics -->
+        <div class="mt-16 max-w-4xl mx-auto p-6 border border-plasma-line rounded-lg bg-void-black/40 relative overflow-hidden">
+            <!-- Efecto de líneas diagonales de datos -->
+            <div class="absolute inset-0 data-lines opacity-10" [ngClass]="'bg-' + accentColor"></div>
+            
+            <div class="relative z-10">
+                <h3 class="font-orbitron text-xl font-semibold mb-4 text-ghost-gray text-center">
+                    <span [ngClass]="'text-' + accentColor">&gt;</span> Analytics de Aprendizaje
+                </h3>
+                
+                <p class="text-ghost-gray/80 text-center mb-6">
+                    Utilizamos sistemas avanzados de analítica de aprendizaje para rastrear el progreso, 
+                    identificar patrones y tendencias, y proporcionar insights personalizados que optimizan
+                    la experiencia educativa.
+                </p>
+                
+                <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                    <div class="bg-void-black border border-plasma-line rounded p-3 text-center">
+                        <div class="font-orbitron" [ngClass]="'text-' + accentColor">98%</div>
+                        <div class="text-ghost-gray/70 text-xs">Tasa de mejora</div>
+                    </div>
+                    <div class="bg-void-black border border-plasma-line rounded p-3 text-center">
+                        <div class="font-orbitron" [ngClass]="'text-' + accentColor">&lt;15min</div>
+                        <div class="text-ghost-gray/70 text-xs">Tiempo de respuesta</div>
+                    </div>
+                    <div class="bg-void-black border border-plasma-line rounded p-3 text-center">
+                        <div class="font-orbitron" [ngClass]="'text-' + accentColor">360°</div>
+                        <div class="text-ghost-gray/70 text-xs">Evaluación integral</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,133 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo con efecto de red de conexiones -->
+    <div class="absolute inset-0 z-0 network-bg opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">07.</span> Aprendizaje Colaborativo
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Fomentamos la creación de comunidades de práctica donde el conocimiento fluye libremente, 
+                potenciando el aprendizaje a través de la interacción social y el trabajo en equipo.
+            </p>
+        </div>
+
+        <!-- Características del aprendizaje colaborativo -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            @for (feature of collaborationFeatures; track feature.title) {
+                <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{accentColor}} group">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center border mr-4 relative overflow-hidden"
+                            [ngClass]="'border-' + accentColor + '/30'">
+                            <fa-icon [icon]="feature.icon" [ngClass]="'text-' + accentColor" class="text-xl relative z-10"></fa-icon>
+                            
+                            <!-- Efecto de ondas en hover -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div class="absolute inset-0 rounded-lg scale-0 group-hover:scale-200 transition-transform duration-1000 origin-center"
+                                    [ngClass]="'border border-' + accentColor + '/20'"></div>
+                                <div class="absolute inset-0 rounded-lg scale-0 group-hover:scale-300 transition-transform duration-1500 origin-center"
+                                    [ngClass]="'border border-' + accentColor + '/10'"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                                {{feature.title}}
+                            </h3>
+                            
+                            <p class="text-ghost-gray/80 text-sm">
+                                {{feature.description}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Red de Aprendizaje - Diagrama visual -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-10 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">***</span> Red de Aprendizaje <span [ngClass]="'text-' + accentColor">***</span>
+            </h3>
+            
+            <div class="learning-network-visualization relative">
+                <!-- Contenedor del diagrama -->
+                <div class="bg-void-black/40 border border-plasma-line rounded-lg p-8 relative">
+                    <!-- Esquinas decorativas -->
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t border-r" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r" [ngClass]="'border-' + accentColor"></div>
+                    
+                    <!-- Diagrama de la red -->
+                    <div class="network-diagram h-64 md:h-80 relative">
+                        <!-- Nodo central -->
+                        <!-- <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                            <div class="w-20 h-20 rounded-full border-2 flex items-center justify-center text-center"
+                                [ngClass]="'border-' + accentColor + ' text-' + accentColor">
+                                <div class="font-orbitron text-sm">COMUNIDAD</div>
+                            </div>
+                        </div> -->
+                        
+                        <!-- Nodos secundarios -->
+                        @for (element of communityElements; track element.name; let i = $index) {
+                            <div class="absolute community-node-{{i + 1}} z-10">
+                                <div class="node-content p-3 bg-void-black border rounded-lg max-w-[180px]"
+                                    [ngClass]="'border-' + accentColor + '/50'">
+                                    <div class="flex items-center mb-2">
+                                        <fa-icon [icon]="element.icon" [ngClass]="'text-' + accentColor" class="mr-2"></fa-icon>
+                                        <h4 class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">{{element.name}}</h4>
+                                    </div>
+                                    <p class="text-ghost-gray/80 text-xs">{{element.description}}</p>
+                                </div>
+                            </div>
+                        }
+                        
+                        <!-- Líneas de conexión -->
+                        <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Estas líneas se animan con CSS -->
+                            <path class="network-line-1" d="M200,200 L80,100" [attr.stroke]="accentColor" stroke-width="1" stroke-dasharray="4,4" />
+                            <path class="network-line-2" d="M200,200 L320,100" [attr.stroke]="accentColor" stroke-width="1" stroke-dasharray="4,4" />
+                            <path class="network-line-3" d="M200,200 L200,300" [attr.stroke]="accentColor" stroke-width="1" stroke-dasharray="4,4" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Descripción del impacto -->
+            <div class="max-w-3xl mx-auto mt-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    @for (stat of impactStats; track stat.label) {
+                        <div class="bg-void-black border border-plasma-line rounded-lg p-4 text-center transition-all duration-300 hover:border-{{accentColor}}">
+                            <div class="text-2xl font-orbitron font-bold mb-2" [ngClass]="'text-' + accentColor">{{stat.value}}</div>
+                            <div class="text-ghost-gray/80 text-sm">{{stat.label}}</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Cita inspiradora -->
+        <div class="max-w-4xl mx-auto p-8 border border-plasma-line rounded-lg bg-void-black/40 relative overflow-hidden quote-card">
+            <!-- Líneas de código decorativas -->
+            <div class="absolute inset-0 code-lines opacity-5"></div>
+            
+            <blockquote class="relative z-10">
+                <p class="text-lg md:text-xl text-ghost-gray italic mb-4 font-inter">
+                    " El conocimiento aislado es frágil. El verdadero poder surge cuando las mentes se conectan,
+                    creando redes neuronales colectivas que pueden resolver desafíos que parecían imposibles. "
+                </p>
+                <footer class="text-right" [ngClass]="'text-' + accentColor">
+                    — Manifiesto de Aprendizaje BlackLine
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</section>
