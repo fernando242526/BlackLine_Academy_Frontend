@@ -1,0 +1,223 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo con patrón de cuadrícula -->
+    <div class="absolute inset-0 z-0 grid-pattern opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">08.</span> Adaptabilidad y Personalización
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Nuestra metodología reconoce que cada estudiante es único, con diferentes estilos de aprendizaje, 
+                intereses y metas, por lo que adaptamos dinámicamente la experiencia educativa.
+            </p>
+        </div>
+
+        <!-- Características principales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            @for (feature of adaptationFeatures; track feature.title) {
+                <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 hover:border-{{accentColor}} group">
+                    <!-- Cabecera con icono -->
+                    <div class="p-6 border-b border-plasma-line flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center border"
+                            [ngClass]="'border-' + accentColor + '/30'">
+                            <fa-icon [icon]="feature.icon" [ngClass]="'text-' + accentColor" class="text-xl"></fa-icon>
+                        </div>
+                        
+                        <h3 class="font-orbitron text-lg font-semibold text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                            {{feature.title}}
+                        </h3>
+                    </div>
+                    
+                    <!-- Cuerpo de la tarjeta -->
+                    <div class="p-6">
+                        <p class="text-ghost-gray/80 text-sm mb-4">
+                            {{feature.description}}
+                        </p>
+                        
+                        <!-- Beneficios -->
+                        <div class="space-y-2 bg-void-black p-4 rounded-lg border border-plasma-line/50">
+                            <h4 class="text-sm font-orbitron mb-3" [ngClass]="'text-' + accentColor">Beneficios:</h4>
+                            
+                            <ul class="space-y-2">
+                                @for (benefit of feature.benefits; track benefit) {
+                                    <li class="flex items-center text-sm text-ghost-gray/90">
+                                        <span class="inline-block w-1 h-1 mr-2 rounded-full" [ngClass]="'bg-' + accentColor"></span>
+                                        <span>{{benefit}}</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Visualización de personalización -->
+        <div class="max-w-5xl mx-auto mb-16">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-8 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">$</span> Motor de Personalización <span [ngClass]="'text-' + accentColor">$</span>
+            </h3>
+            
+            <div class="personalization-engine relative p-1">
+                <!-- Contenedor principal -->
+                <div class="bg-void-black/40 backdrop-blur-sm border border-plasma-line rounded-lg p-6 md:p-8 relative">
+                    <!-- Esquinas decorativas -->
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t border-r" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r" [ngClass]="'border-' + accentColor"></div>
+                    
+                    <!-- Diagrama del motor -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <!-- Entrada: Perfil del estudiante -->
+                        <div class="md:w-1/3">
+                            <h4 class="font-orbitron text-base font-semibold text-center mb-4" [ngClass]="'text-' + accentColor">
+                                Perfil de Agente
+                            </h4>
+                            
+                            <div class="bg-void-black border border-plasma-line rounded-lg p-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    @for (element of profileElements; track element.name) {
+                                        <div class="flex items-center gap-2">
+                                            <fa-icon [icon]="element.icon" [ngClass]="'text-' + accentColor" class="text-sm"></fa-icon>
+                                            <span class="text-ghost-gray text-sm">{{element.name}}</span>
+                                        </div>
+                                    }
+                                </div>
+                                
+                                <!-- Barra de progreso de análisis -->
+                                <div class="mt-4">
+                                    <div class="text-xs text-ghost-gray/70 mb-1 flex justify-between">
+                                        <span>Análisis</span>
+                                        <span>98%</span>
+                                    </div>
+                                    <div class="h-1 bg-plasma-line/30 rounded-full overflow-hidden">
+                                        <div class="h-full w-[98%] loading-bar" [ngClass]="'bg-' + accentColor"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Procesamiento: Motor IA -->
+                        <div class="md:w-1/3 relative">
+                            <!-- Líneas conectoras -->
+                            <div class="hidden md:block absolute left-0 top-1/2 w-12 h-1 -translate-x-12 -translate-y-1/2"
+                                [ngClass]="'bg-' + accentColor + '/50'"></div>
+                            <div class="hidden md:block absolute right-0 top-1/2 w-12 h-1 translate-x-12 -translate-y-1/2"
+                                [ngClass]="'bg-' + accentColor + '/50'"></div>
+                            
+                            <h4 class="font-orbitron text-base font-semibold text-center mb-4" [ngClass]="'text-' + accentColor">
+                                Motor IA
+                            </h4>
+                            
+                            <div class="bg-void-black border border-{{accentColor}}/50 rounded-lg p-4 relative overflow-hidden ai-engine">
+                                <!-- Efecto de 'procesamiento' -->
+                                <div class="absolute inset-0 ai-processing-effect opacity-20" [ngClass]="'bg-' + accentColor + '/10'"></div>
+                                
+                                <div class="text-center relative z-10">
+                                    <div class="font-jetbrains text-xs text-ghost-gray/70 mb-2">// procesando patrones</div>
+                                    <div class="font-jetbrains text-xs" [ngClass]="'text-' + accentColor">adaptando_contenido()</div>
+                                    <div class="font-jetbrains text-xs text-ghost-gray/70 mt-2">// optimizando ruta</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Salida: Experiencia Personalizada -->
+                        <div class="md:w-1/3">
+                            <h4 class="font-orbitron text-base font-semibold text-center mb-4" [ngClass]="'text-' + accentColor">
+                                Experiencia Adaptada
+                            </h4>
+                            
+                            <div class="bg-void-black border border-plasma-line rounded-lg p-4">
+                                <div class="space-y-3">
+                                    @for (profile of learningProfiles; track profile.name) {
+                                        <div class="relative learning-profile">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <div class="flex items-center gap-2">
+                                                    <fa-icon [icon]="profile.icon" [ngClass]="'text-' + accentColor" class="text-sm"></fa-icon>
+                                                    <span class="text-ghost-gray text-sm">{{profile.name}}</span>
+                                                </div>
+                                                <span class="text-xs text-ghost-gray/70">+3 adaptaciones</span>
+                                            </div>
+                                            
+                                            <!-- Dropdown de adaptaciones -->
+                                            <div class="learning-profile-dropdown hidden absolute left-0 right-0 top-full mt-1 p-3 bg-void-black border border-plasma-line rounded-lg z-20">
+                                                <ul class="space-y-2">
+                                                    @for (adaptation of profile.adaptations; track adaptation) {
+                                                        <li class="text-xs text-ghost-gray/90">
+                                                            <span class="inline-block w-1 h-1 mr-1 rounded-full" [ngClass]="'bg-' + accentColor"></span>
+                                                            {{adaptation}}
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manifiesto de adaptabilidad -->
+        <div class="max-w-4xl mx-auto p-6 bg-void-black/50 border border-plasma-line rounded-lg relative overflow-hidden">
+            <!-- Efecto de glitch en el borde al hacer hover -->
+            <div class="absolute inset-0 border-glitch opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+            
+            <h3 class="font-orbitron text-xl font-semibold mb-6 text-center text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">// </span>Manifiesto de Adaptabilidad<span [ngClass]="'text-' + accentColor"> //</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div class="flex items-start">
+                    <span class="w-6 h-6 p-4 rounded-full flex items-center justify-center mr-3 bg-void-black border"
+                        [ngClass]="'border-' + accentColor + '/50'">
+                        <span class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">01</span>
+                    </span>
+                    <p class="text-ghost-gray/90 text-sm">
+                        Cada mente aprende de manera única y merece contenido adaptado a su forma de pensar.
+                    </p>
+                </div>
+                
+                <div class="flex items-start">
+                    <span class="w-6 h-6 p-4 rounded-full flex items-center justify-center mr-3 bg-void-black border"
+                        [ngClass]="'border-' + accentColor + '/50'">
+                        <span class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">02</span>
+                    </span>
+                    <p class="text-ghost-gray/90 text-sm">
+                        La tecnología debe adaptarse al humano, no el humano a la tecnología.
+                    </p>
+                </div>
+                
+                <div class="flex items-start">
+                    <span class="w-6 h-6 p-4 rounded-full flex items-center justify-center mr-3 bg-void-black border"
+                        [ngClass]="'border-' + accentColor + '/50'">
+                        <span class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">03</span>
+                    </span>
+                    <p class="text-ghost-gray/90 text-sm">
+                        El verdadero aprendizaje no sigue un camino lineal sino una red de conexiones personalizadas.
+                    </p>
+                </div>
+                
+                <div class="flex items-start">
+                    <span class="w-6 h-6 p-4 rounded-full flex items-center justify-center mr-3 bg-void-black border"
+                        [ngClass]="'border-' + accentColor + '/50'">
+                        <span class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">04</span>
+                    </span>
+                    <p class="text-ghost-gray/90 text-sm">
+                        La personalización es un derecho, no un lujo, en la era de la inteligencia artificial.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,73 @@
+/* Efecto de ondas de datos en el fondo */
+.data-waves {
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 201, 64, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: data-wave 15s linear infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(255, 201, 64, 0.05) 20px,
+      rgba(255, 201, 64, 0.05) 21px
+    );
+  }
+}
+
+@keyframes data-wave {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+/* Efecto de líneas de datos diagonales */
+.data-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    currentColor,
+    currentColor 1px,
+    transparent 1px,
+    transparent 20px
+  );
+}
+
+/* Efecto de brillo para tarjetas */
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 15px rgba(255, 201, 64, 0.2);
+}
+
+/* Animación para elementos orbitantes */
+.orbit-item {
+  animation: orbit-pulse 3s infinite alternate;
+}
+
+@keyframes orbit-pulse {
+  0%, 100% {
+    transform: translate(var(--translate-x, -50%), var(--translate-y, -50%)) scale(1);
+  }
+  50% {
+    transform: translate(var(--translate-x, -50%), var(--translate-y, -50%)) scale(1.05);
+  }
+}
+
+/* Ajustes responsive para el ciclo de feedback */
+@media (max-width: 768px) {
+  .feedback-cycle {
+    scale: 0.8;
+  }
+}

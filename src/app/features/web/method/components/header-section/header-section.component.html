@@ -1,0 +1,56 @@
+<section class="relative h-[100vh] min-h-[600px] max-h-[800px] flex items-center overflow-hidden mt-8">
+    <!-- Fondo con efecto de partículas -->
+    <div class="absolute inset-0 z-0">
+        <app-particle-background></app-particle-background>
+        <div class="absolute inset-0 bg-gradient-to-b from-void-black/50 via-void-black/70 to-void-black"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-5xl mx-auto text-center">
+            <!-- Título principal con efecto glitch -->
+            <h1 class="font-orbitron text-5xl md:text-7xl font-bold tracking-wider mb-6 glitch-slice" data-text="METODOLOGÍA">
+                <span class="text-cyber-cyan">METODO</span><span class="text-neon-violet">LOGÍA</span>
+            </h1>
+
+            <!-- Subtítulo -->
+            <p class="text-xl md:text-2xl mb-8 text-ghost-gray font-jetbrains relative">
+                <span class="text-cyber-cyan">Descifra. Aprende. Hackea tu mente.</span>
+            </p>
+
+            <!-- Descripción principal -->
+            <p class="text-base md:text-lg mb-12 text-ghost-gray/90 max-w-3xl mx-auto">
+                En BlackLine Academy utilizamos un sistema de aprendizaje revolucionario que combina
+                teoría hacker, proyectos del mundo real y mentoría avanzada para desbloquear todo
+                tu potencial. Nuestra metodología rompe con los límites de la educación tradicional.
+            </p>
+
+            <!-- Cards para las características clave -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                @for (feature of methodFeatures; track feature.title) {
+                    <div class="bg-void-black/70 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{feature.color}} group">
+                        <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center border border-{{feature.color}}/30 mb-4">
+                            <fa-icon [icon]="feature.icon" class="text-2xl text-{{feature.color}}"></fa-icon>
+                        </div>
+                        <h3 class="font-orbitron text-xl font-semibold mb-2 text-ghost-gray group-hover:text-{{feature.color}} transition-colors duration-300">
+                            {{feature.title}}
+                        </h3>
+                        <p class="text-ghost-gray/80 text-sm">
+                            {{feature.description}}
+                        </p>
+                    </div>
+                }
+            </div>
+
+            <!-- Botón de scroll -->
+            <a href="#pedagogical-approach" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-cyber-cyan/50 text-cyber-cyan animate-bounce hover:bg-cyber-cyan/10 transition-colors duration-300">
+                <fa-icon [icon]="faChevronDown"></fa-icon>
+            </a>
+        </div>
+    </div>
+
+    <!-- Líneas diagonales decorativas -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -left-10 top-0 w-1 h-full bg-gradient-to-b from-transparent via-cyber-cyan/30 to-transparent transform -rotate-45 opacity-30"></div>
+        <div class="absolute -right-10 top-0 w-1 h-full bg-gradient-to-b from-transparent via-neon-violet/30 to-transparent transform rotate-45 opacity-30"></div>
+    </div>
+</section>

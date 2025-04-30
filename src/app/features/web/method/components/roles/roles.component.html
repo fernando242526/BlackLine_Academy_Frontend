@@ -1,0 +1,234 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo de grid de matriz -->
+    <div class="absolute inset-0 z-0 matrix-grid opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">06.</span> Rol del Docente y del Estudiante
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Redefinimos los roles tradicionales del proceso educativo, estableciendo una dinámica colaborativa 
+                donde tanto docentes como estudiantes son agentes activos en la construcción del conocimiento.
+            </p>
+        </div>
+
+        <!-- Tarjetas de roles -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            @for (role of roles; track role.title) {
+                <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 hover:border-{{accentColor}} group">
+                    <!-- Cabecera de la tarjeta -->
+                    <div class="p-6 border-b border-plasma-line flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center border"
+                            [ngClass]="'border-' + accentColor + '/30'">
+                            <fa-icon [icon]="role.icon" [ngClass]="'text-' + accentColor" class="text-2xl"></fa-icon>
+                        </div>
+                        
+                        <h3 class="font-orbitron text-xl font-semibold text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                            {{role.title}}
+                        </h3>
+                    </div>
+                    
+                    <!-- Cuerpo de la tarjeta -->
+                    <div class="p-6">
+                        <p class="text-ghost-gray/80 mb-6">
+                            {{role.description}}
+                        </p>
+                        
+                        <!-- Responsabilidades -->
+                        <div class="mb-6">
+                            <h4 class="font-orbitron text-base font-semibold mb-3 flex items-center" [ngClass]="'text-' + accentColor">
+                                <span class="inline-block w-2 h-2 mr-2 rounded-full bg-current"></span>
+                                Responsabilidades
+                            </h4>
+                            
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">
+                                @for (responsibility of role.responsibilities; track responsibility) {
+                                    <li class="text-sm text-ghost-gray/90 flex items-start">
+                                        <span class="inline-block w-1 h-1 mt-1.5 mr-2 rounded-full" [ngClass]="'bg-' + accentColor"></span>
+                                        {{responsibility}}
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        
+                        <!-- Habilidades -->
+                        <div>
+                            <h4 class="font-orbitron text-base font-semibold mb-3 flex items-center" [ngClass]="'text-' + accentColor">
+                                <span class="inline-block w-2 h-2 mr-2 rounded-full bg-current"></span>
+                                Habilidades Clave
+                            </h4>
+                            
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 pl-4">
+                                @for (skill of role.skills; track skill) {
+                                    <li class="text-sm text-ghost-gray/90 flex items-start">
+                                        <span class="inline-block w-1 h-1 mt-1.5 mr-2 rounded-full" [ngClass]="'bg-' + accentColor"></span>
+                                        {{skill}}
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Diagrama de interacción -->
+        <div class="max-w-5xl mx-auto mb-16">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-8 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">~</span> Dinámica de Interacción <span [ngClass]="'text-' + accentColor">~</span>
+            </h3>
+            
+            <div class="interaction-diagram relative p-1">
+                <!-- Contenedor de la interacción -->
+                <div class="bg-void-black/40 backdrop-blur-sm border border-plasma-line rounded-lg p-6 md:p-10 relative">
+                    <!-- Esquinas decorativas -->
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t border-r" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l" [ngClass]="'border-' + accentColor"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r" [ngClass]="'border-' + accentColor"></div>
+                    
+                    <!-- Título del diagrama -->
+                    <h4 class="font-orbitron text-lg font-semibold text-center mb-8 text-ghost-gray">
+                        Ecosistema Colaborativo
+                    </h4>
+                    
+                    <!-- Diagrama de interacción -->
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <!-- Círculo del Mentor -->
+                        <div class="text-center">
+                            <div class="w-32 h-32 rounded-full border-2 flex items-center justify-center mb-4 relative"
+                                [ngClass]="'border-' + accentColor">
+                                <fa-icon [icon]="faChalkboardTeacher" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+                                
+                                <!-- Habilidades del mentor alrededor del círculo -->
+                                @for (skill of mentorSkillIcons; track skill.name; let i = $index) {
+                                    <div class="absolute w-10 h-10 rounded-full bg-void-black border flex items-center justify-center mentor-skill-{{i + 1}}"
+                                        [ngClass]="'border-' + accentColor + '/50'">
+                                        <fa-icon [icon]="skill.icon" [ngClass]="'text-' + accentColor" class="text-xs"></fa-icon>
+                                    </div>
+                                }
+                            </div>
+                            <div class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">Mentor</div>
+                        </div>
+                        
+                        <!-- Líneas de conexión -->
+                        <div class="flex-1 relative h-12 hidden md:block">
+                            <!-- Línea superior -->
+                            <div class="absolute left-0 right-0 top-1/3 h-px" [ngClass]="'bg-' + accentColor + '/50'"></div>
+                            
+                            <!-- Línea inferior -->
+                            <div class="absolute left-0 right-0 bottom-1/3 h-px" [ngClass]="'bg-' + accentColor + '/50'"></div>
+                            
+                            <!-- Flechas animadas -->
+                            <div class="absolute left-0 right-0 top-1/3 -translate-y-1/2">
+                                <div class="traveling-data-right" [ngClass]="'bg-' + accentColor"></div>
+                            </div>
+                            <div class="absolute left-0 right-0 bottom-1/3 -translate-y-1/2">
+                                <div class="traveling-data-left" [ngClass]="'bg-' + accentColor"></div>
+                            </div>
+                            
+                            <!-- Etiquetas -->
+                            <div class="absolute left-1/2 -translate-x-1/2 top-1/3 -translate-y-1/2 -mt-4 px-2 py-1 rounded text-xs font-jetbrains"
+                                [ngClass]="'bg-' + accentColor + '/10 text-' + accentColor">
+                                Guía + Desafíos
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 bottom-1/3 -translate-y-1/2 mt-4 px-2 py-1 rounded text-xs font-jetbrains"
+                                [ngClass]="'bg-' + accentColor + '/10 text-' + accentColor">
+                                Feedback + Soluciones
+                            </div>
+                        </div>
+                        
+                        <!-- Círculo del Estudiante -->
+                        <div class="text-center">
+                            <div class="w-32 h-32 rounded-full border-2 flex items-center justify-center mb-4 relative"
+                                [ngClass]="'border-' + accentColor">
+                                <fa-icon [icon]="faUserGraduate" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+                                
+                                <!-- Habilidades del estudiante alrededor del círculo -->
+                                @for (skill of studentSkillIcons; track skill.name; let i = $index) {
+                                    <div class="absolute w-10 h-10 rounded-full bg-void-black border flex items-center justify-center student-skill-{{i + 1}}"
+                                        [ngClass]="'border-' + accentColor + '/50'">
+                                        <fa-icon [icon]="skill.icon" [ngClass]="'text-' + accentColor" class="text-xs"></fa-icon>
+                                    </div>
+                                }
+                            </div>
+                            <div class="font-orbitron text-sm" [ngClass]="'text-' + accentColor">Estudiante</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner de modelo de aprendizaje -->
+        <div class="max-w-4xl mx-auto p-8 border border-plasma-line rounded-lg bg-void-black/40 backdrop-blur-sm relative overflow-hidden">
+            <!-- Efecto de código binario animado -->
+            <div class="binary-code-overlay absolute inset-0 opacity-10 pointer-events-none"></div>
+            
+            <!-- Contenido -->
+            <div class="relative z-10">
+                <h3 class="font-orbitron text-xl font-semibold mb-6 text-center text-ghost-gray">
+                    <span [ngClass]="'text-' + accentColor">&</span> Modelo de Interacción <span [ngClass]="'text-' + accentColor">&</span>
+                </h3>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <!-- Mentor a Estudiante -->
+                    <div class="md:w-1/2">
+                        <h4 class="font-orbitron text-base font-semibold mb-4" [ngClass]="'text-' + accentColor">
+                            De Mentor a Estudiante
+                        </h4>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-ghost-gray/90">
+                                <div class="w-6 h-6 p-2 rounded-full flex items-center justify-center border mt-0.5" 
+                                    [ngClass]="'border-' + accentColor + '/30 text-' + accentColor">1</div>
+                                <div>Proporciona experiencias y escenarios de aprendizaje inmersivos.</div>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-ghost-gray/90">
+                                <div class="w-6 h-6 p-2 rounded-full flex items-center justify-center border mt-0.5" 
+                                    [ngClass]="'border-' + accentColor + '/30 text-' + accentColor">2</div>
+                                <div>Guía el proceso de descubrimiento sin proporcionar todas las respuestas.</div>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-ghost-gray/90">
+                                <div class="w-6 h-6 p-2 rounded-full flex items-center justify-center border mt-0.5" 
+                                    [ngClass]="'border-' + accentColor + '/30 text-' + accentColor">3</div>
+                                <div>Ofrece feedback personalizado enfocado en el crecimiento.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Estudiante a Mentor -->
+                    <div class="md:w-1/2">
+                        <h4 class="font-orbitron text-base font-semibold mb-4" [ngClass]="'text-' + accentColor">
+                            De Estudiante a Mentor
+                        </h4>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-ghost-gray/90">
+                                <div class="w-6 h-6 p-2 rounded-full flex items-center justify-center border mt-0.5" 
+                                    [ngClass]="'border-' + accentColor + '/30 text-' + accentColor">1</div>
+                                <div>Propone soluciones creativas y alternativas a problemas planteados.</div>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-ghost-gray/90">
+                                <div class="w-6 h-6 p-2 rounded-full flex items-center justify-center border mt-0.5" 
+                                    [ngClass]="'border-' + accentColor + '/30 text-' + accentColor">2</div>
+                                <div>Retroalimenta la efectividad de las metodologías de enseñanza.</div>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-ghost-gray/90">
+                                <div class="w-6 h-6 p-2 rounded-full flex items-center justify-center border mt-0.5" 
+                                    [ngClass]="'border-' + accentColor + '/30 text-' + accentColor">3</div>
+                                <div>Comparte conocimientos con la comunidad en un ciclo de aprendizaje peer-to-peer.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

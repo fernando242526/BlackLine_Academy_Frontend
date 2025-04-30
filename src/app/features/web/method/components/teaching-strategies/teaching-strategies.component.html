@@ -1,0 +1,112 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo con efecto de matrix -->
+    <div class="absolute inset-0 z-0 matrix-code opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">03.</span> Estrategias Didácticas
+            </h2>
+
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Implementamos un conjunto diverso de técnicas pedagógicas inspiradas en metodologías de desarrollo de
+                software y prácticas de ciberseguridad para un aprendizaje inmersivo y efectivo.
+            </p>
+        </div>
+
+        <!-- Estrategias Principales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            @for (strategy of strategies; track strategy.title) {
+            <div
+                class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 group hover:border-{{accentColor}}">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center border mr-4"
+                            [ngClass]="'border-' + accentColor + '/30'">
+                            <fa-icon [icon]="strategy.icon" [ngClass]="'text-' + accentColor" class="text-xl"></fa-icon>
+                        </div>
+
+                        <h3
+                            class="font-orbitron text-xl font-semibold text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300">
+                            {{strategy.title}}
+                        </h3>
+                    </div>
+
+                    <p class="text-ghost-gray/80 text-sm mb-4">
+                        {{strategy.description}}
+                    </p>
+
+                    <!-- Lista de beneficios -->
+                    <div class="space-y-2 pl-2 border-l" [ngClass]="'border-' + accentColor + '/30'">
+                        @for (benefit of strategy.benefits; track benefit) {
+                        <div class="text-sm">
+                            <span class="inline-block w-1 h-1 rounded-full mr-2" [ngClass]="'bg-' + accentColor"></span>
+                            <span class="text-ghost-gray/90">{{benefit}}</span>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Barra de progreso decorativa -->
+                <div class="h-1 w-full bg-plasma-line/30 overflow-hidden">
+                    <div class="h-full w-0 group-hover:w-full transition-all duration-1000 ease-out"
+                        [ngClass]="'bg-' + accentColor"></div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Estrategias Complementarias -->
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-8 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">&lt;</span> Estrategias Complementarias <span
+                    [ngClass]="'text-' + accentColor">/&gt;</span>
+            </h3>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                @for (strategy of complementaryStrategies; track strategy.title) {
+                <div
+                    class="bg-void-black border border-plasma-line rounded-full px-6 py-3 transition-all duration-300 hover:border-{{accentColor}} hover:bg-{{accentColor}}/5 flex items-center">
+                    <fa-icon [icon]="strategy.icon" [ngClass]="'text-' + accentColor" class="mr-3"></fa-icon>
+                    <span class="text-ghost-gray">{{strategy.title}}</span>
+                </div>
+                }
+            </div>
+        </div>
+
+        <!-- Cita inspiradora -->
+        <div
+            class="max-w-4xl mx-auto mt-16 p-8 border border-plasma-line rounded-lg bg-void-black/40 backdrop-blur-sm relative">
+            <!-- Decoración de código en el fondo -->
+            <div class="absolute inset-0 opacity-5 overflow-hidden">
+                <pre class="text-xs font-jetbrains p-4 whitespace-pre-wrap">
+def challenge_based_learning(problem, skills, time_limit):
+    solution = analyze_problem(problem)
+    while not is_solved(problem, solution) and time_limit > 0:
+        new_approach = apply_skills(skills, problem)
+        solution = implement(new_approach)
+        feedback = evaluate(solution)
+        solution = refine(solution, feedback)
+        time_limit -= 1
+    return solution, learn_from_process(problem, solution)
+                </pre>
+            </div>
+
+            <blockquote class="relative z-10">
+                <p class="text-lg text-ghost-gray italic mb-4">
+                    "No enseñamos a memorizar; enseñamos a resolver problemas reales utilizando el poder
+                    del pensamiento analítico y la creatividad técnica. En BlackLine Academy, formamos profesionales
+                    que pueden enfrentar cualquier desafío digital."
+                </p>
+                <footer class="text-right" [ngClass]="'text-' + accentColor">
+                    — Equipo Pedagógico de BlackLine
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</section>

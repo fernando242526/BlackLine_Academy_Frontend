@@ -1,0 +1,36 @@
+/* Efecto de código matrix */
+.matrix-code {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 156, 0.05) 40%, 
+    rgba(143, 0, 255, 0.05) 70%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: matrix-fall 60s linear infinite;
+  
+  &::before {
+    content: "function learn() { while(true) { analyze(); understand(); apply(); innovate(); } }";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    color: var(--color-glitch-green);
+    opacity: 0.5;
+  }
+}
+
+@keyframes matrix-fall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}

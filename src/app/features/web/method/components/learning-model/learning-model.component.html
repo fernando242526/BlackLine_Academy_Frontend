@@ -1,0 +1,110 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo decorativo con líneas diagonales -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="w-full h-full">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="diagonalLines" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <line x1="0" y1="0" x2="0" y2="40" [attr.stroke]="accentColor" stroke-opacity="0.5" stroke-width="1" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#diagonalLines)" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <div class="inline-block p-3 mb-4 rounded-full" [ngClass]="'bg-' + accentColor + '/10'">
+                <fa-icon *ngIf="icon" [icon]="icon" [ngClass]="'text-' + accentColor" class="text-3xl"></fa-icon>
+            </div>
+            
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span [ngClass]="'text-' + accentColor">02.</span> Modelo de Aprendizaje
+            </h2>
+            
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Nuestro modelo de aprendizaje cíclico está inspirado en sistemas complejos y procesos de ingeniería 
+                inversa, diseñado para maximizar la retención y aplicación práctica del conocimiento.
+            </p>
+        </div>
+
+        <!-- Ciclo de aprendizaje circular -->
+        <div class="mb-36 flex justify-center my-36">
+            <div class="learning-cycle-container relative w-full!">
+                <!-- Círculo central -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-32 h-32 rounded-full border-2 flex items-center justify-center text-center"
+                        [ngClass]="'border-' + accentColor + ' text-' + accentColor">
+                        <div>
+                            <div class="font-orbitron text-lg font-bold">CICLO</div>
+                            <div class="text-sm">BlackLine</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fases del ciclo -->
+                @for (phase of learningPhases; track phase.id) {
+                    <div class="learning-phase-{{phase.id}} absolute w-72">
+                        <div class="phase-content p-6 bg-void-black/80 backdrop-blur-sm border border-plasma-line rounded-lg transition-all duration-300 hover:border-{{accentColor}}">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center" 
+                                    [ngClass]="'bg-' + accentColor + '/20 text-' + accentColor">
+                                    <div class="font-orbitron font-bold">{{phase.id}}</div>
+                                </div>
+                                <h3 class="font-orbitron text-lg font-semibold ml-3" [ngClass]="'text-' + accentColor">
+                                    {{phase.name}}
+                                </h3>
+                            </div>
+                            <div class="flex items-start">
+                                <fa-icon [icon]="phase.icon" class="mt-1 mr-3" [ngClass]="'text-' + accentColor"></fa-icon>
+                                <p class="text-ghost-gray/80 text-sm">{{phase.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+                <!-- Líneas conectoras -->
+                <svg class="absolute inset-0 w-full h-full cycle-connector" [ngClass]="'text-' + accentColor" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M200,50 L200,100" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" />
+                    <path d="M330,125 L290,154" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" />
+                    <path d="M330,275 L290,246" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" />
+                    <path d="M200,350 L200,300" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" />
+                    <path d="M70,275 L110,246" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" />
+                    <path d="M70,125 L110,154" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Características del Modelo -->
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-orbitron text-2xl font-semibold text-center mb-10 text-ghost-gray">
+                <span [ngClass]="'text-' + accentColor">$</span> Características del Modelo
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @for (feature of modelFeatures; track feature.title) {
+                    <div class="bg-void-black/40 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{accentColor}} relative overflow-hidden group">
+                        <!-- Fondo de hexágono -->
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 hexagon-bg opacity-10"
+                            [ngClass]="'text-' + accentColor"></div>
+                        
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center border mb-4 relative z-10"
+                            [ngClass]="'border-' + accentColor + '/30'">
+                            <fa-icon [icon]="feature.icon" [ngClass]="'text-' + accentColor" class="text-xl"></fa-icon>
+                        </div>
+                        
+                        <h4 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray group-hover:text-{{accentColor}} transition-colors duration-300 relative z-10">
+                            {{feature.title}}
+                        </h4>
+                        
+                        <p class="text-ghost-gray/80 text-sm relative z-10">
+                            {{feature.description}}
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
