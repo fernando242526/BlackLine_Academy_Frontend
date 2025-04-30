@@ -1,0 +1,229 @@
+/* Contenedor del mapa */
+.cyberpunk-map-container {
+  transition: all 0.5s ease;
+}
+
+/* Grid de fondo */
+.map-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 240, 255, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+}
+
+/* Animación de estado de carga */
+.loading-text {
+  animation: pulse 1.5s infinite;
+  letter-spacing: 2px;
+}
+
+.loading-bar {
+  width: 100px;
+  height: 3px;
+  background: rgba(0, 240, 255, 0.2);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-cyber-cyan),
+      transparent
+    );
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Elementos del mapa */
+.map-elements {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+
+  .streets {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='rgba(0, 240, 255, 0.2)' stroke-width='1' d='M10,10 L90,10 L90,90 L10,90 L10,10 M30,10 L30,90 M50,10 L50,90 M70,10 L70,90 M10,30 L90,30 M10,50 L90,50 M10,70 L90,70'/%3E%3C/svg%3E");
+    background-size: 100px 100px;
+  }
+}
+
+/* Marcador de ubicación */
+.location-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 30px;
+  height: 30px;
+  transition: transform 0.5s ease-out 0.8s;
+
+  .marker-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-cyber-cyan);
+    box-shadow: 0 0 10px var(--color-cyber-cyan);
+  }
+
+  .marker-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--color-cyber-cyan);
+    animation: pulse-marker 2s infinite;
+  }
+}
+
+@keyframes pulse-marker {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Etiqueta de ubicación */
+.location-label {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  transition: all 0.5s ease-out 1.2s;
+
+  .label-box {
+    background-color: rgba(11, 12, 16, 0.8);
+    border: 1px solid var(--color-cyber-cyan);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    white-space: nowrap;
+  }
+}
+
+/* Líneas de coordenadas */
+.coordinate-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  .coord-x {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(143, 0, 255, 0.3) 20%,
+      rgba(143, 0, 255, 0.3) 80%,
+      transparent 100%
+    );
+  }
+
+  .coord-y {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(143, 0, 255, 0.3) 20%,
+      rgba(143, 0, 255, 0.3) 80%,
+      transparent 100%
+    );
+  }
+}
+
+/* Clases para animaciones */
+.marker-appear {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+.label-appear {
+  transform: translateX(-50%) translateY(0) !important;
+  opacity: 1 !important;
+}
+
+/* Transiciones para el mapa */
+[ngClass] {
+  transition: opacity 0.8s ease;
+}
+
+/* Animación de código */
+.code-animation {
+  .type-line {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(30, end);
+  }
+
+  .type-line:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .type-line:nth-child(2) {
+    animation-delay: 0.8s;
+  }
+  .type-line:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+  .type-line:nth-child(4) {
+    animation-delay: 2.2s;
+  }
+  .type-line:nth-child(5) {
+    animation-delay: 2.8s;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

@@ -1,0 +1,45 @@
+/* Efecto de scanner */
+.scanner-effect {
+  height: 10px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    currentColor,
+    transparent
+  );
+  animation: scan 1.5s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+/* Efecto de glitch en borde */
+.glitch-border {
+  clip-path: inset(0);
+  animation: glitch-border 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-border {
+  0%,
+  100% {
+    clip-path: inset(0);
+  }
+  20% {
+    clip-path: inset(20% 0 0 0);
+  }
+  40% {
+    clip-path: inset(0 20% 0 0);
+  }
+  60% {
+    clip-path: inset(0 0 20% 0);
+  }
+  80% {
+    clip-path: inset(0 0 0 20%);
+  }
+}

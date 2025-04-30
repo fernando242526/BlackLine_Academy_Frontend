@@ -1,0 +1,41 @@
+/* Fondo con patrón de hexágonos */
+.hexagon-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 28 49' fill='none'%3E%3Cpath d='M14 1.732L26.5 9.464V24.93L14 32.66L1.5 24.93V9.464L14 1.732Z' stroke='%2300f0ff' stroke-opacity='0.3' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  animation: floating-bg 20s linear infinite;
+}
+
+@keyframes floating-bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 150px 150px;
+  }
+}
+
+/* Efecto de brillo para las líneas */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Animación de rebote para el indicador de scroll */
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}

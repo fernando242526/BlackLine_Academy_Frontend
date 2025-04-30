@@ -1,0 +1,113 @@
+<div
+    class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 hover:border-{{certification.color}} hover:shadow-glow-{{certification.color}} group h-full flex flex-col">
+    <!-- Cabecera de la tarjeta -->
+    <div class="relative">
+        <!-- Badge de certificación -->
+        <div class="p-6 pt-8 flex items-center justify-center">
+            <div
+                class="w-20 h-20 rounded-full bg-{{certification.color}}/10 flex items-center justify-center border border-{{certification.color}}/50 relative glow-badge">
+                <fa-icon [icon]="certification.icon" class="text-{{certification.color}} text-3xl z-10"></fa-icon>
+            </div>
+        </div>
+
+        <!-- Etiquetas -->
+        <div class="absolute top-2 left-2 flex gap-2">
+            @if (certification.new) {
+            <span
+                class="bg-cyber-cyan text-void-black text-xs uppercase font-bold px-2 py-1 rounded-sm flex items-center">
+                <fa-icon [icon]="faStarOfLife" class="mr-1"></fa-icon>
+                Nuevo
+            </span>
+            }
+
+            @if (certification.popular) {
+            <span
+                class="bg-neon-violet text-void-black text-xs uppercase font-bold px-2 py-1 rounded-sm flex items-center">
+                <fa-icon [icon]="faFire" class="mr-1"></fa-icon>
+                Popular
+            </span>
+            }
+        </div>
+
+        <!-- Descuento -->
+        @if (discountPercentage > 0) {
+        <div class="absolute top-2 right-2">
+            <span
+                class="bg-glitch-green text-void-black text-xs uppercase font-bold px-2 py-1 rounded-sm flex items-center">
+                <fa-icon [icon]="faTag" class="mr-1"></fa-icon>
+                {{discountPercentage}}% OFF
+            </span>
+        </div>
+        }
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="p-6 pt-0 flex-grow">
+        <!-- Título -->
+        <h3
+            class="font-orbitron text-xl font-semibold mb-2 group-hover:text-{{certification.color}} transition-colors duration-300">
+            {{certification.title}}
+        </h3>
+
+        <!-- Descripción -->
+        <p class="text-ghost-gray/80 text-sm mb-4">
+            {{certification.description}}
+        </p>
+
+        <!-- Información básica -->
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <!-- Duración -->
+            <div class="flex items-center text-sm text-ghost-gray/70">
+                <fa-icon [icon]="faClock" class="mr-2 text-{{certification.color}}"></fa-icon>
+                <span>{{certification.duration}}</span>
+            </div>
+
+            <!-- Nivel -->
+            <div class="flex items-center text-sm">
+                <fa-icon [icon]="faGraduationCap" class="mr-2 text-{{certification.color}}"></fa-icon>
+                <span class="text-{{certification.levelColor}}">{{certification.level}}</span>
+            </div>
+        </div>
+
+        <!-- Industrias relevantes -->
+        <div class="mb-6">
+            <div class="text-xs text-ghost-gray/70 mb-2">Industrias relevantes:</div>
+            <div class="flex flex-wrap gap-2">
+                @for (industry of getIndustries(); track industry) {
+                <span class="text-xs px-2 py-1 bg-void-black border border-plasma-line rounded-sm">
+                    {{industry}}
+                </span>
+                }
+
+                @if (hasMoreIndustries()) {
+                <span class="text-xs px-2 py-1 bg-void-black border border-plasma-line rounded-sm">
+                    +{{getMoreIndustriesCount()}} más
+                </span>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de tarjeta -->
+    <div class="p-6 border-t border-plasma-line mt-auto">
+        <div class="flex justify-between items-center">
+            <!-- Precios -->
+            <div>
+                @if (certification.discountPrice) {
+                <div class="flex items-center">
+                    <span class="text-ghost-gray/60 line-through text-sm mr-2">${{certification.price}}</span>
+                    <span class="text-ghost-gray font-orbitron text-lg">${{certification.discountPrice}}</span>
+                </div>
+                } @else {
+                <span class="text-ghost-gray font-orbitron text-lg">${{certification.price}}</span>
+                }
+            </div>
+
+            <!-- Botón de detalles -->
+            <a [routerLink]="['/certificaciones', certification.slug]"
+                class="px-4 py-2 rounded border text-{{certification.color}} border-{{certification.color}} text-sm hover:bg-{{certification.color}}/10 transition-colors duration-300">
+                Ver detalles
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<section class="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">
+    <!-- Fondo con efecto de hexágonos -->
+    <div class="absolute inset-0 z-0 hexagon-bg opacity-10"></div>
+
+    <!-- Capa de gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-b from-void-black/30 via-void-black/70 to-void-black z-0"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Título principal -->
+            <div class="mb-6">
+                <fa-icon [icon]="faAward" class="text-neon-violet text-5xl mb-4 mr-4"></fa-icon>
+                <h1 class="font-orbitron text-5xl md:text-6xl font-bold tracking-wider mb-4 glitch-slice"
+                    data-text="CERTIFICACIONES">
+                    <span class="text-cyber-cyan">CERTIFI</span><span class="text-neon-violet">CACIONES</span>
+                </h1>
+            </div>
+
+            <!-- Subtítulo -->
+            <p class="text-xl md:text-2xl mb-6 text-ghost-gray font-jetbrains">
+                <span class="text-cyber-cyan">Potencia tu perfil profesional</span>
+            </p>
+
+            <!-- Descripción -->
+            <p class="text-base md:text-lg text-ghost-gray/90 max-w-3xl mx-auto mb-8">
+                Las certificaciones de BlackLine Academy son reconocidas por las principales empresas del sector
+                tecnológico.
+                Valida tus habilidades y destaca en el mercado laboral con credenciales que demuestran tu expertise.
+            </p>
+
+            <!-- Características destacadas -->
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <div
+                    class="flex items-center bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-3 px-4">
+                    <fa-icon [icon]="faGraduationCap" class="text-cyber-cyan mr-3"></fa-icon>
+                    <span class="text-ghost-gray text-sm">Reconocimiento de la industria</span>
+                </div>
+
+                <div
+                    class="flex items-center bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-3 px-4">
+                    <fa-icon [icon]="faAward" class="text-neon-violet mr-3"></fa-icon>
+                    <span class="text-ghost-gray text-sm">Credenciales verificables</span>
+                </div>
+
+                <div
+                    class="flex items-center bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-3 px-4">
+                    <span class="text-cyber-cyan mr-3">%</span>
+                    <span class="text-ghost-gray text-sm">Acceso a descuentos exclusivos</span>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="animate-bounce">
+                <fa-icon [icon]="faChevronDown" class="text-cyber-cyan"></fa-icon>
+            </div>
+        </div>
+    </div>
+
+    <!-- Líneas decorativas -->
+    <div class="absolute inset-0 pointer-events-none z-0">
+        <div
+            class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyber-cyan/30 to-transparent transform -translate-y-28">
+        </div>
+        <div
+            class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-neon-violet/30 to-transparent transform translate-y-28">
+        </div>
+    </div>
+</section>

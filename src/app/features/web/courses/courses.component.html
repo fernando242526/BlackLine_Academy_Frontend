@@ -1,1 +1,334 @@
-<p>courses works!</p>
+<div class="min-h-screen bg-void-black text-ghost-gray">
+    <!-- Header de cursos -->
+    <section class="relative py-20 overflow-hidden">
+        <!-- Fondo con patrón de cuadrícula -->
+        <div class="absolute inset-0 z-0 grid-pattern opacity-5"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="font-orbitron text-4xl md:text-5xl font-bold tracking-wider mb-6 glitch-slice"
+                    data-text="CURSOS">
+                    <span class="text-cyber-cyan">CUR</span><span class="text-neon-violet">SOS</span>
+                </h1>
+
+                <p class="text-ghost-gray/80 text-lg mb-8">
+                    Explora nuestro catálogo de cursos diseñados para llevarte desde los fundamentos
+                    hasta el dominio experto en las tecnologías más revolucionarias del mundo digital.
+                </p>
+
+                <!-- Barra de búsqueda -->
+                <div class="relative max-w-2xl mx-auto">
+                    <input type="text" placeholder="Busca por tema o tecnología..."
+                        class="form-input pl-12! pr-4 py-3 w-full bg-void-black/60 border border-plasma-line rounded-lg focus:border-cyber-cyan transition-all"
+                        [(ngModel)]="searchInput" (input)="onSearchInput($event)">
+                    <fa-icon [icon]="faSearch"
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-ghost-gray/50"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección principal de cursos -->
+    <section class="py-10 bg-void-black">
+        <div class="container mx-auto px-4">
+            <!-- Panel de filtros y opciones -->
+            <div class="flex flex-wrap justify-between items-center mb-8">
+                <!-- Botón de filtros para móvil -->
+                <button (click)="toggleFilters()" class="btn-secondary btn-sm mb-4 md:mb-0 flex items-center gap-2">
+                    <fa-icon [icon]="faFilter"></fa-icon>
+                    <span>Filtros</span>
+                    <fa-icon [icon]="faChevronDown" class="ml-1 transition-transform duration-300"
+                        [ngClass]="{'rotate-180': showFilters()}"></fa-icon>
+                </button>
+
+                <!-- Selector de ordenamiento -->
+                <div class="flex items-center">
+                    <span class="text-ghost-gray/80 mr-2">Ordenar por:</span>
+                    <select [(ngModel)]="currentSortOption" (change)="onSortChange($event)"
+                        class="form-input bg-void-black border border-plasma-line rounded-md py-2 pl-3 pr-10 appearance-none cursor-pointer focus:border-cyber-cyan transition-all">
+                        <option value="newest">Más recientes</option>
+                        <option value="oldest">Más antiguos</option>
+                        <option value="price-low">Precio: menor a mayor</option>
+                        <option value="price-high">Precio: mayor a menor</option>
+                        <option value="rating">Mejor valorados</option>
+                        <option value="popularity">Más populares</option>
+                    </select>
+                    <fa-icon [icon]="faSort" class="ml-2 text-ghost-gray/50"></fa-icon>
+                </div>
+            </div>
+
+            <!-- Panel de filtros expandible -->
+            <div class="mb-10 bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 overflow-hidden transition-all duration-500"
+                [ngClass]="{'max-h-0 p-0 border-transparent opacity-0': !showFilters(), 'max-h-[1000px] opacity-100': showFilters()}">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Filtro de categorías -->
+                    <div>
+                        <h3 class="font-orbitron text-base font-semibold mb-4 text-ghost-gray">
+                            <span class="text-cyber-cyan">></span> Categorías
+                        </h3>
+
+                        <div class="space-y-2 pl-2">
+                            <div class="flex items-center justify-between cursor-pointer transition-colors duration-300 hover:text-cyber-cyan"
+                                [ngClass]="{'text-cyber-cyan font-semibold': selectedCategory() === null}"
+                                (click)="setCategory(null)">
+                                <span>Todas las categorías</span>
+                                <span class="text-xs opacity-70">{{courses.length}}</span>
+                            </div>
+
+                            @for (category of categories; track category.id) {
+                            <div>
+                                <div class="flex items-center justify-between cursor-pointer transition-colors duration-300 hover:text-cyber-cyan"
+                                    [ngClass]="{'text-cyber-cyan font-semibold': selectedCategory() === category.id}"
+                                    (click)="setCategory(category.id)">
+                                    <span>{{category.name}}</span>
+                                    <span class="text-xs opacity-70">{{category.coursesCount}}</span>
+                                </div>
+
+                                <!-- Subcategorías (si hay categoría seleccionada) -->
+                                @if (selectedCategory() === category.id && category.subCategories &&
+                                category.subCategories.length > 0) {
+                                <div class="pl-4 mt-2 space-y-2 border-l border-plasma-line">
+                                    @for (subCategory of category.subCategories; track subCategory.id) {
+                                    <div class="flex items-center justify-between cursor-pointer transition-colors duration-300 hover:text-neon-violet"
+                                        [ngClass]="{'text-neon-violet font-semibold': selectedSubCategory() === subCategory.id}"
+                                        (click)="setSubCategory(subCategory.id)">
+                                        <span>{{subCategory.name}}</span>
+                                        <span class="text-xs opacity-70">{{subCategory.coursesCount}}</span>
+                                    </div>
+                                    }
+                                </div>
+                                }
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Filtro de niveles -->
+                    <div>
+                        <h3 class="font-orbitron text-base font-semibold mb-4 text-ghost-gray">
+                            <span class="text-cyber-cyan">></span> Nivel
+                        </h3>
+
+                        <div class="space-y-2 pl-2">
+                            <div class="flex items-center justify-between cursor-pointer transition-colors duration-300 hover:text-cyber-cyan"
+                                [ngClass]="{'text-cyber-cyan font-semibold': selectedLevel() === null}"
+                                (click)="setLevel(null)">
+                                <span>Todos los niveles</span>
+                            </div>
+
+                            @for (level of levels; track level.id) {
+                            <div class="flex items-center justify-between cursor-pointer transition-colors duration-300"
+                                [ngClass]="{'font-semibold': selectedLevel() === level.id}"
+                                [class]="selectedLevel() === level.id ? 'text-' + level.color : 'hover:text-' + level.color"
+                                (click)="setLevel(level.id)">
+                                <span>{{level.name}}</span>
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Filtros adicionales -->
+                    <div>
+                        <h3 class="font-orbitron text-base font-semibold mb-4 text-ghost-gray">
+                            <span class="text-cyber-cyan">></span> Características
+                        </h3>
+
+                        <div class="space-y-3 pl-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="featured" class="form-checkbox mr-2">
+                                <label for="featured" class="cursor-pointer">
+                                    <span class="text-glitch-green flex items-center">
+                                        <fa-icon [icon]="faBookmark" class="mr-2"></fa-icon>
+                                        Destacados
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input type="checkbox" id="new" class="form-checkbox mr-2">
+                                <label for="new" class="cursor-pointer">
+                                    <span class="text-cyber-cyan flex items-center">
+                                        <fa-icon [icon]="faAward" class="mr-2"></fa-icon>
+                                        Nuevos
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input type="checkbox" id="trending" class="form-checkbox mr-2">
+                                <label for="trending" class="cursor-pointer">
+                                    <span class="text-neon-violet flex items-center">
+                                        <fa-icon [icon]="faFire" class="mr-2"></fa-icon>
+                                        Tendencia
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Botón para limpiar filtros -->
+                            <div class="mt-6">
+                                <button (click)="clearFilters()"
+                                    class="w-full py-2 px-4 border border-plasma-line rounded text-ghost-gray/70 hover:border-critical-red hover:text-critical-red transition-colors duration-300">
+                                    Limpiar filtros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuadrícula de cursos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                @for (course of courses; track course.id) {
+                <div
+                    class="course-card bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg overflow-hidden transition-all duration-300 group">
+                    <!-- Imagen del curso -->
+                    <div class="relative overflow-hidden h-48">
+                        <img [src]="course.imageUrl" [alt]="course.title"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+
+                        <!-- Etiquetas especiales -->
+                        <div class="absolute top-0 left-0 p-2 flex gap-2">
+                            @if (course.isNew) {
+                            <span
+                                class="bg-cyber-cyan text-void-black text-xs uppercase font-bold px-2 py-1 rounded-sm flex items-center">
+                                <fa-icon [icon]="faAward" class="mr-1"></fa-icon>
+                                Nuevo
+                            </span>
+                            }
+
+                            @if (course.isTrending) {
+                            <span
+                                class="bg-neon-violet text-void-black text-xs uppercase font-bold px-2 py-1 rounded-sm flex items-center">
+                                <fa-icon [icon]="faFire" class="mr-1"></fa-icon>
+                                Tendencia
+                            </span>
+                            }
+                        </div>
+
+                        <!-- Nivel del curso -->
+                        <div class="absolute bottom-0 right-0 p-2">
+                            <span [ngClass]="'bg-' + course.levelColor + '/20 text-' + course.levelColor"
+                                class="text-xs uppercase font-bold px-2 py-1 rounded-sm">
+                                {{course.level}}
+                            </span>
+                        </div>
+
+                        <!-- Efecto de escaneo -->
+                        <div
+                            [ngClass]="'absolute inset-0 bg-' + course.levelColor + '/10 translate-y-full group-hover:translate-y-0 transition-transform duration-1000 pointer-events-none'">
+                        </div>
+                    </div>
+
+                    <!-- Contenido del curso -->
+                    <div class="p-6">
+                        <!-- Categoría -->
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs text-ghost-gray/70">{{course.category}} / {{course.subCategory}}</span>
+
+                            @if (course.discountPrice) {
+                            <span class="text-xs text-glitch-green flex items-center">
+                                <fa-icon [icon]="faTag" class="mr-1"></fa-icon>
+                                {{getDiscountPercentage(course.price, course.discountPrice)}}% OFF
+                            </span>
+                            }
+                        </div>
+
+                        <!-- Título -->
+                        <h3 [ngClass]="'font-orbitron text-xl font-semibold mb-3 line-clamp-2 group-hover:text-' + course.levelColor"
+                            class="transition-colors duration-300">
+                            {{course.title}}
+                        </h3>
+
+                        <!-- Descripción corta -->
+                        <p class="text-ghost-gray/80 text-sm mb-4 line-clamp-2">
+                            {{course.shortDescription || course.description}}
+                        </p>
+
+                        <!-- Instructor -->
+                        <div class="flex items-center mb-4">
+                            <img [src]="course.instructorAvatar || 'https://placehold.co/50x50/292d35/e0e0e0?text=?'"
+                                [alt]="course.instructorName" class="w-8 h-8 rounded-full mr-2"
+                                [ngClass]="'border border-' + course.levelColor + '/30'">
+                            <span class="text-xs text-ghost-gray/90">{{course.instructorName}}</span>
+                        </div>
+
+                        <!-- Línea separadora -->
+                        <div class="border-t border-plasma-line mb-4"></div>
+
+                        <!-- Estadísticas del curso -->
+                        <div class="flex justify-between items-center mb-4">
+                            <!-- Calificación -->
+                            <div class="flex items-center">
+                                @for (star of getRatingStars(course.rating); track $index) {
+                                <fa-icon [icon]="faStar" [ngClass]="{
+                          'text-prisma-amber': star === 1,
+                          'text-prisma-amber-half': star === 0.5,
+                          'text-ghost-gray/30': star === 0
+                        }" class="text-sm"></fa-icon>
+                                }
+                                <span class="ml-1 text-xs text-ghost-gray/90">{{course.rating}}</span>
+                            </div>
+
+                            <!-- Número de estudiantes -->
+                            <div class="flex items-center text-xs text-ghost-gray/70">
+                                <fa-icon [icon]="faUsers" class="mr-1"></fa-icon>
+                                {{course.studentsCount}}
+                            </div>
+
+                            <!-- Duración -->
+                            <div class="flex items-center text-xs text-ghost-gray/70">
+                                <fa-icon [icon]="faClock" class="mr-1"></fa-icon>
+                                {{course.duration}}
+                            </div>
+                        </div>
+
+                        <!-- Precio y botón -->
+                        <div class="flex justify-between items-center">
+                            <div>
+                                @if (course.discountPrice) {
+                                <div class="flex items-center">
+                                    <span class="text-ghost-gray/60 line-through text-sm mr-2">${{course.price}}</span>
+                                    <span class="text-ghost-gray font-orbitron text-lg">${{course.discountPrice}}</span>
+                                </div>
+                                } @else {
+                                <span class="text-ghost-gray font-orbitron text-lg">${{course.price}}</span>
+                                }
+                            </div>
+
+                            <a [routerLink]="['/cursos', course.slug]"
+                                [ngClass]="'border-' + course.levelColor + ' text-' + course.levelColor + ' hover:bg-' + course.levelColor + '/10'"
+                                class="px-4 py-2 rounded border text-sm transition-colors duration-300">
+                                Ver curso
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <!-- Paginación -->
+            <div class="flex justify-center">
+                <div class="inline-flex border border-plasma-line rounded-md overflow-hidden">
+                    <button
+                        class="px-4 py-2 border-r border-plasma-line text-ghost-gray hover:bg-void-black/30 transition-colors duration-300">
+                        &lt;
+                    </button>
+                    <button class="px-4 py-2 border-r border-plasma-line bg-cyber-cyan text-void-black font-bold">
+                        1
+                    </button>
+                    <button
+                        class="px-4 py-2 border-r border-plasma-line text-ghost-gray hover:bg-void-black/30 transition-colors duration-300">
+                        2
+                    </button>
+                    <button
+                        class="px-4 py-2 border-r border-plasma-line text-ghost-gray hover:bg-void-black/30 transition-colors duration-300">
+                        3
+                    </button>
+                    <button class="px-4 py-2 text-ghost-gray hover:bg-void-black/30 transition-colors duration-300">
+                        &gt;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,38 @@
+<section class="relative h-[50vh] min-h-[400px] flex items-center overflow-hidden">
+    <!-- Fondo con efecto de partículas -->
+    <div class="absolute inset-0 z-0">
+        <app-particle-background></app-particle-background>
+        <div class="absolute inset-0 bg-gradient-to-b from-void-black/50 via-void-black/70 to-void-black"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Título principal con efecto glitch -->
+            <h1 class="font-orbitron text-5xl md:text-6xl font-bold tracking-wider mb-6 glitch-slice"
+                data-text="CONTACTO">
+                <span class="text-cyber-cyan">CON</span><span class="text-neon-violet">TACTO</span>
+            </h1>
+
+            <!-- Subtítulo -->
+            <p class="text-xl md:text-2xl mb-6 text-ghost-gray font-jetbrains">
+                <span class="text-cyber-cyan">Conecta directamente con nuestro equipo</span>
+            </p>
+
+            <!-- Descripción principal -->
+            <p class="text-base md:text-lg text-ghost-gray/90 max-w-3xl mx-auto">
+                Estamos a tu disposición para responder cualquier pregunta, discutir tus necesidades
+                de aprendizaje o ayudarte a iniciar tu viaje en BlackLine Academy.
+            </p>
+        </div>
+    </div>
+
+    <!-- Líneas diagonales decorativas -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div
+            class="absolute -left-10 top-0 w-1 h-full bg-gradient-to-b from-transparent via-cyber-cyan/30 to-transparent transform -rotate-45 opacity-30">
+        </div>
+        <div
+            class="absolute -right-10 top-0 w-1 h-full bg-gradient-to-b from-transparent via-neon-violet/30 to-transparent transform rotate-45 opacity-30">
+        </div>
+    </div>
+</section>

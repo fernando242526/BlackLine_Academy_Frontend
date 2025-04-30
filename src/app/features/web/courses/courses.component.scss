@@ -1,0 +1,75 @@
+/* Patrón de cuadrícula para el fondo */
+.grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 240, 255, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Estilo para las estrellas a la mitad */
+.text-prisma-amber-half {
+  position: relative;
+  color: var(--color-ghost-gray);
+  opacity: 0.3;
+
+  &::before {
+    content: "\f005"; /* Código unicode para la estrella en Font Awesome */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: var(--color-prisma-amber);
+    opacity: 1;
+  }
+}
+
+/* Efecto hover para las tarjetas de curso */
+.course-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-cyber-cyan);
+  }
+}
+
+/* Transición suave para el panel de filtros */
+[ngClass*="max-h-"] {
+  transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Estilizar el checkbox personalizado */
+.form-checkbox {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--color-plasma-line);
+  border-radius: 0.25rem;
+  background-color: var(--color-void-black);
+
+  &:checked {
+    background-color: var(--color-cyber-cyan);
+    border-color: var(--color-cyber-cyan);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%230b0c10'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-cyber-cyan);
+    box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.3);
+  }
+}
+
+/* Límite de líneas para descripciones */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
