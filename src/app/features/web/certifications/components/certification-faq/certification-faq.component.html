@@ -1,1 +1,51 @@
-<p>certification-faq works!</p>
+<section class="py-24 bg-void-black relative overflow-hidden">
+    <!-- Fondo decorativo -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="matrix-code"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span class="text-neon-violet">FAQ</span> | Preguntas Frecuentes
+            </h2>
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Respuestas a las dudas más comunes sobre nuestros programas de certificación
+            </p>
+        </div>
+
+        <!-- Acordeón de FAQs -->
+        <div class="max-w-3xl mx-auto">
+            @for (item of faqItems; track item.id) {
+            <div class="mb-5 last:mb-0">
+                <div (click)="toggleItem(item.id)"
+                    class="flex justify-between items-center p-5 rounded-t-lg border cursor-pointer transition-colors duration-300"
+                    [ngClass]="isItemOpen(item.id) ? 
+                'border-cyber-cyan bg-void-black text-cyber-cyan' : 
+                'border-plasma-line bg-void-black/60 text-ghost-gray hover:border-cyber-cyan/50 hover:text-cyber-cyan'">
+                    <h3 class="font-orbitron text-lg">{{ item.question }}</h3>
+                    <fa-icon [icon]="isItemOpen(item.id) ? faChevronUp : faChevronDown"
+                        class="text-sm transition-transform duration-300"
+                        [ngClass]="isItemOpen(item.id) ? 'transform rotate-180' : ''"></fa-icon>
+                </div>
+
+                @if (isItemOpen(item.id)) {
+                <div
+                    class="border border-t-0 border-plasma-line rounded-b-lg p-5 bg-void-black/80 faq-content animate-slide-down">
+                    <p class="text-ghost-gray/90">{{ item.answer }}</p>
+                </div>
+                }
+            </div>
+            }
+        </div>
+
+        <!-- Otras preguntas -->
+        <div class="text-center mt-12">
+            <p class="text-ghost-gray mb-4">¿No encontraste respuesta a tu pregunta?</p>
+            <a routerLink="/contact" class="btn-secondary inline-flex items-center">
+                Contáctanos
+            </a>
+        </div>
+    </div>
+</section>
