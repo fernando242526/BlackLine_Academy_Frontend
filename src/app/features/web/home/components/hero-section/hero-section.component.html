@@ -52,8 +52,9 @@
 
             <!-- Contador de estadísticas -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 text-center">
-                <div *ngFor="let stat of statistics"
-                    class="bg-void-black p-4 rounded-lg border border-plasma-line relative overflow-hidden group">
+                @for (stat of statistics; track $index) {
+
+                <div class="bg-void-black p-4 rounded-lg border border-plasma-line relative overflow-hidden group">
                     <!-- Efecto glitch en el borde al hacer hover -->
                     <div
                         class="absolute -inset-[1px] bg-gradient-to-r from-transparent via-{{stat.color}}/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -65,6 +66,7 @@
                     </span>
                     <span class="text-ghost-gray text-sm">{{ stat.label }}</span>
                 </div>
+                }
             </div>
         </div>
     </div>

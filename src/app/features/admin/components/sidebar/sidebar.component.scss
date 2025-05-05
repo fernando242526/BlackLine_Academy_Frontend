@@ -1,0 +1,10 @@
+/* Transición suave para expandir/colapsar */
+:host {
+  display: block;
+  transition: width 0.3s ease;
+}
+
+/* Ajuste para el posicionamiento de submenús en modo colapsado */
+.absolute.left-20 {
+  margin-top: -2.5rem;
+}

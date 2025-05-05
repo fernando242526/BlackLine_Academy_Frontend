@@ -1,0 +1,126 @@
+<aside class="h-screen bg-void-black border-r border-plasma-line transition-all duration-300 overflow-hidden relative"
+    [ngClass]="isSidebarCollapsed() ? 'w-20' : 'w-64'">
+    <!-- Logo y encabezado -->
+    <div class="flex items-center justify-between p-4 border-b border-plasma-line">
+        <div class="flex items-center">
+            <!-- Logo -->
+            <div class="w-10 h-10 rounded flex items-center justify-center bg-neon-violet/10">
+                <span class="text-neon-violet font-orbitron text-lg font-bold">B</span>
+            </div>
+
+            <!-- Nombre que desaparece al colapsar -->
+            @if (!isSidebarCollapsed()) {
+            <h1 class="text-ghost-gray font-orbitron text-base ml-3">
+                BlackLine <span class="text-neon-violet">Admin</span>
+            </h1>
+            }
+        </div>
+
+        <!-- Botón de colapsar -->
+        <button (click)="toggleSidebar()"
+            class="w-8 h-8 flex items-center justify-center text-ghost-gray/70 hover:text-neon-violet rounded-md focus:outline-none transition-colors duration-200">
+            @if (isSidebarCollapsed()) {
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd" />
+            </svg>
+            } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clip-rule="evenodd" />
+            </svg>
+            }
+        </button>
+    </div>
+
+    <!-- Menú de navegación -->
+    <nav class="mt-6 px-2 -z-10 overflow-y-auto">
+        <ul class="space-y-1">
+            @for (item of menuItems(); track item.label; let i = $index) {
+            <li>
+                <!-- Elemento padre del menú -->
+                <div [ngClass]="{
+              'border-l-2 border-neon-violet bg-void-black': item.active,
+              'border-l-2 border-transparent': !item.active
+            }" class="flex items-center px-3 py-2.5 text-ghost-gray hover:bg-plasma-line/20 rounded-md cursor-pointer transition-all duration-200"
+                    (click)="item.children ? toggleMenuItem(i) : navigateTo(item.route || '')">
+                    <!-- Icono -->
+                    <span class="w-8 h-8 flex items-center justify-center text-lg"
+                        [ngClass]="{'text-neon-violet': item.active, 'text-ghost-gray/70': !item.active}">
+                        <fa-icon [icon]="item.icon"></fa-icon>
+                    </span>
+
+                    <!-- Etiqueta que desaparece al colapsar -->
+                    @if (!isSidebarCollapsed()) {
+                    <span class="ml-2 font-inter text-sm"
+                        [ngClass]="{'text-neon-violet': item.active, 'text-ghost-gray': !item.active}">
+                        {{ item.label }}
+                    </span>
+
+                    <!-- Flecha desplegable para items con submenús -->
+                    @if (item.children) {
+                    <fa-icon [icon]="faChevronDown"
+                        class="ml-auto text-ghost-gray/50 transition-transform duration-200 text-xs"
+                        [ngClass]="{'transform rotate-180': item.expanded}"></fa-icon>
+                    }
+                    }
+                </div>
+
+                <!-- Submenú desplegable -->
+                @if (item.children && !isSidebarCollapsed() && item.expanded) {
+                <ul class="mt-1 ml-10 space-y-1">
+                    @for (child of item.children; track child.label) {
+                    <li (click)="navigateTo(child.route || '')"
+                        class="flex items-center px-3 py-2 rounded-md cursor-pointer transition-all duration-200 hover:bg-plasma-line/10"
+                        [ngClass]="{'text-cyber-cyan': child.active, 'text-ghost-gray/60': !child.active}">
+                        <div class="w-1 h-1 rounded-full mr-2"
+                            [ngClass]="{'bg-cyber-cyan': child.active, 'bg-ghost-gray/40': !child.active}">
+                        </div>
+                        <span class="text-sm">{{ child.label }}</span>
+                    </li>
+                    }
+                </ul>
+                }
+
+                <!-- Versión colapsada para submenús -->
+                @if (item.children && isSidebarCollapsed() && item.expanded) {
+                <ul
+                    class="absolute left-20 top-0 z-20 mt-0 bg-void-black border border-plasma-line rounded-md py-2 min-w-48 shadow-lg">
+                    <li class="px-3 py-2 text-neon-violet border-b border-plasma-line/50 font-orbitron text-sm">
+                        {{ item.label }}
+                    </li>
+                    @for (child of item.children; track child.label) {
+                    <li (click)="navigateTo(child.route || '')"
+                        class="flex items-center px-3 py-2 cursor-pointer transition-all duration-200 hover:bg-plasma-line/10"
+                        [ngClass]="{'text-cyber-cyan': child.active, 'text-ghost-gray/60': !child.active}">
+                        <div class="w-1 h-1 rounded-full mr-2"
+                            [ngClass]="{'bg-cyber-cyan': child.active, 'bg-ghost-gray/40': !child.active}">
+                        </div>
+                        <span class="text-sm">{{ child.label }}</span>
+                    </li>
+                    }
+                </ul>
+                }
+            </li>
+            }
+        </ul>
+    </nav>
+
+    <!-- Pie del sidebar - Logout -->
+    <div class="absolute bottom-0 left-0 right-0 p-2 border-t border-plasma-line z-10 bg-void-black">
+        <button (click)="logout()"
+            class="w-full flex items-center px-3 py-2.5 text-ghost-gray hover:bg-critical-red/10 hover:text-critical-red rounded-md cursor-pointer transition-all duration-200"
+            [ngClass]="{'justify-center': isSidebarCollapsed()}"
+            >
+            <span class="w-8 h-8 flex items-center justify-center text-lg">
+                <fa-icon [icon]="faSignOutAlt"></fa-icon>
+            </span>
+
+            @if (!isSidebarCollapsed()) {
+            <span class="ml-2 font-inter text-sm">Cerrar sesión</span>
+            }
+        </button>
+    </div>
+</aside>

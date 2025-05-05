@@ -37,10 +37,10 @@
                             <!-- Mensaje de estado -->
                             @if (formStateMessage()) {
                             <div [ngClass]="{
-                      'bg-glitch-green/10 border-glitch-green text-glitch-green': formSubmitState() === 'success',
-                      'bg-critical-red/10 border-critical-red text-critical-red': formSubmitState() === 'error',
-                      'bg-pulse-violet/10 border-pulse-violet text-pulse-violet': formSubmitState() === 'submitting'
-                    }" class="mt-6 p-4 border rounded-lg flex items-center gap-3">
+                                'bg-glitch-green/10 border-glitch-green text-glitch-green': formSubmitState() === 'success',
+                                'bg-critical-red/10 border-critical-red text-critical-red': formSubmitState() === 'error',
+                                'bg-pulse-violet/10 border-pulse-violet text-pulse-violet': formSubmitState() === 'submitting'
+                                }" class="mt-6 p-4 border rounded-lg flex items-center gap-3">
 
                                 @if (formSubmitState() === 'submitting') {
                                 <fa-icon [icon]="faCircleNotch" class="animate-spin"></fa-icon>
