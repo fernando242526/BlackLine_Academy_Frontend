@@ -1,1 +1,63 @@
-<p>certifications works!</p>
+<div class="min-h-screen bg-void-black text-ghost-gray">
+    <!-- Cabecera de la página -->
+    <app-certification-header></app-certification-header>
+
+    <!-- Sección de certificaciones -->
+    <section class="py-16 bg-void-black relative overflow-hidden">
+        <!-- Fondo decorativo -->
+        <div class="absolute inset-0 z-0 tech-grid opacity-5"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Título de sección -->
+            <div class="text-center mb-12">
+                <span
+                    class="inline-block px-3 py-1 bg-neon-violet/10 text-neon-violet text-sm font-bold rounded-full mb-3">
+                    Impulsa tu Carrera
+                </span>
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-4 text-ghost-gray">
+                    <span class="text-cyber-cyan">Certificaciones</span> Profesionales
+                </h2>
+                <p class="text-ghost-gray/80 max-w-3xl mx-auto">
+                    Obtén validación oficial de tus habilidades con nuestras certificaciones reconocidas
+                    por la industria y destaca en un mercado laboral altamente competitivo.
+                </p>
+            </div>
+
+            <!-- Filtro de categorías -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                @for (category of categories; track category.id) {
+                <button (click)="filterByCategory(category.id === 'all' ? null : category.id)"
+                    class="px-4 py-2 border rounded-md transition-all duration-300" [ngClass]="(activeCategory() === category.id || (category.id === 'all' && activeCategory() === null)) ? 
+                        'border-cyber-cyan text-cyber-cyan bg-cyber-cyan/10' : 
+                        'border-plasma-line text-ghost-gray hover:border-cyber-cyan hover:text-cyber-cyan'">
+                    {{category.name}}
+                </button>
+                }
+            </div>
+
+            <!-- Cuadrícula de certificaciones -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                @for (certification of filteredCertifications; track certification.id) {
+                <app-certification-card [certification]="certification" [discountPercentage]="certification.discountPrice ? 
+                getDiscountPercentage(certification.price, certification.discountPrice) : 0"></app-certification-card>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso de certificación -->
+    <app-certification-process></app-certification-process>
+
+    <!-- Valor de las certificaciones -->
+    <section class="py-16 bg-void-black">
+        <div class="container mx-auto px-4">
+            <app-certification-value ></app-certification-value>
+        </div>
+    </section>
+
+    <!-- Preguntas frecuentes -->
+    <app-certification-faq></app-certification-faq>
+
+    <!-- Call to Action -->
+    <app-cta></app-cta>
+</div>

@@ -1,0 +1,106 @@
+<section class="py-20 bg-void-black relative overflow-hidden">
+    <!-- Fondo con efecto diagonal -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-neon-violet/10 to-cyber-cyan/10"></div>
+
+        <!-- Líneas diagonales decorativas -->
+        <div class="absolute inset-0">
+            <div class="w-full h-full">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="diagonalLines" width="40" height="40" patternUnits="userSpaceOnUse"
+                            patternTransform="rotate(45)">
+                            <line x1="0" y1="0" x2="0" y2="40" stroke="rgba(41, 45, 53, 0.5)" stroke-width="1" />
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#diagonalLines)" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <!-- Tarjeta principal -->
+            <div
+                class="cta-card bg-void-black border border-plasma-line rounded-lg overflow-hidden p-8 md:p-12 relative">
+                <!-- Esquinas decorativas -->
+                <div class="absolute top-0 left-0 w-5 h-5 border-t border-l border-neon-violet"></div>
+                <div class="absolute top-0 right-0 w-5 h-5 border-t border-r border-cyber-cyan"></div>
+                <div class="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-cyber-cyan"></div>
+                <div class="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-neon-violet"></div>
+
+                <!-- Efecto de scanner -->
+                <div class="absolute inset-0"></div>
+
+                <!-- Contenido -->
+                <div class="text-center mb-8">
+                    <div class="flex justify-center mb-6">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-glitch-green/10 border border-glitch-green/30">
+                            <fa-icon [icon]="faCertificate" class="text-3xl text-glitch-green"></fa-icon>
+                        </div>
+                    </div>
+
+                    <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                        INICIA TU CAMINO <span class="text-glitch-green">HOY</span>
+                    </h2>
+
+                    <p class="text-base md:text-lg text-ghost-gray mb-8 max-w-2xl mx-auto">
+                        Da el primer paso hacia la élite tecnológica. Nuestros programas de certificación
+                        están diseñados para transformar tu carrera y abrir puertas que ni siquiera sabías que existían.
+                    </p>
+
+                    <!-- Info box -->
+                    <div class="max-w-3xl mx-auto mb-8 bg-void-black border border-plasma-line rounded-lg p-6">
+                        <h3 class="font-orbitron text-xl text-cyber-cyan mb-4">Próximas Sesiones</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                            @for (session of upcomingSessions; track session.name) {
+                            <div class="border border-plasma-line rounded-lg p-4 bg-void-black/60">
+                                <div class="flex items-center mb-2">
+                                    <fa-icon [icon]="faCalendarAlt" class="text-neon-violet mr-2"></fa-icon>
+                                    <span class="text-ghost-gray text-sm">{{ session.date }}</span>
+                                </div>
+                                <h4 class="font-orbitron text-ghost-gray mb-1">{{ session.name }}</h4>
+                                <div class="text-xs text-cyber-cyan">{{ session.status }}</div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a routerLink="/auth/register" class="btn-primary group">
+                            <span class="flex items-center justify-center">
+                                <fa-icon [icon]="faRocket" class="mr-2 group-hover:animate-pulse"></fa-icon>
+                                Iniciar Proceso
+                            </span>
+                        </a>
+                        <a routerLink="/contact" class="btn-secondary group">
+                            <span class="flex items-center justify-center">
+                                Solicitar Información
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sello de garantía -->
+                <div class="flex flex-col items-center mt-10 relative">
+                    <div
+                        class="w-20 h-20 rounded-full border-2 border-dashed border-pulse-violet/50 flex items-center justify-center p-1 mb-2 guarantee-seal">
+                        <div
+                            class="w-full h-full rounded-full border border-pulse-violet/70 flex items-center justify-center bg-void-black">
+                            <fa-icon [icon]="faCertificate" class="text-pulse-violet text-xl"></fa-icon>
+                        </div>
+                    </div>
+                    <p class="text-sm text-ghost-gray/70 text-center max-w-lg">
+                        <span class="text-pulse-violet font-orbitron">GARANTÍA DE CALIDAD:</span> Si no quedas
+                        satisfecho con el programa en los primeros
+                        14 días, te devolvemos el 100% de tu inversión, sin preguntas ni condiciones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

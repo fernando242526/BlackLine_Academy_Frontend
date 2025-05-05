@@ -1,0 +1,137 @@
+<section class="py-20 bg-void-black/90 relative overflow-hidden">
+    <!-- Fondo con efecto de matriz -->
+    <div class="absolute inset-0 z-0 matrix-code opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Título de sección -->
+        <div class="text-center mb-16">
+            <span class="inline-block px-3 py-1 bg-neon-violet/10 text-neon-violet text-sm font-bold rounded-full mb-3">
+                Trayecto profesional
+            </span>
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-4 text-ghost-gray">
+                Proceso de <span class="text-cyber-cyan">Certificación</span>
+            </h2>
+            <p class="text-ghost-gray/80 max-w-3xl mx-auto">
+                Nuestro proceso está diseñado para garantizar un aprendizaje efectivo y una validación
+                rigurosa de tus habilidades, siguiendo estándares de la industria.
+            </p>
+        </div>
+
+        <!-- Proceso en escritorio -->
+        <div class="hidden lg:block relative mb-16">
+            <!-- Línea de tiempo -->
+            <div class="absolute top-1/2 left-0 w-full h-[2px] bg-plasma-line transform -translate-y-1/2 timeline">
+            </div>
+
+            <!-- Pasos del proceso -->
+            <div class="flex justify-between relative z-10">
+                @for (step of steps; track step.id) {
+                <div class="w-64 text-center relative flow-step">
+                    <!-- Círculo con icono -->
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-void-black border-2 flex items-center justify-center relative"
+                        [ngClass]="'border-' + step.color">
+                        <fa-icon [icon]="step.icon" [ngClass]="'text-' + step.color" class="text-xl"></fa-icon>
+
+                        <!-- Número del paso -->
+                        <div class="absolute -top-4 right-4.5 w-6 h-6 rounded-full bg-void-black border flex items-center justify-center"
+                            [ngClass]="'border-' + step.color">
+                            <span [ngClass]="'text-' + step.color" class="text-xs font-bold">{{step.id}}</span>
+                        </div>
+
+                        <!-- Flecha hacia el siguiente paso (excepto el último) -->
+                        @if (step.id !== steps.length) {
+                        <div class="absolute top-1/2 -right-[4.5rem] transform -translate-y-1/2">
+                            <fa-icon [icon]="faChevronRight" class="text-plasma-line text-lg"></fa-icon>
+                        </div>
+                        }
+                    </div>
+
+                    <!-- Título y descripción -->
+                    <h3 class="font-orbitron text-lg font-semibold mb-2" [ngClass]="'text-' + step.color">
+                        {{step.title}}
+                    </h3>
+                    <p class="text-ghost-gray/80 text-sm px-4">
+                        {{step.description}}
+                    </p>
+                </div>
+                }
+            </div>
+        </div>
+
+        <!-- Proceso en móvil -->
+        <div class="lg:hidden space-y-8 relative">
+            <!-- Línea de tiempo vertical -->
+            <div class="absolute top-0 bottom-0 left-8 w-[2px] bg-plasma-line"></div>
+
+            <!-- Pasos del proceso -->
+            @for (step of steps; track step.id) {
+            <div class="relative pl-24 flow-step-mobile">
+                <!-- Círculo con icono -->
+                <div class="absolute left-4 top-0 w-12 h-12 rounded-full bg-void-black border-2 flex items-center justify-center transform -translate-x-1/2"
+                    [ngClass]="'border-' + step.color">
+                    <fa-icon [icon]="step.icon" [ngClass]="'text-' + step.color" class="text-lg"></fa-icon>
+
+                    <!-- Número del paso -->
+                    <div class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-void-black border flex items-center justify-center"
+                        [ngClass]="'border-' + step.color">
+                        <span [ngClass]="'text-' + step.color" class="text-xs font-bold">{{step.id}}</span>
+                    </div>
+                </div>
+
+                <!-- Título y descripción -->
+                <h3 class="font-orbitron text-lg font-semibold mb-2" [ngClass]="'text-' + step.color">
+                    {{step.title}}
+                </h3>
+                <p class="text-ghost-gray/80 text-sm">
+                    {{step.description}}
+                </p>
+            </div>
+            }
+        </div>
+
+        <!-- Características adicionales -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+                class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 hover:border-cyber-cyan transition-colors duration-300">
+                <div
+                    class="w-16 h-16 rounded-full bg-cyber-cyan/10 flex items-center justify-center border border-cyber-cyan/30 mb-4">
+                    <span class="text-cyber-cyan font-orbitron font-bold">24/7</span>
+                </div>
+                <h3 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray">
+                    Acceso Ilimitado
+                </h3>
+                <p class="text-ghost-gray/80 text-sm">
+                    Estudia a tu ritmo con acceso permanente a todos los materiales y recursos de preparación.
+                </p>
+            </div>
+
+            <div
+                class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 hover:border-neon-violet transition-colors duration-300">
+                <div
+                    class="w-16 h-16 rounded-full bg-neon-violet/10 flex items-center justify-center border border-neon-violet/30 mb-4">
+                    <span class="text-neon-violet font-orbitron font-bold">3x</span>
+                </div>
+                <h3 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray">
+                    Intentos Múltiples
+                </h3>
+                <p class="text-ghost-gray/80 text-sm">
+                    Dispones de hasta tres intentos para aprobar tu examen, sin costos adicionales.
+                </p>
+            </div>
+
+            <div
+                class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 hover:border-glitch-green transition-colors duration-300">
+                <div
+                    class="w-16 h-16 rounded-full bg-glitch-green/10 flex items-center justify-center border border-glitch-green/30 mb-4">
+                    <span class="text-glitch-green font-orbitron font-bold">2 a</span>
+                </div>
+                <h3 class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray">
+                    Validez Extendida
+                </h3>
+                <p class="text-ghost-gray/80 text-sm">
+                    Certificaciones válidas por dos años, con programas de actualización para renovaciones.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

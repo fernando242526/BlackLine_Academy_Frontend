@@ -1,0 +1,50 @@
+.cta-card:hover .scanner-effect {
+  opacity: 1;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+// Animación para el sello de garantía
+.guarantee-seal {
+  animation: rotate-slow 20s linear infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px dotted var(--color-pulse-violet);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: pulse-seal 3s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-seal {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}

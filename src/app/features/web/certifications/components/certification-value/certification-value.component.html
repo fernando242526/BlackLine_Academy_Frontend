@@ -1,0 +1,86 @@
+<!-- src/app/features/web/certifications/components/certification-value/certification-value.component.html -->
+<section class="py-24 bg-void-black relative overflow-hidden">
+    <!-- Líneas de fondo decorativas -->
+    <div class="absolute inset-0 flex flex-col justify-between opacity-10">
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-cyber-cyan to-transparent"></div>
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-neon-violet to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Encabezado de sección -->
+        <div class="text-center mb-16">
+            <h2 class="font-orbitron text-3xl md:text-4xl font-bold tracking-wider text-ghost-gray mb-4">
+                <span class="text-glitch-green">[</span> Valor de Nuestras Certificaciones <span
+                    class="text-glitch-green">]</span>
+            </h2>
+            <p class="text-base text-ghost-gray/80 max-w-3xl mx-auto">
+                Las certificaciones de BlackLine Academy no son meros documentos; son llaves que abren puertas en el
+                ecosistema digital élite
+            </p>
+        </div>
+
+        <!-- Grid de puntos de valor -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            @for (point of valuePoints; track point.title) {
+            <div
+                class="bg-void-black border border-plasma-line rounded-lg p-6 relative group hover:border-{{point.color}} transition-all duration-300 value-card">
+                <!-- Icono -->
+                <div
+                    class="w-14 h-14 rounded-lg flex items-center justify-center bg-void-black border border-{{point.color}}/30 mb-4 relative overflow-hidden">
+                    <fa-icon [icon]="point.icon" class="text-{{point.color}} text-2xl relative z-10"></fa-icon>
+                    <!-- Efecto de resplandor -->
+                    <div
+                        class="absolute inset-0 bg-{{point.color}}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                </div>
+
+                <!-- Título -->
+                <h3
+                    class="text-xl font-orbitron font-semibold mb-3 text-ghost-gray group-hover:text-{{point.color}} transition-colors duration-300">
+                    {{point.title}}
+                </h3>
+
+                <!-- Descripción -->
+                <p class="text-ghost-gray/80 text-sm leading-relaxed">
+                    {{point.description}}
+                </p>
+
+                <!-- Esquina decorativa -->
+                <div
+                    class="absolute -bottom-1 -right-1 w-6 h-6 border-b border-r border-{{point.color}} opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="mt-20 p-8 border border-plasma-line rounded-lg bg-void-black/60 backdrop-blur-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="p-4">
+                    <div class="text-3xl font-orbitron font-bold mb-2 text-glitch-green">
+                        94%
+                    </div>
+                    <div class="text-ghost-gray text-sm">Tasa de Empleabilidad</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl font-orbitron font-bold mb-2 text-cyber-cyan">
+                        +65%
+                    </div>
+                    <div class="text-ghost-gray text-sm">Incremento Salarial Promedio</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl font-orbitron font-bold mb-2 text-neon-violet">
+                        350+
+                    </div>
+                    <div class="text-ghost-gray text-sm">Empresas Contratantes</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl font-orbitron font-bold mb-2 text-pulse-violet">
+                        45
+                    </div>
+                    <div class="text-ghost-gray text-sm">Países con Reconocimiento</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,99 @@
+/* Fondo con efecto matrix */
+.matrix-code {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='800' viewBox='0 0 100 400'%3E%3Ctext y='15' font-family='monospace' fill='%2300f0ff' font-size='12'%3E01011001%3C/text%3E%3Ctext y='30' font-family='monospace' fill='%2300f0ff' font-size='12'%3E10101010%3C/text%3E%3Ctext y='45' font-family='monospace' fill='%2300f0ff' font-size='12'%3E01110010%3C/text%3E%3Ctext y='60' font-family='monospace' fill='%2300f0ff' font-size='12'%3E10010110%3C/text%3E%3Ctext y='75' font-family='monospace' fill='%2300f0ff' font-size='12'%3E01100101%3C/text%3E%3Ctext y='90' font-family='monospace' fill='%2300f0ff' font-size='12'%3E11001001%3C/text%3E%3Ctext y='105' font-family='monospace' fill='%2300f0ff' font-size='12'%3E10011010%3C/text%3E%3Ctext y='120' font-family='monospace' fill='%2300f0ff' font-size='12'%3E01010101%3C/text%3E%3Ctext y='135' font-family='monospace' fill='%2300f0ff' font-size='12'%3E10110010%3C/text%3E%3Ctext y='150' font-family='monospace' fill='%2300f0ff' font-size='12'%3E01011001%3C/text%3E%3Ctext y='165' font-family='monospace' fill='%2300f0ff' font-size='12'%3E10100110%3C/text%3E%3Ctext y='180' font-family='monospace' fill='%2300f0ff' font-size='12'%3E11001101%3C/text%3E%3Ctext y='195' font-family='monospace' fill='%2300f0ff' font-size='12'%3E01101001%3C/text%3E%3Ctext y='210' font-family='monospace' fill='%2300f0ff' font-size='12'%3E10010110%3C/text%3E%3C/svg%3E");
+  animation: matrix-fall 20s linear infinite;
+}
+
+@keyframes matrix-fall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 800px;
+  }
+}
+
+/* Animación para los pasos del flujo */
+.flow-step {
+  opacity: 0;
+  animation: fade-in 0.5s ease forwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+}
+
+.flow-step-mobile {
+  opacity: 0;
+  animation: fade-in 0.5s ease forwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para la línea de tiempo */
+.timeline {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-cyber-cyan),
+      transparent
+    );
+    animation: timeline-progress 3s ease-in-out infinite;
+  }
+}
+
+@keyframes timeline-progress {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

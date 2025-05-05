@@ -1,0 +1,63 @@
+<div class="space-y-6">
+    @for (item of contactInfo; track item.title) {
+    <div
+        class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6 transition-all duration-300 hover:border-{{item.color}} group relative overflow-hidden">
+        <!-- Efecto de borde glitch en hover -->
+        <div class="absolute inset-0 border border-{{item.color}}/30 opacity-0 group-hover:opacity-100 glitch-border">
+        </div>
+
+        <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center border mr-4 relative overflow-hidden"
+                [ngClass]="'border-' + item.color + '/30'">
+                <fa-icon [icon]="item.icon" [ngClass]="'text-' + item.color" class="text-xl relative z-10"></fa-icon>
+
+                <!-- Efecto de scanner en hover -->
+                <div class="absolute inset-0 scanner-effect opacity-0 group-hover:opacity-100"
+                    [ngClass]="'bg-' + item.color + '/10'"></div>
+            </div>
+
+            <div>
+                <h3
+                    class="font-orbitron text-lg font-semibold mb-2 text-ghost-gray group-hover:text-{{item.color}} transition-colors duration-300">
+                    {{item.title}}
+                </h3>
+
+                <div class="space-y-1">
+                    @for (detail of item.details; track detail) {
+                    <p class="text-ghost-gray/80">{{detail}}</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+    <!-- Redes sociales -->
+    <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-6">
+        <h3 class="font-orbitron text-lg font-semibold mb-4 text-ghost-gray">
+            <span class="text-electric-blue">#</span> Síguenos
+        </h3>
+
+        <div class="flex space-x-4">
+            <a href="#"
+                class="w-10 h-10 rounded-full border border-electric-blue/50 flex items-center justify-center hover:bg-electric-blue/10 transition-all duration-300 group">
+                <i class="text-electric-blue group-hover:scale-110 transition-transform">X</i>
+            </a>
+
+            <a href="#"
+                class="w-10 h-10 rounded-full border border-neon-violet/50 flex items-center justify-center hover:bg-neon-violet/10 transition-all duration-300 group">
+                <i class="text-neon-violet group-hover:scale-110 transition-transform">In</i>
+            </a>
+
+            <a href="#"
+                class="w-10 h-10 rounded-full border border-cyber-cyan/50 flex items-center justify-center hover:bg-cyber-cyan/10 transition-all duration-300 group">
+                <i class="text-cyber-cyan group-hover:scale-110 transition-transform">Gh</i>
+            </a>
+
+            <a href="#"
+                class="w-10 h-10 rounded-full border border-glitch-green/50 flex items-center justify-center hover:bg-glitch-green/10 transition-all duration-300 group">
+                <i class="text-glitch-green group-hover:scale-110 transition-transform">Fb</i>
+            </a>
+        </div>
+    </div>
+</div>

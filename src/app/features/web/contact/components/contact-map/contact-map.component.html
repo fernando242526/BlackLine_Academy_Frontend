@@ -1,0 +1,110 @@
+<div class="cyberpunk-map-container relative h-72 md:h-96 rounded-lg overflow-hidden">
+    <!-- Contenedor del mapa estilizado -->
+    <div class="w-full h-full bg-void-black border border-plasma-line overflow-hidden relative">
+        <!-- Grid de fondo animado -->
+        <div class="absolute inset-0 map-grid"></div>
+
+        <!-- Estado de carga -->
+        @if (!mapLoaded()) {
+        <div class="absolute inset-0 flex items-center justify-center z-20 bg-void-black/80">
+            <div class="text-cyber-cyan">
+                <div class="loading-text font-jetbrains mb-3 text-center">CARGANDO MAPA</div>
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+        }
+
+        <!-- Mapa estilizado (versión cyberpunk de un mapa) -->
+        <div class="absolute inset-0 z-10" [ngClass]="{'opacity-0': !mapLoaded(), 'opacity-100': mapLoaded()}">
+            <!-- Elementos del mapa cyberpunk -->
+            <div class="map-elements">
+                <!-- Calles y cuadrículas -->
+                <div class="streets"></div>
+
+                <!-- Marcador de ubicación -->
+                <div class="location-marker" [ngClass]="{'marker-appear': mapLoaded()}">
+                    <div class="marker-inner"></div>
+                    <div class="marker-pulse"></div>
+                </div>
+
+                <!-- Etiqueta de ubicación -->
+                <div class="location-label" [ngClass]="{'label-appear': mapLoaded()}">
+                    <div class="label-box font-orbitron text-xs p-2">
+                        <span class="text-cyber-cyan">></span> BlackLine Academy HQ
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Líneas de coordenadas -->
+        <div class="coordinate-lines">
+            <div class="coord-x"></div>
+            <div class="coord-y"></div>
+        </div>
+
+        <!-- Interfaz de "computadora" superpuesta -->
+        <div class="ui-overlay absolute inset-0 pointer-events-none">
+            <!-- Esquinas -->
+            <div class="absolute top-0 left-0 w-5 h-5 border-t border-l border-cyber-cyan"></div>
+            <div class="absolute top-0 right-0 w-5 h-5 border-t border-r border-cyber-cyan"></div>
+            <div class="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-cyber-cyan"></div>
+            <div class="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-cyber-cyan"></div>
+
+            <!-- Etiquetas de datos -->
+            <div class="absolute bottom-3 right-3 text-xs font-jetbrains text-cyber-cyan/70">
+                <div>LAT: {{locationData().latitude}}</div>
+                <div>LON: {{locationData().longitude}}</div>
+                <div>SCAN: {{locationData().status}}</div>
+                <div>STATUS: {{mapStatus()}}</div>
+            </div>
+
+            <!-- Código de "hackeo" en la esquina -->
+            <div class="absolute top-3 left-3 text-xs font-jetbrains text-neon-violet/70 text-left code-animation">
+                <div class="type-line">> initialize_map()</div>
+                @if (mapLoaded()) {
+                <div class="type-line">> locate_coordinates()</div>
+                <div class="type-line">> render_terrain()</div>
+                <div class="type-line">> connect_to_grid()</div>
+                <div class="type-line">> status: {{mapStatus()}}</div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Información adicional debajo del mapa -->
+    <div class="mt-6 flex flex-col md:flex-row justify-between items-start">
+        <!-- Dirección completa -->
+        <div
+            class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-4 md:w-1/2 mb-4 md:mb-0 md:mr-4">
+            <h3 class="font-orbitron text-base font-semibold mb-2 text-ghost-gray">
+                <span class="text-cyber-cyan">Dirección Completa</span>
+            </h3>
+            <p class="text-ghost-gray/80 text-sm">
+                Calle Tecnología #404<br>
+                Colonia Digital, CP 01010<br>
+                Ciudad de México, México
+            </p>
+        </div>
+
+        <!-- Horarios -->
+        <div class="bg-void-black/60 backdrop-blur-sm border border-plasma-line rounded-lg p-4 md:w-1/2">
+            <h3 class="font-orbitron text-base font-semibold mb-2 text-ghost-gray">
+                <span class="text-neon-violet">Horarios de Atención</span>
+            </h3>
+            <ul class="text-ghost-gray/80 text-sm">
+                <li class="flex justify-between">
+                    <span>Lunes a Viernes:</span>
+                    <span>09:00 - 20:00</span>
+                </li>
+                <li class="flex justify-between">
+                    <span>Sábados:</span>
+                    <span>10:00 - 14:00</span>
+                </li>
+                <li class="flex justify-between">
+                    <span>Domingos:</span>
+                    <span>Cerrado</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
