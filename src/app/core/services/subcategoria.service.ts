@@ -48,7 +48,7 @@ export class SubcategoriaService {
       params = params.set('categoriaId', findSubcategoriasDto.categoriaId);
     }
 
-    return this.http.get<PaginatedResponse<Subcategoria>>(this.apiUrl);
+    return this.http.get<PaginatedResponse<Subcategoria>>(this.apiUrl, { params });
   }
 
   /**
