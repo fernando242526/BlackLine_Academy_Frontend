@@ -45,7 +45,7 @@ export class CategoriaService {
       params = params.set('activo', findCategoriasDto.activo.toString());
     }
 
-    return this.http.get<PaginatedResponse<Categoria>>(this.apiUrl);
+    return this.http.get<PaginatedResponse<Categoria>>(this.apiUrl, { params });
   }
 
   /**

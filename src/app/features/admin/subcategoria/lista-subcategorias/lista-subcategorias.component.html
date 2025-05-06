@@ -29,7 +29,7 @@
 
         @if (filtrosVisibles()) {
         <div class="bg-void-black/80 border border-plasma-line rounded-lg p-4 shadow-lg">
-            <form [formGroup]="filtrosForm" class="flex flex-wrap gap-4">
+            <form [formGroup]="filtrosForm" class="flex flex-wrap gap-4 items-stretch">
                 <!-- Filtro por nombre -->
                 <div class="flex-grow min-w-[200px]">
                     <label for="nombre"
@@ -37,7 +37,7 @@
                         Nombre
                     </label>
                     <div class="relative">
-                        <input type="text" id="nombre" formControlName="nombre" class="form-input pl-9"
+                        <input type="text" id="nombre" formControlName="nombre" class="form-input pl-9! py-2.5!"
                             placeholder="Buscar por nombre...">
                         <fa-icon [icon]="faSearch"
                             class="absolute left-3 top-1/2 -translate-y-1/2 text-ghost-gray/50"></fa-icon>
@@ -77,7 +77,7 @@
 
                 <!-- Botón reset -->
                 <div class="flex items-end">
-                    <button type="button" (click)="resetFiltros()" class="btn-secondary btn-sm flex items-center gap-2">
+                    <button type="button" (click)="resetFiltros()" class="btn-secondary btn-sm flex items-center gap-2 py-3!">
                         <fa-icon [icon]="faSync"></fa-icon>
                         <span>Limpiar</span>
                     </button>

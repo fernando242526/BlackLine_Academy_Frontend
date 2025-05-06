@@ -21,6 +21,10 @@ const ADMIN_ROUTES: Routes = [
       {
         path: 'subcategorias',
         loadComponent: () => import('./subcategoria/lista-subcategorias/lista-subcategorias.component'),
+      },
+      {
+        path: 'subcategorias/nueva',
+        loadComponent: () => import('./subcategoria/components/form-subcategoria/form-subcategoria.component'),
       }
     ],
   },
